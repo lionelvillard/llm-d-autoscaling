@@ -1,0 +1,139 @@
+{
+ "stages": [
+  {
+   "t": 0,
+   "offered_rps": 0.95,
+   "work_per_req": 8614.4,
+   "nu": 8184,
+   "requests": 285,
+   "ok": 285,
+   "error_rate": 0.0,
+   "errors": [],
+   "A_ttft_le_1s": 1.0,
+   "ttft_s": {
+    "p50": 0.276,
+    "p90": 0.493,
+    "p99": 0.791
+   },
+   "itl_ms": {
+    "p50": 8.841,
+    "p90": 13.889,
+    "p99": 17.985
+   }
+  },
+  {
+   "t": 300,
+   "offered_rps": 1.93,
+   "work_per_req": 8614.4,
+   "nu": 16626,
+   "requests": 579,
+   "ok": 579,
+   "error_rate": 0.0,
+   "errors": [],
+   "A_ttft_le_1s": 0.976,
+   "ttft_s": {
+    "p50": 0.289,
+    "p90": 0.703,
+    "p99": 1.079
+   },
+   "itl_ms": {
+    "p50": 15.335,
+    "p90": 29.38,
+    "p99": 46.399
+   }
+  },
+  {
+   "t": 600,
+   "offered_rps": 2.897,
+   "work_per_req": 8614.4,
+   "nu": 24953,
+   "requests": 869,
+   "ok": 869,
+   "error_rate": 0.0,
+   "errors": [],
+   "A_ttft_le_1s": 0.849,
+   "ttft_s": {
+    "p50": 0.537,
+    "p90": 1.105,
+    "p99": 1.63
+   },
+   "itl_ms": {
+    "p50": 36.755,
+    "p90": 75.474,
+    "p99": 98.811
+   }
+  },
+  {
+   "t": 900,
+   "offered_rps": 4.123,
+   "work_per_req": 8614.4,
+   "nu": 35520,
+   "requests": 1237,
+   "ok": 1129,
+   "error_rate": 0.087,
+   "errors": [
+    "TimeoutError"
+   ],
+   "A_ttft_le_1s": 0.021,
+   "ttft_s": {
+    "p50": 24.591,
+    "p90": 40.8,
+    "p99": 46.85
+   },
+   "itl_ms": {
+    "p50": 100.858,
+    "p90": 103.366,
+    "p99": 104.349
+   }
+  },
+  {
+   "t": 1200,
+   "offered_rps": 5.033,
+   "work_per_req": 8614.4,
+   "nu": 43359,
+   "requests": 1510,
+   "ok": 0,
+   "error_rate": 1.0,
+   "errors": [
+    "TimeoutError"
+   ],
+   "A_ttft_le_1s": 0.0,
+   "ttft_s": {
+    "p50": null,
+    "p90": null,
+    "p99": null
+   },
+   "itl_ms": {
+    "p50": 0,
+    "p90": 0,
+    "p99": 0
+   }
+  },
+  {
+   "t": 1500,
+   "offered_rps": 6.01,
+   "work_per_req": 8614.4,
+   "nu": 51773,
+   "requests": 1803,
+   "ok": 0,
+   "error_rate": 1.0,
+   "errors": [
+    "TimeoutError"
+   ],
+   "A_ttft_le_1s": 0.0,
+   "ttft_s": {
+    "p50": null,
+    "p90": null,
+    "p99": null
+   },
+   "itl_ms": {
+    "p50": 0,
+    "p90": 0,
+    "p99": 0
+   }
+  }
+ ],
+ "C_P_rps": 2.128,
+ "nu_max": 18331,
+ "threshold_work_0p7": 12832
+}
