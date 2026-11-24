@@ -1,0 +1,1 @@
+The blend at 7.8 req/s for 1,200 s, then at 31.0 req/s (0.8 x C). Decode went from 2 to 6 Ready pods and prefill from 2 to 3 after the step, and A fell from 1.000 to 0.000 within four minutes and stayed there to the end of the load.

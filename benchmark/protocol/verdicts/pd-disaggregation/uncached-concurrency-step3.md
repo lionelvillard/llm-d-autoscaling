@@ -78,6 +78,8 @@ the knee runs ran the as-rendered constants
 ([`policy-glm-constants/`](uncached-concurrency-step3/policy-glm-constants/)),
 which cannot matter because the knees pin the pool.
 
+After run 1, the scenario file `uncached-concurrency.yaml` was updated to these calibrated values (commit `2e607e4a`: 37540; 510, 8.4, 2133, 0.05), so the policy of runs 2 to 10 matches the scenario as written. The knees ran the GLM-5.3 constants, which do not matter under pinning.
+
 | Constant | GLM-5.3 TP8 H200 | This plant | Rule and source |
 |---|---|---|---|
 | prefill divisor (`10850`) | 10,850 uncached tok/s per pod | **37,540** | 0.7 x one prefill pod's knee. The knee is the blend's (run-set.md §1: a rule that names no mix takes the blend's): μ_SLO(B, prefill) 15.328 req/s x 3,498.7 tok (mean ISL of B) = 53,628 tok/s (run 1f). The 8192:256 knee, 6.095 req/s = 49,930 tok/s (run 1e), is 6.9 % lower; 0.7 x it would be 34,950 |
@@ -139,7 +141,7 @@ because `minReplicaCount` is 2 (run-set.md §2).
 | 1f | knee prefill blend | done | as expected; μ_SLO 15.328 req/s | | 0 | 1,200 | [report](uncached-concurrency-step3/knees/prefill-blend/report.md) |
 | 2 | SO-active staircase | done | problem shown: decode lagged the step into stage 3 (A 0.697; 4 Ready 270 s after it); prefill's 900 s window held 2 pods for 885 s after its trigger asked for 3 (stage 5 A 0.966) | 0.929 | 0 | 17,430 (6,270 + 11,160) |
 | 3 | mix-shift | done | problem shown: phase 3 (256:4096) A 0.840, decode 2 to 6 Ready in 570 s, A 0.36 at the worst bin; a third prefill pod held 2,580 s above the floor; phase 2 decode 2 against a need of 3 with A 1.000 | 0.947 | 0 | 19,950 (9,900 + 10,050) |
-| 4a | overload under the cap | pending | | | | | |
+| 4a | overload under the cap | done (second attempt, lab patch) | problem shown: A 0.039 in the 31.0 req/s phase after decode reached its cap of 6 and prefill 3; prefill's 900 s window left it at 2 pods for 1,035 s after the step; 24,459 timeouts and 10,792 unfinished | 0.231 | 24,459 timeout | 13,110 (5,085 + 8,025) |
 | 4b | overload over the cap | pending | | | | | |
 | 5 | agentic | pending | | | | | |
 | 8 | bursty | pending | | | | | |
@@ -160,6 +162,7 @@ move the estimate and rerun). They are not reports; the raw runs are under
 | decode 256:4096, estimate 2.5 req/s | A 1.000 in all four stages (1.5 to 3.1 req/s) | estimate 4.5, then 3.9 (run 1c) |
 | decode 256:4096, estimate 4.5 req/s | crossing between stages 2 and 3 (A 1.000 to 0.835): inside the stages, but 3.87 req/s was an interpolation across a 0.8 req/s span, so the estimate was recentered | estimate 3.9 (run 1c: 4.002) |
 | prefill 2048:2048, estimates 22 and 40 req/s | A 1.000 in all stages up to 50 req/s (102,400 tok/s) | none: the pool's capacity for this mix is above what the decode pool (16 pods) can feed |
+| 4a, overload under the cap (1.2 x μ_SLO(B), then 0.8 x C = 31.013 req/s), first attempt | blis exited 1: `the emitted Result does not validate against blis-schemas`, with `request_rows[15129].e2e_us: is 197718867, less than ttft_us 197828060` and a negative `tpot_us`, on 1 row. Memory was not the cause (peak 25.2 of a 37.5 GiB budget, not killed). The same simulator defect as in `coordinator-kv`'s run 4b: a decode sub-request preempted after its first token has its TTFT rebuilt from a scheduling delay re-stamped at re-admission. Outside the configuration | rerun on the lab with the TTFT projection of inference-sim `dfa8987` (#2237) applied ([`lab-patch.diff`](uncached-concurrency-step3/overload-under/lab-patch.diff)): it changes the reported TTFT of disaggregated requests, not what the HPAs read. Used for run 4a only; the other runs ran without it unless they fail the same way |
 
 ## Conclusions
 
