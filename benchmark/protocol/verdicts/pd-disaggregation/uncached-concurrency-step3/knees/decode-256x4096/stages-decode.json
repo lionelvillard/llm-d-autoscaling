@@ -1,0 +1,142 @@
+{
+ "run": "knee-256x4096",
+ "aligned_by": "blis-run.json",
+ "rows": [
+  {
+   "stage": 1,
+   "seconds": 300,
+   "rate": 2.34,
+   "mix": "256:4096",
+   "offered_req_s": 2.34,
+   "lambda_in": 599.04,
+   "lambda_out": 9584.64,
+   "sent": 702,
+   "errors": {},
+   "A": 1.0,
+   "ttft": [
+    0.102821,
+    0.111772,
+    0.115731
+   ],
+   "tpot": [
+    0.019413849328449327,
+    0.020784687423687425,
+    0.02118293772893773
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 299.9999999575653,
+   "ready_replica_s": 299.9999999575653
+  },
+  {
+   "stage": 2,
+   "seconds": 300,
+   "rate": 3.12,
+   "mix": "256:4096",
+   "offered_req_s": 3.12,
+   "lambda_in": 798.72,
+   "lambda_out": 12779.52,
+   "sent": 936,
+   "errors": {},
+   "A": 1.0,
+   "ttft": [
+    0.112656,
+    0.122683,
+    0.12691
+   ],
+   "tpot": [
+    0.023805771184371185,
+    0.023957274725274726,
+    0.024382349694749693
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 299.99999999999994,
+   "ready_replica_s": 299.99999999999994
+  },
+  {
+   "stage": 3,
+   "seconds": 300,
+   "rate": 3.9,
+   "mix": "256:4096",
+   "offered_req_s": 3.9,
+   "lambda_in": 998.4,
+   "lambda_out": 15974.4,
+   "sent": 1170,
+   "errors": {},
+   "A": 1.0,
+   "ttft": [
+    0.121679,
+    0.13356,
+    0.137646
+   ],
+   "tpot": [
+    0.027387929181929182,
+    0.02823750231990232,
+    0.02945897020757021
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 300.0,
+   "ready_replica_s": 300.0
+  },
+  {
+   "stage": 4,
+   "seconds": 300,
+   "rate": 4.875,
+   "mix": "256:4096",
+   "offered_req_s": 4.876666666666667,
+   "lambda_in": 1248.4266666666667,
+   "lambda_out": 19974.826666666668,
+   "sent": 1463,
+   "errors": {},
+   "A": 0.5222146274777854,
+   "ttft": [
+    0.154807,
+    46.227724,
+    76.474322
+   ],
+   "tpot": [
+    0.03585009645909646,
+    0.042607854212454215,
+    0.04396363418803419
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 300.0,
+   "ready_replica_s": 300.0
+  }
+ ],
+ "summary": {
+  "sent": 4271,
+  "A": 0.8363380941231562,
+  "errors": {},
+  "requested_replica_s": 1199.9999999575653,
+  "gpu_s": 1199.9999999575653,
+  "placement": {
+   "before_first_stage": 0,
+   "after_last_stage": 0,
+   "stages_off_rate": []
+  },
+  "knee": {
+   "mu_slo": 4.002207677634717,
+   "between_stages": [
+    3,
+    4
+   ],
+   "inside": true
+  }
+ }
+}

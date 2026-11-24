@@ -1,0 +1,3 @@
+The run shows a problem when stage 1 fails or stage 4 passes (the crossing is outside the stages). Stage 1 passed (A 100.0 %) and stage 4 failed (A 86.8 %), so the crossing is inside them: μ_SLO(blend, prefill) = 15.328 req/s (A crosses 0.95 between stages 3 and 4, linear interpolation). The prefill pod's uncached prompt rate at the crossing is 15.328 x 3,499 (the blend's mean ISL) = 53,628 tok/s; it is the capacity the prefill threshold rule uses (run-set.md §1: a rule that names no mix takes the blend's).
+
+**Outcome: as expected; μ_SLO = 15.328 req/s.**

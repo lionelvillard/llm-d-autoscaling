@@ -1,0 +1,217 @@
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: pd-disaggregation-prefill
+  namespace: t551
+  annotations:
+    llm-d.ai/managed: "true"
+    llm-d.ai/model-id: "deepseek-ai/DeepSeek-V2-Lite"
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: deepseek-78616ec3--v2-lite-prefill
+  minReplicaCount: 2
+  maxReplicaCount: 4
+  pollingInterval: 15
+  triggers:
+  - type: prometheus
+    name: offered
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace="t551",endpoint_role="prefill"}[1m]))
+      threshold: "1"
+      activationThreshold: "0"
+      ignoreNullValues: "false"
+  - type: prometheus
+    name: comp
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(rate(vllm:prompt_tokens_by_source_total{namespace="t551",role="prefill",source="local_compute"}[5m]))
+      threshold: "1"
+      activationThreshold: "0"
+      ignoreNullValues: "false"
+  - type: prometheus
+    name: done
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(rate(vllm:prompt_tokens_total{namespace="t551",role="prefill"}[5m]))
+      threshold: "1"
+      activationThreshold: "0"
+      ignoreNullValues: "false"
+  fallback:
+    failureThreshold: 3
+    replicas: 2
+    behavior: currentReplicasIfHigher
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          policies:
+          - periodSeconds: 600
+            type: Pods
+            value: 1
+          selectPolicy: Max
+          stabilizationWindowSeconds: 3600
+        scaleUp:
+          policies:
+          - periodSeconds: 300
+            type: Pods
+            value: 1
+          selectPolicy: Max
+          stabilizationWindowSeconds: 900
+    scalingModifiers:
+      formula: 'max(done > 0 ? offered * comp / done : offered, comp) / 10850'
+      target: "1"
+      metricType: AverageValue
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: pd-disaggregation-decode
+  namespace: t551
+  annotations:
+    llm-d.ai/managed: "true"
+    llm-d.ai/model-id: "deepseek-ai/DeepSeek-V2-Lite"
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: deepseek-78616ec3--v2-lite-decode
+  minReplicaCount: 2
+  maxReplicaCount: 6
+  pollingInterval: 15
+  triggers:
+  - type: prometheus
+    name: conc
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(vllm:num_requests_running{namespace="t551",role="decode"})
+        + sum(vllm:num_requests_waiting{namespace="t551",role="decode"})
+      threshold: "1"
+      activationThreshold: "0"
+      ignoreNullValues: "false"
+  - type: prometheus
+    name: lam
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(rate(llm_d_epp_request_total{namespace="t551"}[1m]))
+        + (sum(rate(llm_d_epp_request_error_total{namespace="t551",error_code="ServiceUnavailable"}[1m])) or vector(0))
+      threshold: "1"
+      activationThreshold: "0"
+      ignoreNullValues: "false"
+  - type: prometheus
+    name: gen
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(rate(vllm:generation_tokens_total{namespace="t551",role="decode"}[5m])) or vector(0)
+      threshold: "1"
+      activationThreshold: "0"
+  - type: prometheus
+    name: ok
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        sum(rate(vllm:request_success_total{namespace="t551",role="decode"}[5m])) or vector(0)
+      threshold: "1"
+      activationThreshold: "0"
+  - type: prometheus
+    name: pods
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        count(count by (pod) (vllm:num_requests_running{namespace="t551",role="decode"})) or vector(0)
+      threshold: "1"
+      activationThreshold: "0"
+  - type: prometheus
+    name: kv
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        avg(vllm:kv_cache_usage_perc{namespace="t551",role="decode"}) or vector(0)
+      threshold: "1"
+      activationThreshold: "0"
+  - type: prometheus
+    name: itl
+    metricType: AverageValue
+    authenticationRef:
+      name: keda-prometheus-auth
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: |
+        (histogram_quantile(0.9, sum by (le) (rate(vllm:inter_token_latency_seconds_bucket{namespace="t551",role="decode"}[2m]))) > 0)
+        or vector(0)
+      threshold: "1"
+      activationThreshold: "0"
+  fallback:
+    failureThreshold: 3
+    replicas: 2
+    behavior: currentReplicasIfHigher
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          policies:
+          - periodSeconds: 120
+            type: Pods
+            value: 1
+          selectPolicy: Max
+          stabilizationWindowSeconds: 300
+        scaleUp:
+          policies:
+          - periodSeconds: 15
+            type: Pods
+            value: 4
+          - periodSeconds: 15
+            type: Percent
+            value: 100
+          selectPolicy: Max
+          stabilizationWindowSeconds: 0
+    scalingModifiers:
+      formula: 'max(conc / 4, (ok > 0 ? lam * gen / ok : lam * 700) / (0.39 * 700), pods * kv / 0.8, pods * itl / 0.075)'
+      target: "1"
+      metricType: AverageValue

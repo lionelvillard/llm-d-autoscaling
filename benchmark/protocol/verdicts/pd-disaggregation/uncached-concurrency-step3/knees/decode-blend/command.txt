@@ -1,0 +1,2 @@
+# run in the run's sim/ directory; <lab> is the blis-signal-lab checkout
+<lab>/blis run --scenario deepseek-v2-lite-h100-pd.yaml --scenarios /Users/villardl/.command-center/worktrees/task-0551/llm-d-autoscaling/benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency-step3 --workload-spec workload.yaml --policy-config policy.json --num-instances 9 --prefill-instances 8 --decode-instances 1 --horizon 1511000000 --timeout 311 --signals-output signals --output result.json

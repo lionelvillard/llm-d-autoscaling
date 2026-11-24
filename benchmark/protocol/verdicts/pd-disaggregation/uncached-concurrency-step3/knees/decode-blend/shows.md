@@ -1,0 +1,3 @@
+The run shows a problem when stage 1 fails or stage 4 passes (the crossing is outside the stages). Stage 1 passed (A 100.0 %) and stage 4 failed (A 50.9 %), so the crossing is inside them: μ_SLO(blend, decode) = 6.461 req/s (A crosses 0.95 between stages 3 and 4, linear interpolation). The decode pod's mean KV usage reads 0.74 in stage 3 and 1.00 in stage 4 (`kv`), and its running + waiting requests 359 and 683: KV binds the blend before the engine's sequence limit does.
+
+**Outcome: as expected; μ_SLO = 6.461 req/s.**

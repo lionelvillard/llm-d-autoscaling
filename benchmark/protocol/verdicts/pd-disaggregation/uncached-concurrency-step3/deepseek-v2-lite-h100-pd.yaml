@@ -1,0 +1,41 @@
+# DeepSeek-V2-Lite P/D on H100 for the uncached-concurrency evaluation: one TP1 engine per pod,
+# one GPU per pod, up to 8 prefill and 16 decode pods. Engine settings follow the backend overlay
+# benchmark/config/cluster-configs/ocp/vllm.yaml (block size 128, gpu-memory-utilization 0.90) and
+# the scenario (max-model-len 32768); prefix caching on, bf16 weights, the rest as vLLM 0.32.0
+# resolves them. Written from the kit's glm-5-h200-pd-autoscale.yaml; the fabric is the catalog's
+# nominal roce-200g, the one H100 P/D scenario's (the overlay does not state a NIC).
+kind: Scenario
+name: deepseek-v2-lite-h100-pd
+engine_version: "0.32.0"
+
+model: deepseek-v2-lite
+coefficients: [cost-model-primitives, cost-model-collectives, cost-model-host-overheads, cost-model-attention, cost-model-recurrent, cost-model-memory, cost-model-fabric]
+
+cluster:
+  hardware: h100
+  fabric: roce-200g
+  nodes: 3
+  gpus_per_node: 8
+---
+kind: Deployment
+name: deepseek-v2-lite-h100-pd
+
+pools:
+  - role: prefill
+    nodes: 1
+    parallel: {tp: 1, pp: 1, dp: 1, enable_expert_parallel: false}
+    engine: &eng
+      block_size: 128
+      enable_prefix_caching: true
+      max_model_len: 32768
+      gpu_memory_utilization: 0.9
+  - role: decode
+    nodes: 2
+    parallel: {tp: 1, pp: 1, dp: 1, enable_expert_parallel: false}
+    engine: *eng
+
+pd_transfer:
+  connector: NixlConnector
+
+router:
+  endpoint_picker_config: router/pd-always.yaml

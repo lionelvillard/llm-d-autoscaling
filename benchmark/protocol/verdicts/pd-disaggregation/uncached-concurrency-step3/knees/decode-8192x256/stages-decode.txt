@@ -1,0 +1,11 @@
+knee-8192x256: 21900 requests in the records; schedule aligned by blis-run.json (first request at offset 0.027 s)
+| stage | s | set req/s | offered req/s | λ_in tok/s | λ_out tok/s | sent | errors | A | TTFT p50/p90/p99 s | TPOT p50/p90/p99 ms | Ready | need | requested replica-s | Ready replica-s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 300 | 12.000 | 12.000 | 98,304 | 3,072 | 3,600 | 0 | 100.0 % | 0.24/0.31/0.43 | 20.5/21.5/22.0 | 1–1 | – | 300 | 300 |
+| 2 | 300 | 16.000 | 16.000 | 131,072 | 4,096 | 4,800 | 0 | 100.0 % | 0.25/0.34/0.46 | 24.0/25.8/27.6 | 1–1 | – | 300 | 300 |
+| 3 | 300 | 20.000 | 20.000 | 163,840 | 5,120 | 6,000 | 0 | 100.0 % | 0.27/0.63/1.08 | 29.3/30.7/30.7 | 1–1 | – | 300 | 300 |
+| 4 | 300 | 25.000 | 25.000 | 204,800 | 6,400 | 7,500 | 941 timeout | 6.2 % | 25.14/47.40/51.68 | 30.7/30.7/30.7 | 1–1 | – | 300 | 300 |
+
+run: 21,900 sent, A 67.9 %, errors {'timeout': 941}, requested 1,200 replica-s = 1,200 GPU-s at 1 GPU per replica
+placement: 0 request(s) before the first stage, 0 after the last; stages more than 3 sd off their set rate: none: ok
+knee: μ_SLO = 20.267 req/s (A crosses 0.95 between stages 3 and 4)

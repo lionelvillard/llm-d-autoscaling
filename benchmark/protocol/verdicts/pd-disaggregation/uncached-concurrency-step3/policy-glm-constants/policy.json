@@ -1,0 +1,233 @@
+{
+  "autoscaler": {
+    "hpa_by_role": {
+      "prefill": {
+        "sync_period_s": 15,
+        "tolerance": 0.1,
+        "min_replicas": 2,
+        "max_replicas": 4,
+        "metrics_delay_s": 0.0,
+        "polling_interval_s": 15,
+        "fallback": {
+          "failure_threshold": 3,
+          "replicas": 2,
+          "behavior": "currentReplicasIfHigher"
+        },
+        "behavior": {
+          "scale_up": {
+            "stabilization_window_s": 900,
+            "select_policy": "Max",
+            "policies": [
+              {
+                "type": "Pods",
+                "value": 1,
+                "period_s": 300
+              }
+            ]
+          },
+          "scale_down": {
+            "stabilization_window_s": 3600,
+            "select_policy": "Max",
+            "policies": [
+              {
+                "type": "Pods",
+                "value": 1,
+                "period_s": 600
+              }
+            ]
+          }
+        },
+        "scaling_modifiers": {
+          "formula": "max(done > 0 ? offered * comp / done : offered, comp) / 10850",
+          "target": 1.0,
+          "metric_type": "AverageValue"
+        },
+        "triggers": [
+          {
+            "name": "offered",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "prefill_prompt_tokens",
+                "function": "rate",
+                "window_s": 60
+              }
+            ]
+          },
+          {
+            "name": "comp",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "prefill_computed_tokens",
+                "function": "rate",
+                "window_s": 300
+              }
+            ]
+          },
+          {
+            "name": "done",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "prefill_done_prompt_tokens",
+                "function": "rate",
+                "window_s": 300
+              }
+            ]
+          }
+        ]
+      },
+      "decode": {
+        "sync_period_s": 15,
+        "tolerance": 0.1,
+        "min_replicas": 2,
+        "max_replicas": 6,
+        "metrics_delay_s": 0.0,
+        "polling_interval_s": 15,
+        "fallback": {
+          "failure_threshold": 3,
+          "replicas": 2,
+          "behavior": "currentReplicasIfHigher"
+        },
+        "behavior": {
+          "scale_up": {
+            "stabilization_window_s": 0,
+            "select_policy": "Max",
+            "policies": [
+              {
+                "type": "Pods",
+                "value": 4,
+                "period_s": 15
+              },
+              {
+                "type": "Percent",
+                "value": 100,
+                "period_s": 15
+              }
+            ]
+          },
+          "scale_down": {
+            "stabilization_window_s": 300,
+            "select_policy": "Max",
+            "policies": [
+              {
+                "type": "Pods",
+                "value": 1,
+                "period_s": 120
+              }
+            ]
+          }
+        },
+        "scaling_modifiers": {
+          "formula": "max(conc / 4, (ok > 0 ? lam * gen / ok : lam * 700) / (0.39 * 700), pods * kv / 0.8, pods * itl / 0.075)",
+          "target": 1.0,
+          "metric_type": "AverageValue"
+        },
+        "triggers": [
+          {
+            "name": "conc",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "running",
+                "aggregation": "sum",
+                "role": "decode"
+              },
+              {
+                "metric": "waiting",
+                "aggregation": "sum",
+                "role": "decode"
+              }
+            ]
+          },
+          {
+            "name": "lam",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "arrivals",
+                "function": "rate",
+                "window_s": 60
+              }
+            ]
+          },
+          {
+            "name": "gen",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "generated_tokens",
+                "function": "rate",
+                "window_s": 300
+              }
+            ]
+          },
+          {
+            "name": "ok",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "completions",
+                "function": "rate",
+                "window_s": 300
+              }
+            ]
+          },
+          {
+            "name": "pods",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "ready_pods",
+                "role": "decode"
+              }
+            ]
+          },
+          {
+            "name": "kv",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "kv_usage",
+                "aggregation": "avg",
+                "role": "decode"
+              }
+            ]
+          },
+          {
+            "name": "itl",
+            "target_type": "AverageValue",
+            "target": 1.0,
+            "terms": [
+              {
+                "metric": "itl",
+                "function": "quantile",
+                "quantile": 0.9,
+                "window_s": 120
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "instance_lifecycle": {
+    "loading_delay": {
+      "mean": 120.0,
+      "stddev": 0
+    }
+  },
+  "signals": {
+    "scrape_interval_s": 15.0
+  }
+}

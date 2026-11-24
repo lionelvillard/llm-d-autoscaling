@@ -1,0 +1,32 @@
+[
+  {
+    "role": "prefill",
+    "name": "pd-disaggregation-prefill",
+    "target": "deepseek-78616ec3--v2-lite-prefill",
+    "triggers": [
+      "offered",
+      "comp",
+      "done"
+    ],
+    "composite": true,
+    "min_replicas": 2,
+    "max_replicas": 4
+  },
+  {
+    "role": "decode",
+    "name": "pd-disaggregation-decode",
+    "target": "deepseek-78616ec3--v2-lite-decode",
+    "triggers": [
+      "conc",
+      "lam",
+      "gen",
+      "ok",
+      "pods",
+      "kv",
+      "itl"
+    ],
+    "composite": true,
+    "min_replicas": 2,
+    "max_replicas": 6
+  }
+]

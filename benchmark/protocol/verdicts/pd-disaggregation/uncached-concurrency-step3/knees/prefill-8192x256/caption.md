@@ -1,0 +1,1 @@
+8192:256 at four rates (3.600, 4.800, 6.000, 7.500 req/s) on one pinned prefill pod. A per stage: 100.0 %, 100.0 %, 100.0 %, 21.3 %; it crosses 0.95 between stages 3 and 4, at μ_SLO = 6.095 req/s.

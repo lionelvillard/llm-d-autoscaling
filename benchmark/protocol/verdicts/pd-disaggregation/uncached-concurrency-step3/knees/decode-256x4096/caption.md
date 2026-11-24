@@ -1,0 +1,1 @@
+256:4096 at four rates (2.340, 3.120, 3.900, 4.875 req/s) on one pinned decode pod. A per stage: 100.0 %, 100.0 %, 100.0 %, 52.2 %; it crosses 0.95 between stages 3 and 4, at μ_SLO = 4.002 req/s.

@@ -1,0 +1,5 @@
+The run shows a problem when stage 1 fails or stage 4 passes (the crossing is outside the stages). Stage 1 passed (A 100.0 %) and stage 4 failed (A 21.3 %), so the crossing is inside them: μ_SLO(8192:256, prefill) = 6.095 req/s (A crosses 0.95 between stages 3 and 4, linear interpolation). The prefill pod's uncached prompt rate at the crossing is 6.095 x 8,192 = 49,930 tok/s.
+
+This run was the first knee and gated the translation: every trigger of both ScaledObjects left 0 while load was sent (`offered` read 32,404 tok/s at t = 150 s against 29,491 tok/s sent in stage 1, a 60 s Poisson window, `comp` and `done` within 0.4 % of each other, `conc`, `lam`, `ok`, `pods`, `kv`, `itl` all non-zero). Rerun with `blis_run.py --rerun`, its decision logs gave the same sha256 (repeatability gate): `signals-hpa-prefill.csv` 8a3ba501..., `signals-hpa-decode.csv` c6a9525a....
+
+**Outcome: as expected; μ_SLO = 6.095 req/s.**

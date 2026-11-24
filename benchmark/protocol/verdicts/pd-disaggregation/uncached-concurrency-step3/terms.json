@@ -1,0 +1,17 @@
+{
+  "pd-disaggregation-prefill": {
+    "offered": [{"metric": "prefill_prompt_tokens", "function": "rate", "window_s": 60}],
+    "comp": [{"metric": "prefill_computed_tokens", "function": "rate", "window_s": 300}],
+    "done": [{"metric": "prefill_done_prompt_tokens", "function": "rate", "window_s": 300}]
+  },
+  "pd-disaggregation-decode": {
+    "conc": [{"metric": "running", "aggregation": "sum", "role": "decode"},
+             {"metric": "waiting", "aggregation": "sum", "role": "decode"}],
+    "lam": [{"metric": "arrivals", "function": "rate", "window_s": 60}],
+    "gen": [{"metric": "generated_tokens", "function": "rate", "window_s": 300}],
+    "ok": [{"metric": "completions", "function": "rate", "window_s": 300}],
+    "pods": [{"metric": "ready_pods", "role": "decode"}],
+    "kv": [{"metric": "kv_usage", "aggregation": "avg", "role": "decode"}],
+    "itl": [{"metric": "itl", "function": "quantile", "quantile": 0.9, "window_s": 120}]
+  }
+}

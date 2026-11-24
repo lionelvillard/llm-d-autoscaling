@@ -1,0 +1,1 @@
+blend at four rates (8.400, 11.200, 14.000, 17.500 req/s) on one pinned prefill pod. A per stage: 100.0 %, 100.0 %, 100.0 %, 86.8 %; it crosses 0.95 between stages 3 and 4, at μ_SLO = 15.328 req/s.
