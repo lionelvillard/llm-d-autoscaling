@@ -10,7 +10,11 @@
 # Delta from baseline.yaml (this dir):
 #   - `keda:` replaced by the two ScaledObjects above. Their metrics and formulas are
 #     task 0545's; only the label selectors are adapted to this scenario (`role`, stamped
-#     by the PodMonitors below, instead of `llm_d_ai_role`; `namespace` from the harness).
+#     by the PodMonitors below, instead of `llm_d_ai_role`; `namespace` from the harness;
+#     this stack's pods by `pod=~"${model.idLabel}-<role>-.*"` and its EPP by
+#     `job="${model.idLabel}-router-epp"` and the producer's `plugin_name`, so a second
+#     stack in the namespace is not summed in; ScaledObjects named per stack, trap T17).
+#     See benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency.md.
 #   - model: deepseek-ai/DeepSeek-V2-Lite instead of Qwen3-32B. Task 0545's reference
 #     model is GLM-5.3 (MoE, MLA latent KV); DeepSeek-V2-Lite is a 16B MoE with MLA that
 #     fits one H100 per pod and is in blis-signal-lab's catalog (deepseek-v2-lite);
@@ -222,7 +226,7 @@ scenario:
       # Prerequisite: the EPP runs a prefix producer (approx-prefix-cache-producer
       # above); llm_d_epp_prefix_prompt_tokens exists from llm-d-router v1.0.0.
       # -----------------------------------------------------------------------
-      - name: pd-disaggregation-prefill
+      - name: ${model.idLabel}-prefill
         scaleTargetRef:
           kind: Deployment
           name: ${model.idLabel}-prefill
@@ -261,7 +265,7 @@ scenario:
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace="${namespace.name}",endpoint_role="prefill"}[1m]))
+              sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace="${namespace.name}",job="${model.idLabel}-router-epp",plugin_name="approx-prefix-cache-producer",endpoint_role="prefill"}[1m]))
             threshold: "1"
             activationThreshold: "0"
             ignoreNullValues: false   # a lost EPP series is an error (fallback), not zero demand
@@ -269,7 +273,7 @@ scenario:
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(rate(vllm:prompt_tokens_by_source_total{namespace="${namespace.name}",role="prefill",source="local_compute"}[5m]))
+              sum(rate(vllm:prompt_tokens_by_source_total{namespace="${namespace.name}",role="prefill",pod=~"${model.idLabel}-prefill-.*",source="local_compute"}[5m]))
             threshold: "1"
             activationThreshold: "0"
             ignoreNullValues: false
@@ -277,7 +281,7 @@ scenario:
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(rate(vllm:prompt_tokens_total{namespace="${namespace.name}",role="prefill"}[5m]))
+              sum(rate(vllm:prompt_tokens_total{namespace="${namespace.name}",role="prefill",pod=~"${model.idLabel}-prefill-.*"}[5m]))
             threshold: "1"
             activationThreshold: "0"
             ignoreNullValues: false
@@ -289,7 +293,7 @@ scenario:
       # prefill is short), KV (Ready pods x mean KV usage / 0.8) and ITL (Ready
       # pods x ITL p90 / the ITL SLO); minReplicas >= 1; fallback.
       # -----------------------------------------------------------------------
-      - name: pd-disaggregation-decode
+      - name: ${model.idLabel}-decode
         scaleTargetRef:
           kind: Deployment
           name: ${model.idLabel}-decode
@@ -330,8 +334,8 @@ scenario:
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(vllm:num_requests_running{namespace="${namespace.name}",role="decode"})
-              + sum(vllm:num_requests_waiting{namespace="${namespace.name}",role="decode"})
+              sum(vllm:num_requests_running{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"})
+              + sum(vllm:num_requests_waiting{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"})
             threshold: "1"
             activationThreshold: "0"
             ignoreNullValues: false
@@ -339,8 +343,8 @@ scenario:
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(rate(llm_d_epp_request_total{namespace="${namespace.name}"}[1m]))
-              + (sum(rate(llm_d_epp_request_error_total{namespace="${namespace.name}",error_code="ServiceUnavailable"}[1m])) or vector(0))
+              sum(rate(llm_d_epp_request_total{namespace="${namespace.name}",job="${model.idLabel}-router-epp"}[1m]))
+              + (sum(rate(llm_d_epp_request_error_total{namespace="${namespace.name}",job="${model.idLabel}-router-epp",error_code="ServiceUnavailable"}[1m])) or vector(0))
             threshold: "1"
             activationThreshold: "0"
             ignoreNullValues: false
@@ -348,35 +352,35 @@ scenario:
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(rate(vllm:generation_tokens_total{namespace="${namespace.name}",role="decode"}[5m])) or vector(0)
+              sum(rate(vllm:generation_tokens_total{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"}[5m])) or vector(0)
             threshold: "1"
             activationThreshold: "0"
           - name: ok             # requests/s decode finished (gen / ok = mean output length)
             type: prometheus
             metricType: AverageValue
             query: |
-              sum(rate(vllm:request_success_total{namespace="${namespace.name}",role="decode"}[5m])) or vector(0)
+              sum(rate(vllm:request_success_total{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"}[5m])) or vector(0)
             threshold: "1"
             activationThreshold: "0"
           - name: pods           # decode pods reporting metrics (Ready, in practice)
             type: prometheus
             metricType: AverageValue
             query: |
-              count(count by (pod) (vllm:num_requests_running{namespace="${namespace.name}",role="decode"})) or vector(0)
+              count(count by (pod) (vllm:num_requests_running{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"})) or vector(0)
             threshold: "1"
             activationThreshold: "0"
           - name: kv             # guard: mean decode KV usage
             type: prometheus
             metricType: AverageValue
             query: |
-              avg(vllm:kv_cache_usage_perc{namespace="${namespace.name}",role="decode"}) or vector(0)
+              avg(vllm:kv_cache_usage_perc{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"}) or vector(0)
             threshold: "1"
             activationThreshold: "0"
           - name: itl            # guard: decode ITL p90 over 2 min; `> 0` drops an idle window's NaN
             type: prometheus
             metricType: AverageValue
             query: |
-              (histogram_quantile(0.9, sum by (le) (rate(vllm:inter_token_latency_seconds_bucket{namespace="${namespace.name}",role="decode"}[2m]))) > 0)
+              (histogram_quantile(0.9, sum by (le) (rate(vllm:inter_token_latency_seconds_bucket{namespace="${namespace.name}",role="decode",pod=~"${model.idLabel}-decode-.*"}[2m]))) > 0)
               or vector(0)
             threshold: "1"
             activationThreshold: "0"
