@@ -13,6 +13,18 @@ switched from GLM-5.3 to DeepSeek-V2-Lite. The task owner fixed the metrics,
 formulas and behavior; this analysis changed only label selectors and the
 ScaledObject names (see Label fixes).
 
+**Revision (2e607e4a).** The first version of this verdict (`d21170d0`)
+analyzed task 0545's GLM-5.3 TP8 H200 constants. Commit `2e607e4a` replaced
+them with DeepSeek-V2-Lite H100 values taken from the step 3 blis knees
+([`uncached-concurrency-step3.md`](uncached-concurrency-step3.md),
+"Calibration"), with task 0545's rules: prefill divisor 10850 → 37540
+(0.7 × 53,628 tok/s), `conc / 4` → `conc / 510` (1.3 × 392), 0.39 → 8.4
+(1.3 × 6.461 req/s), 700 → 2133 (the blend's mean OSL, both places), ITL SLO
+0.075 → 0.05. Metrics, labels and behavior are unchanged. P3, the decode
+cross-over, the predictions and the verdict below are redone for these
+values. Every capacity number from step 3 is a simulator number (tag `sim`):
+blis priced this plant, and step 5 must confirm it on the GPU.
+
 Source references:
 
 - **V** = `vllm-project/vllm@db9527a4` (tag `v0.31.0`), the overlay's image.
@@ -21,28 +33,39 @@ Source references:
 
 | | |
 |---|---|
-| Scenario | `benchmark/config/scenarios/staging/pd-disaggregation/uncached-concurrency.yaml` |
+| Scenario | `benchmark/config/scenarios/staging/pd-disaggregation/uncached-concurrency.yaml` at `2e607e4a` (constants); label fixes from `d21170d0` |
 | Backend overlay | `benchmark/config/cluster-configs/ocp/vllm.yaml` (target: OpenShift `pokprod001`, H100 80GB, 1 GPU per pod, TP1) |
 | Rendered with | `llmdbenchmark standup --dry-run`, llm-d-benchmark@`0fb187fb`, through a temporary spec pointing at the scenario (the repo has no `specification/staging/pd-disaggregation/uncached-concurrency.yaml.j2`). The Jinja plan rendered; the helmfile step failed offline, so the modelservice values were read from `13_ms-values.yaml` before chart rendering |
 | Load | The scenario's `sanity_random.yaml` (B): open loop, `constant` at `q` = 1 req/s for 30 s; random prompts, mean ISL 384, OSL 50, `ignore_eos`. `λ_in = 1 × 384 = 384`, `λ_out = 1 × 50 = 50` tokens/s; no prefix reuse. Steps 3/5 use the run set (`run-set.md` §1): 8192:256, 2048:2048, 256:4096 and their blend, random prompts (agentic run aside), so `comp / done ≈ 1` on every run but the agentic one |
-| Date | 2026-11-24 |
+| Date | 2026-11-24; revised the same day for the constants of `2e607e4a` |
 | Verdict | **Accepted with conditions** |
 
 **Accepted with conditions.** Each pool has a proportional driver: offered
 prompt tokens at the router times the measured uncached share on prefill
 (arrival-side, open-loop, so it passes P1, P2 and P5), and requests in progress
-on decode, backed by an offered-output-token guard. After the label fixes below,
+on decode, backed by an offered-output-token term. After the label fixes below,
 every selector picks one stack's pool and every EPP series has exactly one
-producer in the effective configuration (P10, P11). The conditions are
-calibration, not structure. The five constants (10850, 4, 0.39, 700, 0.075) are
-GLM-5.3 TP8 H200 values (BLIS). The two decode constants put the offered guard
-above the driver whenever decode ITL is below 14.65 ms. The prefill driver
-counts the EPP's 4-bytes-per-token estimate, not engine tokens.
+producer in the effective configuration (P10, P11). With the blis-calibrated
+constants, prefill's 37540 sets a 0.7 target on the blend (0.75 on 8192:256)
+and passes P3 in the simulator. Three conditions remain:
+
+- Decode's two proportional terms target 1.3 × the blend's μ_SLO knee, so the
+  pool settles at about 1.1 × μ_SLO per pod, past the knee, with no headroom
+  (P3).
+- Across the mixes their reading at a pod's knee varies about threefold (0.29
+  on 8192:256, 0.91 on 256:4096). On 8192:256 the KV guard, not the driver,
+  sizes decode.
+- The prefill numerator counts the EPP's 4-bytes-per-token estimate, not
+  engine tokens (`e`). All constants are blis values that step 5 must confirm
+  on the GPU.
+
 **Predicted:** under the scenario's own sanity load, both pools hold at
-`minReplicaCount: 2`. Under the run set, until the knee runs re-measure the
-constants, decode reaches its cap of 6 at loads one DeepSeek-V2-Lite pod can
-probably carry. Prefill grows by one pod at a time, only after 15 minutes of
-sustained demand, and holds each pod for at least an hour.
+`minReplicaCount: 2`. Under the run set, decode tracks load but settles at
+about 7.0–7.3 blend req/s per pod against a μ_SLO of 6.461. Below the knee the
+offered term decides, past it `conc`; the KV guard decides on 8192:256.
+Prefill stays at 2 until the offered uncached work exceeds 82,588 tok/s for
+15 minutes, then grows one pod per 5 minutes and holds each pod for at least
+an hour.
 
 vLLM v0.31.0 is enough: every vLLM series read here is in v0.31.0 with the same
 labels and write points. `git diff v0.31.0 v0.32.0 -- vllm/v1/metrics/{loggers,stats}.py`
@@ -95,7 +118,7 @@ it drops them. That table is out of date.
 - `minReplicaCount: 2`, `maxReplicaCount: 4`, `pollingInterval: 15` (`27_keda-scaledobjects.yaml:15-17`).
 - `fallback`: 3 failures, 2 replicas, `currentReplicasIfHigher` (`:58-61`); valid, since the composite target `"1"` parses as a positive integer.
 - Scale-up: stabilization 900 s, 1 pod / 300 s. Scale-down: stabilization 3600 s, 1 pod / 600 s (`:62-78`).
-- `scalingModifiers`: `max(done > 0 ? offered * comp / done : offered, comp) / 10850`, `target: "1"`, `AverageValue` (`:79-82`). Per-trigger thresholds are parsed but do not reach the HPA; `desired = ceil(formula)`.
+- `scalingModifiers`: `max(done > 0 ? offered * comp / done : offered, comp) / 37540`, `target: "1"`, `AverageValue` (`:79-82`). Per-trigger thresholds are parsed but do not reach the HPA; `desired = ceil(formula)`.
 
 ### Trigger `offered`
 
@@ -126,7 +149,7 @@ sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace="ssa-0551",job="deepseek-8
 |---|---|---|---|
 | P1 proportional | pass | a rate of arrivals × prompt size; no queue wait in it; `ε = 1` at a fixed mix | source |
 | P2 coupled to actuation | pass | open loop: arrivals at the router do not depend on prefill `R` | config |
-| P3 fixed busyness | fail (constant) / measure | the unit is EPP pseudo-tokens (bytes / 4), while the divisor 10850 is in engine-computed tokens/s. The ask scales by `e = offered / rate(vllm:prompt_tokens_total{prefill})`, unknown for random DeepSeek-tokenizer text. 10850 = 0.7 × 15,500 tok/s for one TP8 GLM-5.3 H200 pod (BLIS), not this plant (formula below). Mix sensitivity of μ_P across 256- and 8192-token prompts also unmeasured | source |
+| P3 fixed busyness | pass (sim) / measure | 37540 = 0.7 × 53,628 computed tok/s, one V2-Lite H100 prefill pod's knee on the blend (step 3 run 1f, `sim`). At the 8192:256 knee (49,930 tok/s, run 1e) the target is `37,540 / 49,930 = 0.75`: `V = 53,628 / 49,930 = 1.07` over the mixes where prefill binds (2048:2048 and 256:4096 never bound prefill up to 50 req/s). Open: the numerator is EPP pseudo-tokens (bytes / 4), the divisor engine-computed tokens, so the ask scales by `e = offered / rate(vllm:prompt_tokens_total{prefill})`, which blis does not model (its `offered` counts engine tokens). The knee is a blis number until step 5 | source, sim |
 | P4 metric type | pass | `sum(rate(...))` is extensive; composite `AverageValue`, target 1 (`:79-82`) | config |
 | P5 bounds | pass | not capped (arrivals are counted, not service), not integrating; at 2× capacity it asks 2× | source |
 | P6 defined at zero | pass | `minReplicaCount: 2`. With no prefill pod, `PredictionTarget` attributes requests to `decode` (E `metrics.go#L185-L187`), so this selector would read nothing and the scaler errors, not 0 | source |
@@ -136,14 +159,13 @@ sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace="ssa-0551",job="deepseek-8
 | P10 selects its own pool | pass (after fix) | N1: `job` pins this stack's EPP. N2: `namespace`. N3: `endpoint_role="prefill"`. N4: one ServiceMonitor, and `29_epp-keda-saturation-epp-monitoring.yaml` renders empty. Step 2 confirms `count by (job, plugin_name, endpoint_role, modality)` returns one series | config |
 | P11 router configuration | pass | `approx-prefix-cache-producer` is listed explicitly (`12_router-values.yaml:32`), one instance, so `plugin_name` = its type. The prompt tokens come from the loader's `estimate` `token-producer` (T18), hence P3's `e`. No parameter changes the count. The `utilization-detector` filter (T19) does not touch it | source |
 
-**Failure case (P3):** 8192:256 at `q` = 4 req/s, random prompts, so
-`comp / done = 1`. Then `λ_in = 32,768` tok/s, and the ask is
-`ceil(e × 32,768 / 10,850) = ceil(3.02 e)`, which is 4 (the cap) for `e = 1`.
-One pod meets that load at ρ = 0.7 if its knee μ_P is
-`32,768 / 0.7 = 46,811` tok/s. Generally the pool runs `μ_P / 15,500 × e` times
-larger than the 0.7 target means. A 2.4B-active MoE on a whole H100 likely
-computes well above the 15,500 tok/s of a TP8 GLM-5.3 pod (*needs
-measurement*).
+**Failure case (P3, `e`):** 8192:256 at `q` = 8 req/s, random prompts, so
+`comp / done = 1` and `λ_in = 65,536` tok/s. With `e = 1` the ask is
+`ceil(65,536 / 37,540) = ceil(1.75) = 2`: each pod at
+`32,768 / 49,930 = 0.66` of its knee, as intended. With `e = 1.3` it is
+`ceil(2.27) = 3`, 30 % more pods than the target means. With `e = 0.8` it
+reads 1.40, so the pool stays at 2 up to `2 × 1.1 × 37,540 / 0.8 = 103,235`
+tok/s, which is 12.6 req/s or `1.03 ×` two pods' knee: no headroom left.
 
 ### Trigger `comp`
 
@@ -195,14 +217,14 @@ sum(rate(vllm:prompt_tokens_total{namespace="ssa-0551",role="prefill",pod=~"deep
 | P10 selects its own pool | pass (after fix) | as `comp` | config |
 | P11 router configuration | pass | as `comp` | source |
 
-### The driver term, `max(offered × comp / done, comp) / 10850`
+### The driver term, `max(offered × comp / done, comp) / 37540`
 
 - P1, P2, P5: as `offered`. The share is 1 on random prompts, and on the
   agentic run it is measured rather than assumed. It moves with `R`, since a
   new pod is cold, but that is a capacity effect (§1.2, P1 note), not a P2
   failure.
-- P3: **fail** as configured. 10850 is not this plant's knee, and `offered` is
-  in estimated tokens (above). The scenario marks 10850 CALIBRATE.
+- P3: **pass in the simulator** (0.70 of the blend's knee, 0.75 of
+  8192:256's), conditional on `e = 1` and on step 5 confirming the blis knee.
 - P4: `AverageValue`, target 1, an absolute replica count: pass.
 
 ## ScaledObject `deepseek-886595ad--v2-lite-decode`
@@ -210,7 +232,7 @@ sum(rate(vllm:prompt_tokens_total{namespace="ssa-0551",role="prefill",pod=~"deep
 - `minReplicaCount: 2`, `maxReplicaCount: 6`, `pollingInterval: 15` (`:97-99`).
 - `fallback`: 3 failures, 2 replicas, `currentReplicasIfHigher` (`:190-193`).
 - Scale-up: no stabilization, `max(+4 pods, +100 %)` per 15 s. Scale-down: 300 s window, 1 pod / 120 s (`:194-213`).
-- `scalingModifiers`: `max(conc / 4, (ok > 0 ? lam * gen / ok : lam * 700) / (0.39 * 700), pods * kv / 0.8, pods * itl / 0.075)`, `target: "1"`, `AverageValue` (`:214-217`).
+- `scalingModifiers`: `max(conc / 510, (ok > 0 ? lam * gen / ok : lam * 2133) / (8.4 * 2133), pods * kv / 0.8, pods * itl / 0.05)`, `target: "1"`, `AverageValue` (`:214-217`).
 
 ### Trigger `conc`
 
@@ -236,29 +258,35 @@ sum(vllm:num_requests_running{namespace="ssa-0551",role="decode",pod=~"deepseek-
 |---|---|---|---|
 | P1 proportional | pass below saturation | Little: `conc = λ × W_d`, with `W_d` = KV pull + OSL × ITL, mildly load-dependent until the batch is compute-bound (§1.3: `ε` 1.0–1.24). Past the knee `waiting` integrates | source |
 | P2 coupled to actuation | pass below saturation | the total `λ × W_d` does not depend on `R` except through ITL; after an overload, draining `waiting` drops it to `λ × W_d`, not below | source |
-| P3 fixed busyness | fail (constant) / measure | 4 = 1.3 × the knee concurrency of a TP8 GLM-5.3 H200 pod (BLIS, knee 3.1). Per the KV arithmetic below, a TP1 H100 DeepSeek-V2-Lite pod holds hundreds of sequences, and its knee concurrency for each mix in M is unmeasured. `V` across 8192:256, 2048:2048, 256:4096 is also unmeasured: the knee is set by attention cost and KV per sequence, which differ across the mixes | config, measure |
+| P3 fixed busyness | fail (target past the knee; mix) | 510 = 1.3 × 392, the running + waiting one pod holds at the blend's μ_SLO knee (6.461 req/s, step 3 run 1d, `sim`). The protocol's knee is the SLO edge (A = 0.95), so 1.3 × it is past capacity. Interpolating run 1d's stages (359 at 6.3 req/s, 683 at 7.88), a pod reads 510 at 7.04 req/s and `510 × 1.1 = 561` (where the HPA adds a pod) at 7.29 req/s: 1.09–1.13 × μ_SLO, where run 1d's stage 4 (7.88 req/s) had A = 0.509. Mix: by Little with run 1a–1c's stage-3 TPOT, a pod at its mix's knee holds ≈ 152 (8192:256), 295 (2048:2048), 449 (256:4096), so the term reads 0.30, 0.58, 0.88: `V ≈ 2.9` | config, sim |
 | P4 metric type | pass | extensive sums; composite `AverageValue` | config |
-| P5 bounds | pass | `running ≤ max_num_seqs` = 1024 on an H100 (V `vllm/engine/arg_utils.py#L2868-L2877`; the overlay sets none), far above `4 × 1.1`; `waiting` integrates under overload, bounded by `maxReplicaCount: 6` and +4 pods / 15 s | source, config |
+| P5 bounds | pass | `running ≤ max_num_seqs` = 1024 on an H100 (V `vllm/engine/arg_utils.py#L2868-L2877`; the overlay sets none), above `510 × 1.1 = 561`; `waiting` integrates under overload, bounded by `maxReplicaCount: 6` and +4 pods / 15 s | source, config |
 | P6 defined at zero | pass | `minReplicaCount: 2`; with no decode pod both gauges vanish → scaler error → fallback, not 0 | config |
 | P7 fails visibly | pass | no default, `ignoreNullValues: "false"`; either sum empty → error | config |
-| P8 lag and noise | pass | lag `15 + 0 + 15 = 30 s`; one request moves the ask by `1 / 4 = 0.25` pod, below one pod but above 10 % of a 2-pod target. The 300 s scale-down window absorbs it | config |
+| P8 lag and noise | pass | lag `15 + 0 + 15 = 30 s`; one request moves the ask by `1 / 510 = 0.002` pod, far below the tolerance | config |
 | P9 measures what it claims | pass | counts decode residency, including the KV-pull wait. It does not count requests still queued on prefill: the sidecar sends the decode leg after prefill, so `conc` lags demand while prefill is short. The `lam` guard covers that | source |
 | P10 selects its own pool | pass (after fix) | as `comp`, decode side; `role` removes the T14 duplicate, so the sums are not doubled | config |
 | P11 router configuration | pass | flow control off, so T4 and T20 do not apply. The default `utilization-detector` filters decode pods at `waiting ≥ 5` or KV ≥ 0.8 while another is below (T19): this levels per-pod values but leaves the sum unchanged | source |
 
-**KV arithmetic behind P3 (illustration, not a measurement):** DeepSeek-V2-Lite
-MLA caches `512 + 64 = 576` values per layer per token. At 27 layers and 2 bytes
-each, that is `576 × 27 × 2 = 31,104` bytes per token. With
-`gpuMemoryUtilization: 0.90` on 80 GB (72 GB), minus about 31 GB of weights and a
-few GB of activations, roughly 35 GB is left for KV, about 1.1 M tokens. A
-256:4096 request averages about 2,300 tokens of context, so about 480 such
-sequences fit. A target of 4 per pod is two orders of magnitude below that.
+The KV arithmetic agrees with blis on the order of magnitude. DeepSeek-V2-Lite
+MLA caches `576 × 27 × 2 = 31,104` bytes per token, and about 35 GB is left for
+KV on an 80 GB H100 at 0.90, so a pod holds about 1.1 M tokens. That is about
+480 sequences of 256:4096's mean 2,300-token context. Run 1d's KV reads 0.74
+at 359 requests and 1.00 at 683, so KV binds the blend.
 
-**Failure case (P3):** 2048:2048 at `q` = 1 req/s with an assumed decode ITL of
-12 ms: `W_d ≈ 2048 × 0.012 = 24.6 s`, so `conc ≈ 24.6`, and `conc / 4 = 6.1`
-asks for 7, capped at 6. If one pod's knee concurrency is in the tens to
-hundreds, as the KV arithmetic suggests, one or two pods carry this load. The
-pool runs at its cap at a fraction of its capacity.
+**Failure case (P3, past the knee):** blend at 14.0 req/s on 2 pods,
+`7.0 / 6.461 = 1.08 ×` μ_SLO per pod. By the interpolation above, `conc ≈ 1,010`,
+which reads `1,010 / 510 = 1.98`. The offered term reads `14.0 / 8.4 = 1.67`.
+The ratio to the 2 current pods is 0.99, inside the 10 % tolerance, so the HPA
+holds 2 pods where `ceil(14.0 / 6.461) = 3` meet the SLO. Only the KV guard can
+add the third pod, once the mean KV passes 0.88, at about 7.15 req/s per pod.
+
+**Failure case (P3, mix):** 8192:256 at 40 req/s, about two pods' knee
+(`2 × 20.267 = 40.5`). `conc ≈ 2 × 152 = 304` reads 0.60, and the offered term
+reads `40 × 256 / 17,917 = 0.57`, so both drivers ask for 1 pod, below
+`minReplicaCount`. The pool is sized by `minReplicaCount` and the KV guard:
+8192:256 sequences hold about 8.4 k tokens each, so 152 of them fill a pod's KV
+(PF10).
 
 ### Trigger `lam`
 
@@ -279,13 +307,14 @@ sum(rate(llm_d_epp_request_total{namespace="ssa-0551",job="deepseek-886595ad--v2
   scheduling covers both P/D legs, so each request counts once.
 - **Kind:** offered request rate. **Role it can play:** driver, mix-sensitive as
   a request rate. **Role it plays here:** multiplied by `gen / ok`, offered
-  output tokens/s ÷ 273, meant as a guard at the driver's operating point.
+  output tokens/s ÷ `8.4 × 2133 = 17,917` tok/s per pod, meant as a guard at
+  the driver's operating point.
 
 | Property | Result | Evidence | Tag |
 |---|---|---|---|
 | P1 proportional | pass | arrival rate, open loop; `λ × OSL` is `λ_out` | source |
 | P2 coupled to actuation | pass | independent of decode `R` | config |
-| P3 fixed busyness | fail (constant) | `0.39 × 700 = 273` output tok/s per pod is GLM-5.3 TP8 H200's operating point. The guard sits at the driver's point only if `4 / 0.39 = 10.26 s` is the decode residency of a 700-token answer, which means 14.65 ms per token. For ITL `t`, the ratio of the two terms is `(λ OSL t / 4) / (λ OSL / 273) = 68.25 t`. Below `t = 14.65 ms` the "guard" is the larger term, so it decides at steady state (PF4) | config |
+| P3 fixed busyness | fail (target past the knee; mix) | 8.4 req/s = 1.3 × μ_SLO(B, decode) 6.461 (step 3, `sim`): the term reads 1 per pod at 130 % of the blend's knee, and the HPA adds a pod only past `1.1 × 8.4 = 9.24` req/s per pod (143 %). Mix: at each mix's knee a pod reads `μ × OSL / 17,917` = 0.29 (8192:256), 0.65 (2048:2048), 0.91 (256:4096), 0.77 (blend): `V = 0.915 / 0.290 = 3.2`, a token-weighted request rate. Cross-over with `conc` (PF4): the ratio of the two terms is `(λ W_d / 510) / (λ OSL / 17,917) = 35.1 × W_d / OSL`, so they are equal at a decode residency of `510 / 17,917 = 28.46 ms` per output token, the blend knee's own (`392 / 6.461 / 2133 = 28.4 ms`, as built). Below the knee (run 1d's stage 1–3 TPOT p50 19.7–27.4 ms) this term is the larger and decides; past it `conc` is | config, sim |
 | P4 metric type | pass | extensive | config |
 | P5 bounds | pass | not capped | source |
 | P6 defined at zero | pass | the EPP series exist with no decode pod, but `request_total` is created on the first request (CounterVec) | source |
@@ -313,8 +342,8 @@ sum(rate(vllm:request_success_total{namespace="ssa-0551",role="decode",pod=~"dee
 
 | Property | Result | Evidence | Tag |
 |---|---|---|---|
-| P7 fails visibly | n/a (guard) | `or vector(0)`: an outage reads 0, `ok > 0 ?` then falls back to `lam × 700`. Safe while `conc` runs | config |
-| P8 lag | pass, with a bias | 5 m windows: after an OSL shift the ratio takes ≈ 150 s (½ window) plus one answer's duration to follow. 256:4096 answers take ≈ 4096 × ITL ≈ 60 s at 15 ms. Before the first completion the prior 700 applies: for 256:4096 that under-reads by `4096 / 700 = 5.9×`. For 8192:256 it over-reads by `700 / 256 = 2.7×`, which lifts the guard term to `λ × 700 / 273 = 2.56 λ` pods for the first minutes | config |
+| P7 fails visibly | n/a (guard) | `or vector(0)`: an outage reads 0, `ok > 0 ?` then falls back to `lam × 2133`. Safe while `conc` runs | config |
+| P8 lag | pass, with a bias | 5 m windows: after an OSL shift the ratio takes ≈ 150 s (½ window) plus one answer's duration to follow. 256:4096 answers take ≈ `4096 × 0.027 ≈ 110 s` (run 1c's TPOT). Before the first completion the prior 2133 applies, and the term reads `λ / 8.4`: for 256:4096 that under-reads by `4096 / 2133 = 1.9×`, for 8192:256 it over-reads by `2133 / 256 = 8.3×` (at 20 req/s it asks `ceil(2.4) = 3` pods for the first minutes instead of 2) | config |
 | P9 measures what it claims | pass | the ratio is mean OSL of finished decode requests; aborts (scale-in, PF9) count with their short length and pull it down | source |
 | P10 selects its own pool | pass (after fix) | as `conc` | config |
 | P11 router configuration | pass | vLLM series; the router does not change them | source |
@@ -366,19 +395,19 @@ avg(vllm:kv_cache_usage_perc{namespace="ssa-0551",role="decode",pod=~"deepseek-8
 or vector(0)
 ```
 
-(`:177-189`). Term `pods × itl / 0.075`.
+(`:177-189`). Term `pods × itl / 0.05`.
 
 - **What it counts:** a histogram of the gap between consecutive outputs of a
   request (not per token), observed on every output after the first. The
-  buckets include 0.075 (V `vllm/v1/metrics/buckets.py#L83-L87`), so the SLO
+  buckets include 0.05 (V `vllm/v1/metrics/buckets.py#L83-L87`), so the SLO
   edge is resolved. `source`: V `loggers.py#L831-L838`, `#L1150-L1151`;
   `stats.py#L500-L506`.
 - **Kind:** latency outcome. **Role it can play:** scale-in veto. **Role it
-  plays here:** guard: it adds pods in proportion to `itl / 0.075`.
+  plays here:** guard: it adds pods in proportion to `itl / 0.05`.
 
 | Property | Result | Evidence | Tag |
 |---|---|---|---|
-| P1 proportional | fail (role mismatch) | flat until the batch is compute- or KV-bound, then steep. As a veto it would only hold the count; here it adds pods. Kept because ITL above its SLO is always a decode shortage (task 0545 §2), and the 0.075 s SLO sits far above V2-Lite's per-token floor (measure), so it fires only in deep overload or under preemption | source |
+| P1 proportional | fail (role mismatch) | flat until the batch is compute- or KV-bound, then steep. As a veto it would only hold the count; here it adds pods. Kept because ITL above its SLO is always a decode shortage (task 0545 §2). In blis the knee's ITL p90 is 0.029 s (run 1d), so the term reads `0.029 / 0.05 = 0.58` per pod; it adds a pod past `0.05 × 1.1 = 0.055 s`, above every stage-4 TPOT p90 of runs 1a–1d (30.7–42.6 ms, at 1.22–1.25 × μ_SLO). It fires only in deeper overload or under preemption (PF8) | source, sim |
 | P4 metric type | pass | `pods × quantile` is the `Value` rule; composite `AverageValue` | config |
 | P5 bounds | pass | not capped; `maxReplicaCount: 6` bounds it | config |
 | P8 lag | pass | `15 + 60 + 15 = 90 s` | config |
@@ -386,27 +415,31 @@ or vector(0)
 | P10 selects its own pool | pass (after fix) | as `conc`; `sum by (le)` over the `role`-pinned series, so the T14 duplicate does not skew the quantile | config |
 | P11 router configuration | pass | vLLM series; the T19 filter reduces hot spots | source |
 
-**Failure case (P1):** 3 decode pods, with ITL p90 held at 0.10 s by a cause that
+**Failure case (P1):** 3 decode pods, with ITL p90 held at 0.07 s by a cause that
 more pods do not fix (for example KV preemption from one long context). The term
-asks `ceil(3 × 0.10 / 0.075) = 4`, then `ceil(4 × 0.10 / 0.075) = 6`, which is
-the cap, while ITL stays at 0.10. A veto would have held at 3.
+asks `ceil(3 × 0.07 / 0.05) = 5`, then `ceil(5 × 0.07 / 0.05) = 7`, capped at 6,
+while ITL stays at 0.07. A veto would have held at 3.
 
 ## Combination
 
-- **Driver in normal operation:** prefill, `offered × comp / done / 10850`.
-  Decode, `conc / 4`, or the offered-output guard whenever decode ITL < 14.65 ms
-  (PF4). Both are proportional, so the decode combination stays sound either
-  way, but which term decides depends on a constant ratio set for another plant.
+- **Driver in normal operation:** prefill, `offered × comp / done / 37540`.
+  Decode: the offered-output term below the blend's knee, where decode residency
+  is under 28.46 ms per output token, and `conc / 510` past it (PF4). Both terms
+  are proportional and were calibrated at one operating point, so they hand over
+  at the knee by construction. That point is 1.3 × μ_SLO, so near the handover
+  the KV guard decides too (PF5).
 - **Who decides where:**
   - Prefill: the driver whenever requests complete; `comp` only if `done = 0`
     while `comp > 0` (never, both come from one write) or if the EPP's count
     runs low. The floor never decides at steady state.
-  - Decode: `conc / 4` when ITL > 14.65 ms. The `lam` term when ITL is lower,
-    and in any case while prefill is short (decode sees only what prefill
-    passes). `kv` once the mean decode KV passes 0.88. `itl` once p90 passes
-    `0.075 × 1.1 = 0.0825 s`. At the sanity load all four are below 1:
-    `conc ≈ 1 × (50 × 0.012 + 0.05) ≈ 0.65` gives 0.16, and `lam` gives
-    `50 / 273 = 0.18`, so the pool holds at 2.
+  - Decode: the `lam` term below the knee, and in any case while prefill is
+    short (decode sees only what prefill passes). `conc / 510` past the knee.
+    `kv` once the mean decode KV passes 0.88: about 7.15 blend req/s per pod
+    (run 1d interpolated), and on 8192:256 well before either driver (PF10).
+    `itl` once p90 passes `0.05 × 1.1 = 0.055 s`, which blis never reached.
+    At the sanity load all four are near 0: `conc ≈ 0.65` gives 0.0013,
+    `lam` gives `50 / 17,917 = 0.003`, and prefill reads
+    `384 / 37,540 = 0.010`, so both pools hold at 2.
 - **Scale-in:** prefill's driver counts arrivals, so no backlog collapses after a
   scale-up and the pool cannot fall below need. Scale-in waits 3600 s, then 1 pod
   per 600 s. Decode: after an overload, `waiting` drains and `conc` falls to
@@ -417,15 +450,17 @@ the cap, while ITL stays at 0.10. A veto would have held at 3.
   Task 0545 lists decode drain as a prerequisite (PF9).
 - **`scalingModifiers.formula`:** both formulas take a `max` of proportional
   terms and guards, with no `min` and no weighted sum. The ternaries are
-  division guards; each branch passes on its range. The `lam × 700` branch only
+  division guards; each branch passes on its range. The `lam × 2133` branch only
   applies before the first completion in a 5 m window (`gen/ok` row).
 - **`behavior` and bounds:** prefill's 900 s scale-up window delays every
   prefill scale-up by 15 min. No staircase stage shorter than about
   `900 + 55 + cold start` seconds can add a prefill pod (PF6), so `run-set.md`
-  §2's T formula needs this window as the scale-up period. Decode's fast
-  scale-up bounds nothing: with the current constants a sustained moderate load
-  takes decode to its cap of 6 within one or two polls (PF5). That is harmless
-  only if 6 pods are what the load needs, which the knee runs will show.
+  §2's T formula needs this window as the scale-up period (step 3 run 2: 885 s
+  at 2 pods after the trigger asked for 3, `sim`). Decode's fast scale-up
+  reaches any ask within one or two polls. `maxReplicaCount: 6` caps decode at
+  `6 × 6.461 = 38.77` blend req/s, which sets C (step 3). At C the drivers ask
+  `ceil(38.77 / 8.4) = ceil(4.6) = 5`. Only the KV guard
+  (`5 × 1.0 / 0.8 = 6.25`) takes decode to 6 (PF5).
 - **Disaggregated pools:** prefill's driver reads the router's prefill-attributed
   arrivals and prefill pods' own compute, so it measures prefill work. Decode's
   `conc` counts decode residency only. A request still in prefill is not in it.
@@ -440,14 +475,21 @@ the cap, while ITL stays at 0.10. A veto would have held at 3.
   `role` drops the `vllm-<model>` duplicate scrape, and `pods` is immune to it.
   Names and targets carry `${model.idLabel}` (`:5,14,87,96`).
 
-**Predicted behavior:** At low load (the sanity profile) both pools hold at 2.
-Near one pod's real capacity, prefill is asked for about `e × μ_P / 10,850` pods
-per pod of need. Decode reaches its cap of 6 once more than 20 requests are in
-progress or more than `5 × 273 = 1,365` output tok/s are offered; both are
-probably a fraction of one V2-Lite pod's capacity. Past capacity, prefill adds
-one pod per 5 minutes after a 15-minute wait, up to 4; decode is already at 6.
-At constant load neither pool oscillates: both drivers hold their totals as
-pods are added.
+**Predicted behavior (blis constants):** At low load (the sanity profile) both
+pools hold at 2. Under the run set:
+
+- **Prefill** stays at 2 until the offered uncached work exceeds
+  `2 × 1.1 × 37,540 = 82,588` tok/s (× 1/`e`) for 15 minutes. That is 23.6
+  blend req/s or 10.1 req/s of 8192:256. Prefill then adds one pod per
+  5 minutes, up to 4 (`4 × 15.328 = 61.3` blend req/s).
+- **Decode** tracks load but holds 1.09–1.13 × μ_SLO(B) per pod: 2 pods carry
+  up to about 14.3–14.6 blend req/s, where 3 are needed above 12.9. Attainment dips
+  just past each multiple of μ_SLO until `conc` or the KV guard adds the pod.
+- **On 8192:256 phases**, decode's drivers read about a third of need, and
+  `minReplicaCount` plus the KV guard size the pool.
+- **At constant load** neither pool oscillates: both drivers hold their totals
+  as pods are added. The KV guard decides near the knee, and KV as a sizing
+  signal can cycle (task 0545 §2, D5a), which step 3/5 must check.
 
 ## Predicted failures for step 2
 
@@ -456,25 +498,29 @@ pods are added.
 | PF1 | Each selector returns exactly this stack's pool after the label fixes | `count by (namespace, job, pod, role, engine)` per vLLM selector returns one series per pool pod; `count by (job, plugin_name, endpoint_role, modality) (llm_d_epp_prefix_prompt_tokens_count{…})` returns one series; `count by (job) (llm_d_epp_request_total{namespace})` names `deepseek-886595ad--v2-lite-router-epp` |
 | PF2 | `offered` (and `lam`) are absent after an EPP start until the first request. The ScaledObjects error, KEDA's fallback engages after 3 failures, and the replica count holds | ScaledObject `status.health` / conditions at idle after standup; replicas stay at 2 |
 | PF3 | `offered` ≠ engine prompt tokens: `e = rate(llm_d_epp_prefix_prompt_tokens_sum{…}[5m]) / rate(vllm:prompt_tokens_total{role="prefill",…}[5m])` differs from 1 (bytes / 4 estimate) | steady random load; record `e` per mix |
-| PF4 | Decode: `lam × gen / ok / 273 > conc / 4` whenever decode ITL < 14.65 ms, so the guard decides at steady state | read both terms and ITL at steady load |
-| PF5 | Decode reaches `maxReplicaCount: 6` at `conc ≥ 21` (`ceil(conc / 4) > 5`) or `λ_out > 5 × 273 = 1,365` tok/s, whatever one pod can carry | step load; replicas against both terms |
-| PF6 | Prefill adds no pod for demand above the ask that lasts less than ≈ 955 s plus cold start, and removes none for 3600 s after load drops | step above `2 × 1.1 × 10,850 = 23,870` tok/s for 10 min (no scale-up), then 20 min (one scale-up) |
+| PF4 | Decode: the offered term `lam × gen / ok / 17,917` exceeds `conc / 510` whenever decode residency per output token is below 28.46 ms (below the knee), and `conc / 510` is the larger past it | read both terms and `conc / λ / (gen / ok)` at several steady loads |
+| PF5 | Decode holds about 1.1 × μ_SLO per pod: no pod is added until `conc > 561` per pod or `λ > 9.24` blend req/s per pod or mean KV > 0.88. At C (38.77 req/s) the drivers ask 5 and only the KV guard reaches 6 | staircase across `R × 6.461`; per-pod `conc`, KV and replicas against the terms |
+| PF6 | Prefill adds no pod for demand above the ask that lasts less than ≈ 955 s plus cold start, and removes none for 3600 s after load drops | step above `2 × 1.1 × 37,540 = 82,588` offered tok/s for 10 min (no scale-up), then 20 min (one scale-up) |
 | PF7 | Decode KV is levelled near 0.8 by the detector filter; `kv` adds a pod only when the mean exceeds 0.88 | long-context decode load; per-pod KV and the term |
-| PF8 | `itl` reads 0 at idle (the `> 0` filter) and stays below the other terms under normal load | idle and steady samples of the term |
+| PF8 | `itl` reads 0 at idle (the `> 0` filter), about 0.58 per pod at the knee, and never wins below 1.25 × μ_SLO | idle and steady samples of the term |
 | PF9 | Each decode scale-in aborts in-flight requests (`--shutdown-timeout` 0) | `vllm:request_success_total{finished_reason="abort"}` and client errors at each scale-in |
+| PF10 | On 8192:256, decode's drivers read about 0.3 per pod at that mix's knee, so `minReplicaCount` and the KV guard size decode, not `conc` or `lam` | 8192:256 steady load near `2 × 20.267` req/s; all four terms |
 
 ## Needs measurement
 
 1. Labels and producers on the cluster (PF1), needed by P10 and P11 of every trigger.
 2. `e`, EPP estimated prompt tokens per engine prompt token, for random
    DeepSeek-tokenizer text and the agentic prompts. Needed by `offered` P3.
-3. μ_P: computed prompt tokens/s of one DeepSeek-V2-Lite H100 prefill pod at its
-   knee, per mix, with decode not binding. Needed to replace 10850 (= 0.7 μ_P).
-4. Decode knee per mix: running + waiting per pod, completions/s per pod and ITL
-   at that point. Needed to replace 4, 0.39 and 700 together, and to place the
-   PF4 cross-over (`4 / (0.39 × 700)` s per token).
-5. Decode ITL p90 floor and at the knee, against 0.075 s. Needed by `itl` P1.
-6. Decode KV usage at the knee for 256:4096 and the agentic mix. Needed by `kv` P11.
+3. μ_P on the GPU: blis gives 53,628 (blend) and 49,930 (8192:256) computed tok/s
+   per prefill pod. Step 5 confirms them, since 37540 rests on them.
+4. Decode knee per mix on the GPU: running + waiting per pod, completions/s and
+   per-token residency. blis gives 392 at 6.461 req/s (blend), 28.4 ms per
+   token. Needed to confirm 510, 8.4 and 2133, the PF4 cross-over (28.46 ms) and
+   the per-mix `V` (≈ 3, derived from blis's stage TPOT, not measured per mix).
+5. Decode ITL p90 at and past the knee, against 0.05 s (blis: 0.029 at the knee).
+   Needed by `itl` P1.
+6. Decode KV usage at the knee per mix (blis blend: 0.74 at 6.3 req/s, 1.00 at
+   7.88). Needed by `kv` P11, PF5 and PF10.
 7. Cold start of a prefill and of a decode pod, to size the prefill 900 s window
    and the run set's stage length T (PF6).
 8. The KEDA (or Custom Metrics Autoscaler) release on `pokprod001`: support for
@@ -483,14 +529,16 @@ pods are added.
 ## Fixes
 
 None of these was applied: the task owner fixed the metrics, formulas and
-behavior. The constants are expected to come from the step 3/5 knee runs.
+behavior. The constants came from the step 3 knees (`2e607e4a`) and are to be
+confirmed by step 5.
 
 | Fails | Fix | Effect |
 |---|---|---|
-| prefill driver, P3 (10850) | `formula: "max(…) / (0.7 × μ_P)"` with μ_P from item 3 | prefill sized to the 0.7 target on this plant |
+| prefill driver, P3 (10850) | **applied in `2e607e4a`**: `/ 37540` (0.7 × the blis blend knee) | prefill at 0.70–0.75 of its knee in blis; confirm in step 5 |
 | `offered`, P3 (estimate) | `router.tokenizer.enabled: true` with a `vllm` `token-producer`, so `TokenizedRequest` holds engine tokens; or divide by `e` from item 2 | numerator and divisor in the same tokens |
-| `conc`, P3 (4); `lam`, P3 (0.39, 700) | re-measure 4, 0.39 and the prior OSL from one decode knee run (item 4); keep `4 / 0.39` equal to the knee's per-request decode residency | decode sized to its knee; the offered guard returns to the driver's operating point and wins only while prefill is short |
+| `conc`, `lam`, P3 (target 1.3 × the μ_SLO knee) | task 0545's 1.3 rule assumed a knee below the SLO edge; with this protocol's μ_SLO, use 0.7 × it as prefill does: `conc / 274` and `/ (4.52 * 2133)` (0.7 × 392, 0.7 × 6.461), keeping one operating point for both | decode at 0.7 of its knee, 43 % headroom; the cross-over stays at the same per-token residency |
+| `conc`, `lam`, P3 (mix, V ≈ 3) | none within this formula; the KV guard covers 8192:256. A per-mix capacity (output tokens weighted by context) would be a metric change | — |
 | `offered`, P8 (900 s) | the scenario's CALIBRATE: for random prompts (no session-cache fill) 120–300 s, as task 0545 §2.1 advises where caches do not hold a shared working set; keep 900 s for the agentic run's design | prefill follows staircase stages within one cold start |
-| `itl`, P1 (role) | keep as a guard with the SLO well above the ITL floor (item 5), or make it a veto: `min(pods × itl / 0.075, pods)` inside the `max` | it can no longer ratchet the pool on a cause more pods do not fix |
+| `itl`, P1 (role) | keep as a guard with the SLO well above the ITL floor (item 5), or make it a veto: `min(pods × itl / 0.05, pods)` inside the `max` | it can no longer ratchet the pool on a cause more pods do not fix |
 | decode scale-in (PF9) | add `--shutdown-timeout 45` to the decode vLLM command and `terminationGracePeriodSeconds` above it (task 0545 §1.3) | scale-in drains instead of aborting |
 | `offered`, `lam`, P10 (N1); all vLLM triggers, P10 (N1); names, T17 | **applied**: see Label fixes | each selector reads this stack only |
