@@ -1,0 +1,1 @@
+One request rate, 12.006 req/s, in three 1,200 s phases: 8192:256, 2048:2048, 256:4096. Prefill went 2 to 3 in phase 1 and held 3 to the end; decode held 2 through phases 1 and 2, went 2 to 6 in phase 3 and settled at 3. A fell to 0.36 in phase 3's second two-minute bin.

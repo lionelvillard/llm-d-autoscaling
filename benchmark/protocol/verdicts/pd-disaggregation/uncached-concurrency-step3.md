@@ -137,8 +137,8 @@ because `minReplicaCount` is 2 (run-set.md §2).
 | 1d | knee decode blend | done | as expected; μ_SLO 6.461 req/s | | 0 | 1,200 | [report](uncached-concurrency-step3/knees/decode-blend/report.md) |
 | 1e | knee prefill 8192:256 | done | as expected; μ_SLO 6.095 req/s | | 0 | 1,200 | [report](uncached-concurrency-step3/knees/prefill-8192x256/report.md) |
 | 1f | knee prefill blend | done | as expected; μ_SLO 15.328 req/s | | 0 | 1,200 | [report](uncached-concurrency-step3/knees/prefill-blend/report.md) |
-| 2 | SO-active staircase | pending | | | | | |
-| 3 | mix-shift | pending | | | | | |
+| 2 | SO-active staircase | done | problem shown: decode lagged the step into stage 3 (A 0.697; 4 Ready 270 s after it); prefill's 900 s window held 2 pods for 885 s after its trigger asked for 3 (stage 5 A 0.966) | 0.929 | 0 | 17,430 (6,270 + 11,160) |
+| 3 | mix-shift | done | problem shown: phase 3 (256:4096) A 0.840, decode 2 to 6 Ready in 570 s, A 0.36 at the worst bin; a third prefill pod held 2,580 s above the floor; phase 2 decode 2 against a need of 3 with A 1.000 | 0.947 | 0 | 19,950 (9,900 + 10,050) |
 | 4a | overload under the cap | pending | | | | | |
 | 4b | overload over the cap | pending | | | | | |
 | 5 | agentic | pending | | | | | |

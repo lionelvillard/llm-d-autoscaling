@@ -1,0 +1,68 @@
+{
+ "run": "mixshift",
+ "epoch0": 1767225600.0,
+ "first_arrival_s": 0.030366,
+ "horizon_s": 3911.0,
+ "lead_in_s": 0.0,
+ "ready_at_load_start": {
+  "prefill": 2,
+  "decode": 2
+ },
+ "arm": {
+  "pin": null,
+  "static": null,
+  "start": {
+   "prefill": 2,
+   "decode": 2
+  }
+ },
+ "lab": "/private/tmp/claude-501/t545/src/blis-signal-lab",
+ "lab_commit": "25f2dfb6259853e784ee9e85911c8e4fa63770c6",
+ "scenario": "deepseek-v2-lite-h100-pd.yaml",
+ "seed": null,
+ "memory": {
+  "available_at_start_gib": 45.94,
+  "reserve_gib": 6.4,
+  "max_rss_gib": 39.54,
+  "peak_rss_gib": 26.07,
+  "killed": null
+ },
+ "fates": {
+  "generated": 43224,
+  "completed": 43224,
+  "timed_out": 0,
+  "in_flight_at_horizon": 0,
+  "queued_at_horizon": 0,
+  "not_started": 0,
+  "length_capped": 0
+ },
+ "hpa_log_sha256": {
+  "signals-hpa-decode.csv": "b7edd1f399fb6dc648f7314abc5587dad87a2286ca44234f7015567aa4cf78a6",
+  "signals-hpa-prefill.csv": "cbe39815151e8557b785b3a6f01a558f5c28d4ff041b0a6102f1344857cdd518"
+ },
+ "schedule": {
+  "what": "mix-shift at 12.006 req/s, one phase per mix: 8192:256 needs 1, 2048:2048 needs 3, 256:4096 needs 3 replicas",
+  "seed": 103,
+  "duration_s": 3600,
+  "expected_requests": 43222,
+  "timeout_s": 311,
+  "drain_s": 311,
+  "phases": [
+   {
+    "seconds": 1200,
+    "rate": 12.006,
+    "mix": "8192:256"
+   },
+   {
+    "seconds": 1200,
+    "rate": 12.006,
+    "mix": "2048:2048"
+   },
+   {
+    "seconds": 1200,
+    "rate": 12.006,
+    "mix": "256:4096"
+   }
+  ]
+ }
+}

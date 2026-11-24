@@ -1,0 +1,78 @@
+{
+ "run": "stair",
+ "epoch0": 1767225600.0,
+ "first_arrival_s": 0.062942,
+ "horizon_s": 3311.0,
+ "lead_in_s": 0.0,
+ "ready_at_load_start": {
+  "prefill": 2,
+  "decode": 2
+ },
+ "arm": {
+  "pin": null,
+  "static": null,
+  "start": {
+   "prefill": 2,
+   "decode": 2
+  }
+ },
+ "lab": "/private/tmp/claude-501/t545/src/blis-signal-lab",
+ "lab_commit": "25f2dfb6259853e784ee9e85911c8e4fa63770c6",
+ "scenario": "deepseek-v2-lite-h100-pd.yaml",
+ "seed": null,
+ "memory": {
+  "available_at_start_gib": 37.49,
+  "reserve_gib": 6.4,
+  "max_rss_gib": 31.09,
+  "peak_rss_gib": 23.64,
+  "killed": null
+ },
+ "fates": {
+  "generated": 59316,
+  "completed": 59316,
+  "timed_out": 0,
+  "in_flight_at_horizon": 0,
+  "queued_at_horizon": 0,
+  "not_started": 0,
+  "length_capped": 0
+ },
+ "hpa_log_sha256": {
+  "signals-hpa-decode.csv": "32980dc1f3a6bf45f9ba7becc325ed4a9be32346cf19a2ede7c75b7b4e6131cc",
+  "signals-hpa-prefill.csv": "d9c85681dcdb0d1202825d3598dc4db79f8b6cc65ddbb0127d1214a5ec57939c"
+ },
+ "schedule": {
+  "what": "SO-active staircase, blend, stages at (0.15, 0.3, 0.5, 0.7, 0.9) x C (C = 38.766 req/s)",
+  "seed": 102,
+  "duration_s": 3000,
+  "expected_requests": 59312,
+  "timeout_s": 311,
+  "drain_s": 311,
+  "phases": [
+   {
+    "seconds": 600,
+    "rate": 5.8149,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 600,
+    "rate": 11.6298,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 600,
+    "rate": 19.383,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 600,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 600,
+    "rate": 34.8894,
+    "mix": "8192:256,2048:2048,256:4096"
+   }
+  ]
+ }
+}

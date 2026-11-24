@@ -1,0 +1,1409 @@
+series,t_s,value,source
+offered_in,15.0,20215.4667,"client records, sent per 30 s"
+offered_in,45.0,16349.8667,"client records, sent per 30 s"
+offered_in,75.0,18304.0,"client records, sent per 30 s"
+offered_in,105.0,20249.6,"client records, sent per 30 s"
+offered_in,135.0,22314.6667,"client records, sent per 30 s"
+offered_in,165.0,19797.3333,"client records, sent per 30 s"
+offered_in,195.0,21444.2667,"client records, sent per 30 s"
+offered_in,225.0,23552.0,"client records, sent per 30 s"
+offered_in,255.0,21657.6,"client records, sent per 30 s"
+offered_in,285.0,24934.4,"client records, sent per 30 s"
+offered_in,315.0,21589.3333,"client records, sent per 30 s"
+offered_in,345.0,20078.9333,"client records, sent per 30 s"
+offered_in,375.0,16324.2667,"client records, sent per 30 s"
+offered_in,405.0,18645.3333,"client records, sent per 30 s"
+offered_in,435.0,20019.2,"client records, sent per 30 s"
+offered_in,465.0,20471.4667,"client records, sent per 30 s"
+offered_in,495.0,20394.6667,"client records, sent per 30 s"
+offered_in,525.0,18790.4,"client records, sent per 30 s"
+offered_in,555.0,20377.6,"client records, sent per 30 s"
+offered_in,585.0,21316.2667,"client records, sent per 30 s"
+offered_in,615.0,38510.9333,"client records, sent per 30 s"
+offered_in,645.0,41932.8,"client records, sent per 30 s"
+offered_in,675.0,38203.7333,"client records, sent per 30 s"
+offered_in,705.0,37026.1333,"client records, sent per 30 s"
+offered_in,735.0,39236.2667,"client records, sent per 30 s"
+offered_in,765.0,43767.4667,"client records, sent per 30 s"
+offered_in,795.0,42897.0667,"client records, sent per 30 s"
+offered_in,825.0,40243.2,"client records, sent per 30 s"
+offered_in,855.0,43025.0667,"client records, sent per 30 s"
+offered_in,885.0,41395.2,"client records, sent per 30 s"
+offered_in,915.0,44962.1333,"client records, sent per 30 s"
+offered_in,945.0,44458.6667,"client records, sent per 30 s"
+offered_in,975.0,43059.2,"client records, sent per 30 s"
+offered_in,1005.0,39808.0,"client records, sent per 30 s"
+offered_in,1035.0,39193.6,"client records, sent per 30 s"
+offered_in,1065.0,37085.8667,"client records, sent per 30 s"
+offered_in,1095.0,41019.7333,"client records, sent per 30 s"
+offered_in,1125.0,38758.4,"client records, sent per 30 s"
+offered_in,1155.0,41088.0,"client records, sent per 30 s"
+offered_in,1185.0,37478.4,"client records, sent per 30 s"
+offered_in,1215.0,64307.2,"client records, sent per 30 s"
+offered_in,1245.0,71057.0667,"client records, sent per 30 s"
+offered_in,1275.0,68992.0,"client records, sent per 30 s"
+offered_in,1305.0,70493.8667,"client records, sent per 30 s"
+offered_in,1335.0,67575.4667,"client records, sent per 30 s"
+offered_in,1365.0,71099.7333,"client records, sent per 30 s"
+offered_in,1395.0,65365.3333,"client records, sent per 30 s"
+offered_in,1425.0,62284.8,"client records, sent per 30 s"
+offered_in,1455.0,64273.0667,"client records, sent per 30 s"
+offered_in,1485.0,70766.9333,"client records, sent per 30 s"
+offered_in,1515.0,65826.1333,"client records, sent per 30 s"
+offered_in,1545.0,60731.7333,"client records, sent per 30 s"
+offered_in,1575.0,67498.6667,"client records, sent per 30 s"
+offered_in,1605.0,64204.8,"client records, sent per 30 s"
+offered_in,1635.0,70673.0667,"client records, sent per 30 s"
+offered_in,1665.0,70920.5333,"client records, sent per 30 s"
+offered_in,1695.0,71790.9333,"client records, sent per 30 s"
+offered_in,1725.0,67558.4,"client records, sent per 30 s"
+offered_in,1755.0,66747.7333,"client records, sent per 30 s"
+offered_in,1785.0,73326.9333,"client records, sent per 30 s"
+offered_in,1815.0,87790.9333,"client records, sent per 30 s"
+offered_in,1845.0,92253.8667,"client records, sent per 30 s"
+offered_in,1875.0,90794.6667,"client records, sent per 30 s"
+offered_in,1905.0,100761.6,"client records, sent per 30 s"
+offered_in,1935.0,97689.6,"client records, sent per 30 s"
+offered_in,1965.0,93798.4,"client records, sent per 30 s"
+offered_in,1995.0,96128.0,"client records, sent per 30 s"
+offered_in,2025.0,99899.7333,"client records, sent per 30 s"
+offered_in,2055.0,89446.4,"client records, sent per 30 s"
+offered_in,2085.0,96426.6667,"client records, sent per 30 s"
+offered_in,2115.0,94250.6667,"client records, sent per 30 s"
+offered_in,2145.0,94617.6,"client records, sent per 30 s"
+offered_in,2175.0,92740.2667,"client records, sent per 30 s"
+offered_in,2205.0,95769.6,"client records, sent per 30 s"
+offered_in,2235.0,98926.9333,"client records, sent per 30 s"
+offered_in,2265.0,96349.8667,"client records, sent per 30 s"
+offered_in,2295.0,89830.4,"client records, sent per 30 s"
+offered_in,2325.0,92979.2,"client records, sent per 30 s"
+offered_in,2355.0,90615.4667,"client records, sent per 30 s"
+offered_in,2385.0,108100.2667,"client records, sent per 30 s"
+offered_in,2415.0,114517.3333,"client records, sent per 30 s"
+offered_in,2445.0,116497.0667,"client records, sent per 30 s"
+offered_in,2475.0,121028.2667,"client records, sent per 30 s"
+offered_in,2505.0,118647.4667,"client records, sent per 30 s"
+offered_in,2535.0,128213.3333,"client records, sent per 30 s"
+offered_in,2565.0,122615.4667,"client records, sent per 30 s"
+offered_in,2595.0,118954.6667,"client records, sent per 30 s"
+offered_in,2625.0,124689.0667,"client records, sent per 30 s"
+offered_in,2655.0,117879.4667,"client records, sent per 30 s"
+offered_in,2685.0,118033.0667,"client records, sent per 30 s"
+offered_in,2715.0,124714.6667,"client records, sent per 30 s"
+offered_in,2745.0,121224.5333,"client records, sent per 30 s"
+offered_in,2775.0,131635.2,"client records, sent per 30 s"
+offered_in,2805.0,127274.6667,"client records, sent per 30 s"
+offered_in,2835.0,115754.6667,"client records, sent per 30 s"
+offered_in,2865.0,123886.9333,"client records, sent per 30 s"
+offered_in,2895.0,116667.7333,"client records, sent per 30 s"
+offered_in,2925.0,122205.8667,"client records, sent per 30 s"
+offered_in,2955.0,124467.2,"client records, sent per 30 s"
+offered_in,2985.0,128187.7333,"client records, sent per 30 s"
+offered_in,3015.0,5828.2667,"client records, sent per 30 s"
+offered_out,15.0,11144.5333,"client records, sent per 30 s"
+offered_out,45.0,14173.8667,"client records, sent per 30 s"
+offered_out,75.0,12373.3333,"client records, sent per 30 s"
+offered_out,105.0,12979.2,"client records, sent per 30 s"
+offered_out,135.0,11136.0,"client records, sent per 30 s"
+offered_out,165.0,12910.9333,"client records, sent per 30 s"
+offered_out,195.0,13627.7333,"client records, sent per 30 s"
+offered_out,225.0,13986.1333,"client records, sent per 30 s"
+offered_out,255.0,13704.5333,"client records, sent per 30 s"
+offered_out,285.0,13047.4667,"client records, sent per 30 s"
+offered_out,315.0,12083.2,"client records, sent per 30 s"
+offered_out,345.0,13056.0,"client records, sent per 30 s"
+offered_out,375.0,10956.8,"client records, sent per 30 s"
+offered_out,405.0,14003.2,"client records, sent per 30 s"
+offered_out,435.0,11835.7333,"client records, sent per 30 s"
+offered_out,465.0,9591.4667,"client records, sent per 30 s"
+offered_out,495.0,11434.6667,"client records, sent per 30 s"
+offered_out,525.0,12194.1333,"client records, sent per 30 s"
+offered_out,555.0,11690.6667,"client records, sent per 30 s"
+offered_out,585.0,12108.8,"client records, sent per 30 s"
+offered_out,615.0,22852.2667,"client records, sent per 30 s"
+offered_out,645.0,26564.2667,"client records, sent per 30 s"
+offered_out,675.0,24874.6667,"client records, sent per 30 s"
+offered_out,705.0,23705.6,"client records, sent per 30 s"
+offered_out,735.0,23688.5333,"client records, sent per 30 s"
+offered_out,765.0,25429.3333,"client records, sent per 30 s"
+offered_out,795.0,25838.9333,"client records, sent per 30 s"
+offered_out,825.0,24934.4,"client records, sent per 30 s"
+offered_out,855.0,23790.9333,"client records, sent per 30 s"
+offered_out,885.0,26188.8,"client records, sent per 30 s"
+offered_out,915.0,25779.2,"client records, sent per 30 s"
+offered_out,945.0,25420.8,"client records, sent per 30 s"
+offered_out,975.0,24866.1333,"client records, sent per 30 s"
+offered_out,1005.0,24379.7333,"client records, sent per 30 s"
+offered_out,1035.0,25318.4,"client records, sent per 30 s"
+offered_out,1065.0,26444.8,"client records, sent per 30 s"
+offered_out,1095.0,25600.0,"client records, sent per 30 s"
+offered_out,1125.0,22715.7333,"client records, sent per 30 s"
+offered_out,1155.0,22528.0,"client records, sent per 30 s"
+offered_out,1185.0,24797.8667,"client records, sent per 30 s"
+offered_out,1215.0,44339.2,"client records, sent per 30 s"
+offered_out,1245.0,42035.2,"client records, sent per 30 s"
+offered_out,1275.0,42589.8667,"client records, sent per 30 s"
+offered_out,1305.0,40985.6,"client records, sent per 30 s"
+offered_out,1335.0,42786.1333,"client records, sent per 30 s"
+offered_out,1365.0,44006.4,"client records, sent per 30 s"
+offered_out,1395.0,36855.4667,"client records, sent per 30 s"
+offered_out,1425.0,38604.8,"client records, sent per 30 s"
+offered_out,1455.0,37614.9333,"client records, sent per 30 s"
+offered_out,1485.0,40729.6,"client records, sent per 30 s"
+offered_out,1515.0,42248.5333,"client records, sent per 30 s"
+offered_out,1545.0,38929.0667,"client records, sent per 30 s"
+offered_out,1575.0,40234.6667,"client records, sent per 30 s"
+offered_out,1605.0,42734.9333,"client records, sent per 30 s"
+offered_out,1635.0,44117.3333,"client records, sent per 30 s"
+offered_out,1665.0,45004.8,"client records, sent per 30 s"
+offered_out,1695.0,41719.4667,"client records, sent per 30 s"
+offered_out,1725.0,38118.4,"client records, sent per 30 s"
+offered_out,1755.0,39517.8667,"client records, sent per 30 s"
+offered_out,1785.0,43008.0,"client records, sent per 30 s"
+offered_out,1815.0,57497.6,"client records, sent per 30 s"
+offered_out,1845.0,55867.7333,"client records, sent per 30 s"
+offered_out,1875.0,57395.2,"client records, sent per 30 s"
+offered_out,1905.0,62993.0667,"client records, sent per 30 s"
+offered_out,1935.0,57642.6667,"client records, sent per 30 s"
+offered_out,1965.0,57386.6667,"client records, sent per 30 s"
+offered_out,1995.0,58854.4,"client records, sent per 30 s"
+offered_out,2025.0,58350.9333,"client records, sent per 30 s"
+offered_out,2055.0,57890.1333,"client records, sent per 30 s"
+offered_out,2085.0,60032.0,"client records, sent per 30 s"
+offered_out,2115.0,54220.8,"client records, sent per 30 s"
+offered_out,2145.0,57710.9333,"client records, sent per 30 s"
+offered_out,2175.0,57241.6,"client records, sent per 30 s"
+offered_out,2205.0,58240.0,"client records, sent per 30 s"
+offered_out,2235.0,62080.0,"client records, sent per 30 s"
+offered_out,2265.0,54408.5333,"client records, sent per 30 s"
+offered_out,2295.0,54254.9333,"client records, sent per 30 s"
+offered_out,2325.0,58453.3333,"client records, sent per 30 s"
+offered_out,2355.0,58854.4,"client records, sent per 30 s"
+offered_out,2385.0,58811.7333,"client records, sent per 30 s"
+offered_out,2415.0,76194.1333,"client records, sent per 30 s"
+offered_out,2445.0,78865.0667,"client records, sent per 30 s"
+offered_out,2475.0,73634.1333,"client records, sent per 30 s"
+offered_out,2505.0,71287.4667,"client records, sent per 30 s"
+offered_out,2535.0,73966.9333,"client records, sent per 30 s"
+offered_out,2565.0,74982.4,"client records, sent per 30 s"
+offered_out,2595.0,80529.0667,"client records, sent per 30 s"
+offered_out,2625.0,74530.1333,"client records, sent per 30 s"
+offered_out,2655.0,71978.6667,"client records, sent per 30 s"
+offered_out,2685.0,71330.1333,"client records, sent per 30 s"
+offered_out,2715.0,78839.4667,"client records, sent per 30 s"
+offered_out,2745.0,74163.2,"client records, sent per 30 s"
+offered_out,2775.0,74606.9333,"client records, sent per 30 s"
+offered_out,2805.0,76390.4,"client records, sent per 30 s"
+offered_out,2835.0,73164.8,"client records, sent per 30 s"
+offered_out,2865.0,71441.0667,"client records, sent per 30 s"
+offered_out,2895.0,67191.4667,"client records, sent per 30 s"
+offered_out,2925.0,73284.2667,"client records, sent per 30 s"
+offered_out,2955.0,74615.4667,"client records, sent per 30 s"
+offered_out,2985.0,77721.6,"client records, sent per 30 s"
+offered_out,3015.0,1186.1333,"client records, sent per 30 s"
+trigger_composite,0.94,0.0,Prometheus range query
+trigger_composite,15.94,0.5778,Prometheus range query
+trigger_composite,30.94,0.5424,Prometheus range query
+trigger_composite,45.94,0.5108,Prometheus range query
+trigger_composite,60.94,0.497,Prometheus range query
+trigger_composite,75.94,0.5152,Prometheus range query
+trigger_composite,90.94,0.4897,Prometheus range query
+trigger_composite,105.94,0.4949,Prometheus range query
+trigger_composite,120.94,0.5072,Prometheus range query
+trigger_composite,135.94,0.5813,Prometheus range query
+trigger_composite,150.94,0.5883,Prometheus range query
+trigger_composite,165.94,0.5627,Prometheus range query
+trigger_composite,180.94,0.5266,Prometheus range query
+trigger_composite,195.94,0.5371,Prometheus range query
+trigger_composite,210.94,0.5575,Prometheus range query
+trigger_composite,225.94,0.6381,Prometheus range query
+trigger_composite,240.94,0.6051,Prometheus range query
+trigger_composite,255.94,0.5875,Prometheus range query
+trigger_composite,270.94,0.5644,Prometheus range query
+trigger_composite,285.94,0.6006,Prometheus range query
+trigger_composite,300.94,0.6578,Prometheus range query
+trigger_composite,315.94,0.6155,Prometheus range query
+trigger_composite,330.94,0.6177,Prometheus range query
+trigger_composite,345.94,0.5851,Prometheus range query
+trigger_composite,360.94,0.5677,Prometheus range query
+trigger_composite,375.94,0.5712,Prometheus range query
+trigger_composite,390.94,0.5693,Prometheus range query
+trigger_composite,405.94,0.5649,Prometheus range query
+trigger_composite,420.94,0.555,Prometheus range query
+trigger_composite,435.94,0.5558,Prometheus range query
+trigger_composite,450.94,0.5545,Prometheus range query
+trigger_composite,465.94,0.5528,Prometheus range query
+trigger_composite,480.94,0.5566,Prometheus range query
+trigger_composite,495.94,0.5538,Prometheus range query
+trigger_composite,510.94,0.5802,Prometheus range query
+trigger_composite,525.94,0.5448,Prometheus range query
+trigger_composite,540.94,0.5418,Prometheus range query
+trigger_composite,555.94,0.5366,Prometheus range query
+trigger_composite,570.94,0.5341,Prometheus range query
+trigger_composite,585.94,0.5872,Prometheus range query
+trigger_composite,600.94,0.5376,Prometheus range query
+trigger_composite,615.94,0.7351,Prometheus range query
+trigger_composite,630.94,0.8455,Prometheus range query
+trigger_composite,645.94,1.094,Prometheus range query
+trigger_composite,660.94,1.0697,Prometheus range query
+trigger_composite,675.94,1.0582,Prometheus range query
+trigger_composite,690.94,1.0429,Prometheus range query
+trigger_composite,705.94,1.033,Prometheus range query
+trigger_composite,720.94,1.0188,Prometheus range query
+trigger_composite,735.94,0.9598,Prometheus range query
+trigger_composite,750.94,1.0164,Prometheus range query
+trigger_composite,765.94,1.0783,Prometheus range query
+trigger_composite,780.94,1.1558,Prometheus range query
+trigger_composite,795.94,1.1105,Prometheus range query
+trigger_composite,810.94,1.1765,Prometheus range query
+trigger_composite,825.94,1.1679,Prometheus range query
+trigger_composite,840.94,1.1282,Prometheus range query
+trigger_composite,855.94,1.0963,Prometheus range query
+trigger_composite,870.94,1.0764,Prometheus range query
+trigger_composite,885.94,1.1158,Prometheus range query
+trigger_composite,900.94,1.1072,Prometheus range query
+trigger_composite,915.94,1.1053,Prometheus range query
+trigger_composite,930.94,1.1901,Prometheus range query
+trigger_composite,945.94,1.1654,Prometheus range query
+trigger_composite,960.94,1.2101,Prometheus range query
+trigger_composite,975.94,1.1638,Prometheus range query
+trigger_composite,990.94,1.1644,Prometheus range query
+trigger_composite,1005.94,1.122,Prometheus range query
+trigger_composite,1020.94,1.1351,Prometheus range query
+trigger_composite,1035.94,1.1319,Prometheus range query
+trigger_composite,1050.94,1.1249,Prometheus range query
+trigger_composite,1065.94,1.1156,Prometheus range query
+trigger_composite,1080.94,1.1128,Prometheus range query
+trigger_composite,1095.94,1.1005,Prometheus range query
+trigger_composite,1110.94,1.0976,Prometheus range query
+trigger_composite,1125.94,1.1036,Prometheus range query
+trigger_composite,1140.94,1.0961,Prometheus range query
+trigger_composite,1155.94,1.0996,Prometheus range query
+trigger_composite,1170.94,1.0956,Prometheus range query
+trigger_composite,1185.94,1.0838,Prometheus range query
+trigger_composite,1200.94,1.0819,Prometheus range query
+trigger_composite,1215.94,1.3189,Prometheus range query
+trigger_composite,1230.94,1.5041,Prometheus range query
+trigger_composite,1245.94,1.8301,Prometheus range query
+trigger_composite,1260.94,1.7771,Prometheus range query
+trigger_composite,1275.94,1.9204,Prometheus range query
+trigger_composite,1290.94,1.8188,Prometheus range query
+trigger_composite,1305.94,1.8338,Prometheus range query
+trigger_composite,1320.94,1.84,Prometheus range query
+trigger_composite,1335.94,1.8176,Prometheus range query
+trigger_composite,1350.94,1.8436,Prometheus range query
+trigger_composite,1365.94,1.8008,Prometheus range query
+trigger_composite,1380.94,1.9163,Prometheus range query
+trigger_composite,1395.94,1.8779,Prometheus range query
+trigger_composite,1410.94,1.8065,Prometheus range query
+trigger_composite,1425.94,1.7295,Prometheus range query
+trigger_composite,1440.94,1.6773,Prometheus range query
+trigger_composite,1455.94,1.7118,Prometheus range query
+trigger_composite,1470.94,1.7564,Prometheus range query
+trigger_composite,1485.94,1.8014,Prometheus range query
+trigger_composite,1500.94,1.8518,Prometheus range query
+trigger_composite,1515.94,1.8278,Prometheus range query
+trigger_composite,1530.94,1.7936,Prometheus range query
+trigger_composite,1545.94,1.7783,Prometheus range query
+trigger_composite,1560.94,1.7693,Prometheus range query
+trigger_composite,1575.94,1.7792,Prometheus range query
+trigger_composite,1590.94,1.7849,Prometheus range query
+trigger_composite,1605.94,1.7927,Prometheus range query
+trigger_composite,1620.94,1.7612,Prometheus range query
+trigger_composite,1635.94,1.7637,Prometheus range query
+trigger_composite,1650.94,1.8289,Prometheus range query
+trigger_composite,1665.94,1.9376,Prometheus range query
+trigger_composite,1680.94,1.925,Prometheus range query
+trigger_composite,1695.94,1.8261,Prometheus range query
+trigger_composite,1710.94,1.8548,Prometheus range query
+trigger_composite,1725.94,1.8579,Prometheus range query
+trigger_composite,1740.94,1.9059,Prometheus range query
+trigger_composite,1755.94,1.8158,Prometheus range query
+trigger_composite,1770.94,1.8086,Prometheus range query
+trigger_composite,1785.94,1.8288,Prometheus range query
+trigger_composite,1800.94,1.8613,Prometheus range query
+trigger_composite,1815.94,2.0809,Prometheus range query
+trigger_composite,1830.94,2.1922,Prometheus range query
+trigger_composite,1845.94,2.2916,Prometheus range query
+trigger_composite,1860.94,2.4105,Prometheus range query
+trigger_composite,1875.94,2.4403,Prometheus range query
+trigger_composite,1890.94,2.5506,Prometheus range query
+trigger_composite,1905.94,2.5674,Prometheus range query
+trigger_composite,1920.94,2.5877,Prometheus range query
+trigger_composite,1935.94,2.6476,Prometheus range query
+trigger_composite,1950.94,2.5957,Prometheus range query
+trigger_composite,1965.94,2.5874,Prometheus range query
+trigger_composite,1980.94,2.5507,Prometheus range query
+trigger_composite,1995.94,2.4893,Prometheus range query
+trigger_composite,2010.94,2.5484,Prometheus range query
+trigger_composite,2025.94,2.5534,Prometheus range query
+trigger_composite,2040.94,2.6205,Prometheus range query
+trigger_composite,2055.94,2.578,Prometheus range query
+trigger_composite,2070.94,2.4894,Prometheus range query
+trigger_composite,2085.94,2.5223,Prometheus range query
+trigger_composite,2100.94,2.5273,Prometheus range query
+trigger_composite,2115.94,2.53,Prometheus range query
+trigger_composite,2130.94,2.558,Prometheus range query
+trigger_composite,2145.94,2.5441,Prometheus range query
+trigger_composite,2160.94,2.5598,Prometheus range query
+trigger_composite,2175.94,2.5405,Prometheus range query
+trigger_composite,2190.94,2.5306,Prometheus range query
+trigger_composite,2205.94,2.5373,Prometheus range query
+trigger_composite,2220.94,2.5939,Prometheus range query
+trigger_composite,2235.94,2.6371,Prometheus range query
+trigger_composite,2250.94,2.6169,Prometheus range query
+trigger_composite,2265.94,2.6115,Prometheus range query
+trigger_composite,2280.94,2.5417,Prometheus range query
+trigger_composite,2295.94,2.5212,Prometheus range query
+trigger_composite,2310.94,2.5249,Prometheus range query
+trigger_composite,2325.94,2.5132,Prometheus range query
+trigger_composite,2340.94,2.5257,Prometheus range query
+trigger_composite,2355.94,2.5099,Prometheus range query
+trigger_composite,2370.94,2.5008,Prometheus range query
+trigger_composite,2385.94,2.6223,Prometheus range query
+trigger_composite,2400.94,2.755,Prometheus range query
+trigger_composite,2415.94,2.9032,Prometheus range query
+trigger_composite,2430.94,2.975,Prometheus range query
+trigger_composite,2445.94,3.0885,Prometheus range query
+trigger_composite,2460.94,3.1707,Prometheus range query
+trigger_composite,2475.94,3.108,Prometheus range query
+trigger_composite,2490.94,3.1929,Prometheus range query
+trigger_composite,2505.94,3.1483,Prometheus range query
+trigger_composite,2520.94,3.2021,Prometheus range query
+trigger_composite,2535.94,3.1619,Prometheus range query
+trigger_composite,2550.94,3.3635,Prometheus range query
+trigger_composite,2565.94,3.336,Prometheus range query
+trigger_composite,2580.94,3.3964,Prometheus range query
+trigger_composite,2595.94,3.2487,Prometheus range query
+trigger_composite,2610.94,3.2268,Prometheus range query
+trigger_composite,2625.94,3.2652,Prometheus range query
+trigger_composite,2640.94,3.2787,Prometheus range query
+trigger_composite,2655.94,3.2373,Prometheus range query
+trigger_composite,2670.94,3.176,Prometheus range query
+trigger_composite,2685.94,3.2118,Prometheus range query
+trigger_composite,2700.94,3.2157,Prometheus range query
+trigger_composite,2715.94,3.2262,Prometheus range query
+trigger_composite,2730.94,3.2498,Prometheus range query
+trigger_composite,2745.94,3.2506,Prometheus range query
+trigger_composite,2760.94,3.2686,Prometheus range query
+trigger_composite,2775.94,3.3095,Prometheus range query
+trigger_composite,2790.94,3.4205,Prometheus range query
+trigger_composite,2805.94,3.4541,Prometheus range query
+trigger_composite,2820.94,3.4584,Prometheus range query
+trigger_composite,2835.94,3.33,Prometheus range query
+trigger_composite,2850.94,3.2682,Prometheus range query
+trigger_composite,2865.94,3.26,Prometheus range query
+trigger_composite,2880.94,3.2661,Prometheus range query
+trigger_composite,2895.94,3.2596,Prometheus range query
+trigger_composite,2910.94,3.2478,Prometheus range query
+trigger_composite,2925.94,3.2447,Prometheus range query
+trigger_composite,2940.94,3.2598,Prometheus range query
+trigger_composite,2955.94,3.2619,Prometheus range query
+trigger_composite,2970.94,3.3363,Prometheus range query
+trigger_composite,2985.94,3.3573,Prometheus range query
+trigger_composite,3000.94,3.447,Prometheus range query
+trigger_composite,3015.94,3.1227,Prometheus range query
+trigger_composite,3030.94,2.9571,Prometheus range query
+trigger_composite,3045.94,2.7869,Prometheus range query
+trigger_composite,3060.94,2.6055,Prometheus range query
+trigger_composite,3075.94,2.4278,Prometheus range query
+trigger_composite,3090.94,2.2471,Prometheus range query
+trigger_composite,3105.94,2.0657,Prometheus range query
+trigger_composite,3120.94,1.8913,Prometheus range query
+trigger_composite,3135.94,1.7339,Prometheus range query
+trigger_composite,3150.94,1.561,Prometheus range query
+trigger_composite,3165.94,1.3838,Prometheus range query
+trigger_composite,3180.94,1.2264,Prometheus range query
+trigger_composite,3195.94,1.0587,Prometheus range query
+trigger_composite,3210.94,0.8908,Prometheus range query
+trigger_composite,3225.94,0.7143,Prometheus range query
+trigger_composite,3240.94,0.5466,Prometheus range query
+trigger_composite,3255.94,0.3644,Prometheus range query
+trigger_composite,3270.94,0.1846,Prometheus range query
+trigger_composite,3285.94,0.0034,Prometheus range query
+trigger_composite,3300.94,0.0,Prometheus range query
+trigger_offered,0.94,0.0,Prometheus range query
+trigger_offered,15.94,21691.7333,Prometheus range query
+trigger_offered,30.94,20360.5333,Prometheus range query
+trigger_offered,45.94,19177.2444,Prometheus range query
+trigger_offered,60.94,17646.9333,Prometheus range query
+trigger_offered,75.94,18659.5556,Prometheus range query
+trigger_offered,90.94,17590.0444,Prometheus range query
+trigger_offered,105.94,18471.8222,Prometheus range query
+trigger_offered,120.94,18727.8222,Prometheus range query
+trigger_offered,135.94,21822.5778,Prometheus range query
+trigger_offered,150.94,22021.6889,Prometheus range query
+trigger_offered,165.94,21122.8444,Prometheus range query
+trigger_offered,180.94,19768.8889,Prometheus range query
+trigger_offered,195.94,20161.4222,Prometheus range query
+trigger_offered,210.94,20929.4222,Prometheus range query
+trigger_offered,225.94,23955.9111,Prometheus range query
+trigger_offered,240.94,22715.7333,Prometheus range query
+trigger_offered,255.94,22055.8222,Prometheus range query
+trigger_offered,270.94,21156.9778,Prometheus range query
+trigger_offered,285.94,22545.0667,Prometheus range query
+trigger_offered,300.94,24695.4667,Prometheus range query
+trigger_offered,315.94,23074.1333,Prometheus range query
+trigger_offered,330.94,23187.9111,Prometheus range query
+trigger_offered,345.94,21964.8,Prometheus range query
+trigger_offered,360.94,20650.6667,Prometheus range query
+trigger_offered,375.94,18585.6,Prometheus range query
+trigger_offered,390.94,16969.9556,Prometheus range query
+trigger_offered,405.94,17874.4889,Prometheus range query
+trigger_offered,420.94,17920.0,Prometheus range query
+trigger_offered,435.94,18864.3556,Prometheus range query
+trigger_offered,450.94,18852.9778,Prometheus range query
+trigger_offered,465.94,19296.7111,Prometheus range query
+trigger_offered,480.94,20252.4444,Prometheus range query
+trigger_offered,495.94,20753.0667,Prometheus range query
+trigger_offered,510.94,21748.6222,Prometheus range query
+trigger_offered,525.94,19968.0,Prometheus range query
+trigger_offered,540.94,19200.0,Prometheus range query
+trigger_offered,555.94,19518.5778,Prometheus range query
+trigger_offered,570.94,20007.8222,Prometheus range query
+trigger_offered,585.94,22044.4444,Prometheus range query
+trigger_offered,600.94,20212.6222,Prometheus range query
+trigger_offered,615.94,27596.8,Prometheus range query
+trigger_offered,630.94,31772.4444,Prometheus range query
+trigger_offered,645.94,41016.8889,Prometheus range query
+trigger_offered,660.94,40157.8667,Prometheus range query
+trigger_offered,675.94,39771.0222,Prometheus range query
+trigger_offered,690.94,39150.9333,Prometheus range query
+trigger_offered,705.94,38695.8222,Prometheus range query
+trigger_offered,720.94,38246.4,Prometheus range query
+trigger_offered,735.94,35993.6,Prometheus range query
+trigger_offered,750.94,38155.3778,Prometheus range query
+trigger_offered,765.94,40516.2667,Prometheus range query
+trigger_offered,780.94,43389.1556,Prometheus range query
+trigger_offered,795.94,41642.6667,Prometheus range query
+trigger_offered,810.94,44128.7111,Prometheus range query
+trigger_offered,825.94,43844.2667,Prometheus range query
+trigger_offered,840.94,42353.7778,Prometheus range query
+trigger_offered,855.94,41153.4222,Prometheus range query
+trigger_offered,870.94,40408.1778,Prometheus range query
+trigger_offered,885.94,41887.2889,Prometheus range query
+trigger_offered,900.94,41563.0222,Prometheus range query
+trigger_offered,915.94,41500.4444,Prometheus range query
+trigger_offered,930.94,44674.8444,Prometheus range query
+trigger_offered,945.94,43719.1111,Prometheus range query
+trigger_offered,960.94,45425.7778,Prometheus range query
+trigger_offered,975.94,43690.6667,Prometheus range query
+trigger_offered,990.94,43770.3111,Prometheus range query
+trigger_offered,1005.94,40487.8222,Prometheus range query
+trigger_offered,1020.94,40840.5333,Prometheus range query
+trigger_offered,1035.94,40954.3111,Prometheus range query
+trigger_offered,1050.94,41255.8222,Prometheus range query
+trigger_offered,1065.94,38610.4889,Prometheus range query
+trigger_offered,1080.94,36949.3333,Prometheus range query
+trigger_offered,1095.94,37853.8667,Prometheus range query
+trigger_offered,1110.94,39697.0667,Prometheus range query
+trigger_offered,1125.94,40493.5111,Prometheus range query
+trigger_offered,1140.94,40601.6,Prometheus range query
+trigger_offered,1155.94,40527.6444,Prometheus range query
+trigger_offered,1170.94,39810.8444,Prometheus range query
+trigger_offered,1185.94,38388.6222,Prometheus range query
+trigger_offered,1200.94,37467.0222,Prometheus range query
+trigger_offered,1215.94,49476.2667,Prometheus range query
+trigger_offered,1230.94,56502.0444,Prometheus range query
+trigger_offered,1245.94,68545.4222,Prometheus range query
+trigger_offered,1260.94,66713.6,Prometheus range query
+trigger_offered,1275.94,72004.2667,Prometheus range query
+trigger_offered,1290.94,68289.4222,Prometheus range query
+trigger_offered,1305.94,68790.0444,Prometheus range query
+trigger_offered,1320.94,68994.8444,Prometheus range query
+trigger_offered,1335.94,68158.5778,Prometheus range query
+trigger_offered,1350.94,69199.6444,Prometheus range query
+trigger_offered,1365.94,67566.9333,Prometheus range query
+trigger_offered,1380.94,71799.4667,Prometheus range query
+trigger_offered,1395.94,70462.5778,Prometheus range query
+trigger_offered,1410.94,67817.2444,Prometheus range query
+trigger_offered,1425.94,64841.9556,Prometheus range query
+trigger_offered,1440.94,61838.2222,Prometheus range query
+trigger_offered,1455.94,62338.8444,Prometheus range query
+trigger_offered,1470.94,62748.4444,Prometheus range query
+trigger_offered,1485.94,67197.1556,Prometheus range query
+trigger_offered,1500.94,69569.4222,Prometheus range query
+trigger_offered,1515.94,68608.0,Prometheus range query
+trigger_offered,1530.94,66446.2222,Prometheus range query
+trigger_offered,1545.94,62549.3333,Prometheus range query
+trigger_offered,1560.94,63084.0889,Prometheus range query
+trigger_offered,1575.94,65166.2222,Prometheus range query
+trigger_offered,1590.94,67026.4889,Prometheus range query
+trigger_offered,1605.94,67350.7556,Prometheus range query
+trigger_offered,1620.94,63442.4889,Prometheus range query
+trigger_offered,1635.94,65644.0889,Prometheus range query
+trigger_offered,1650.94,68647.8222,Prometheus range query
+trigger_offered,1665.94,72846.2222,Prometheus range query
+trigger_offered,1680.94,72186.3111,Prometheus range query
+trigger_offered,1695.94,68579.5556,Prometheus range query
+trigger_offered,1710.94,69711.6444,Prometheus range query
+trigger_offered,1725.94,69745.7778,Prometheus range query
+trigger_offered,1740.94,71486.5778,Prometheus range query
+trigger_offered,1755.94,68135.8222,Prometheus range query
+trigger_offered,1770.94,67828.6222,Prometheus range query
+trigger_offered,1785.94,68659.2,Prometheus range query
+trigger_offered,1800.94,69882.3111,Prometheus range query
+trigger_offered,1815.94,78057.2444,Prometheus range query
+trigger_offered,1830.94,82295.4667,Prometheus range query
+trigger_offered,1845.94,85993.2444,Prometheus range query
+trigger_offered,1860.94,90436.2667,Prometheus range query
+trigger_offered,1875.94,91556.9778,Prometheus range query
+trigger_offered,1890.94,95579.0222,Prometheus range query
+trigger_offered,1905.94,96233.2444,Prometheus range query
+trigger_offered,1920.94,97194.6667,Prometheus range query
+trigger_offered,1935.94,99424.7111,Prometheus range query
+trigger_offered,1950.94,97444.9778,Prometheus range query
+trigger_offered,1965.94,97211.7333,Prometheus range query
+trigger_offered,1980.94,95647.2889,Prometheus range query
+trigger_offered,1995.94,93479.8222,Prometheus range query
+trigger_offered,2010.94,95601.7778,Prometheus range query
+trigger_offered,2025.94,95908.9778,Prometheus range query
+trigger_offered,2040.94,98372.2667,Prometheus range query
+trigger_offered,2055.94,96779.3778,Prometheus range query
+trigger_offered,2070.94,93394.4889,Prometheus range query
+trigger_offered,2085.94,93843.9111,Prometheus range query
+trigger_offered,2100.94,93878.0444,Prometheus range query
+trigger_offered,2115.94,94327.4667,Prometheus range query
+trigger_offered,2130.94,93866.6667,Prometheus range query
+trigger_offered,2145.94,94281.9556,Prometheus range query
+trigger_offered,2160.94,96068.2667,Prometheus range query
+trigger_offered,2175.94,91665.0667,Prometheus range query
+trigger_offered,2190.94,93627.7333,Prometheus range query
+trigger_offered,2205.94,94458.3111,Prometheus range query
+trigger_offered,2220.94,97251.5556,Prometheus range query
+trigger_offered,2235.94,98912.7111,Prometheus range query
+trigger_offered,2250.94,98139.0222,Prometheus range query
+trigger_offered,2265.94,98042.3111,Prometheus range query
+trigger_offered,2280.94,94384.3556,Prometheus range query
+trigger_offered,2295.94,90743.4667,Prometheus range query
+trigger_offered,2310.94,91778.8444,Prometheus range query
+trigger_offered,2325.94,91528.5333,Prometheus range query
+trigger_offered,2340.94,94862.2222,Prometheus range query
+trigger_offered,2355.94,89895.8222,Prometheus range query
+trigger_offered,2370.94,90362.3111,Prometheus range query
+trigger_offered,2385.94,98503.1111,Prometheus range query
+trigger_offered,2400.94,103406.9333,Prometheus range query
+trigger_offered,2415.94,108885.3333,Prometheus range query
+trigger_offered,2430.94,111559.1111,Prometheus range query
+trigger_offered,2445.94,115928.1778,Prometheus range query
+trigger_offered,2460.94,118892.0889,Prometheus range query
+trigger_offered,2475.94,116622.2222,Prometheus range query
+trigger_offered,2490.94,119859.2,Prometheus range query
+trigger_offered,2505.94,118215.1111,Prometheus range query
+trigger_offered,2520.94,120200.5333,Prometheus range query
+trigger_offered,2535.94,118772.6222,Prometheus range query
+trigger_offered,2550.94,126208.0,Prometheus range query
+trigger_offered,2565.94,125087.2889,Prometheus range query
+trigger_offered,2580.94,127516.4444,Prometheus range query
+trigger_offered,2595.94,121975.4667,Prometheus range query
+trigger_offered,2610.94,121014.0444,Prometheus range query
+trigger_offered,2625.94,122493.1556,Prometheus range query
+trigger_offered,2640.94,122993.7778,Prometheus range query
+trigger_offered,2655.94,121537.4222,Prometheus range query
+trigger_offered,2670.94,118448.3556,Prometheus range query
+trigger_offered,2685.94,118277.6889,Prometheus range query
+trigger_offered,2700.94,119398.4,Prometheus range query
+trigger_offered,2715.94,121122.1333,Prometheus range query
+trigger_offered,2730.94,121981.1556,Prometheus range query
+trigger_offered,2745.94,122106.3111,Prometheus range query
+trigger_offered,2760.94,122692.2667,Prometheus range query
+trigger_offered,2775.94,124114.4889,Prometheus range query
+trigger_offered,2790.94,128364.0889,Prometheus range query
+trigger_offered,2805.94,129661.1556,Prometheus range query
+trigger_offered,2820.94,129735.1111,Prometheus range query
+trigger_offered,2835.94,125075.9111,Prometheus range query
+trigger_offered,2850.94,119478.0444,Prometheus range query
+trigger_offered,2865.94,117373.1556,Prometheus range query
+trigger_offered,2880.94,120627.2,Prometheus range query
+trigger_offered,2895.94,120217.6,Prometheus range query
+trigger_offered,2910.94,119187.9111,Prometheus range query
+trigger_offered,2925.94,117253.6889,Prometheus range query
+trigger_offered,2940.94,121747.9111,Prometheus range query
+trigger_offered,2955.94,122254.2222,Prometheus range query
+trigger_offered,2970.94,125314.8444,Prometheus range query
+trigger_offered,2985.94,126031.6444,Prometheus range query
+trigger_offered,3000.94,129410.8444,Prometheus range query
+trigger_offered,3015.94,86419.9111,Prometheus range query
+trigger_offered,3030.94,43611.0222,Prometheus range query
+trigger_offered,3045.94,0.0,Prometheus range query
+trigger_offered,3060.94,0.0,Prometheus range query
+trigger_offered,3075.94,0.0,Prometheus range query
+trigger_offered,3090.94,0.0,Prometheus range query
+trigger_offered,3105.94,0.0,Prometheus range query
+trigger_offered,3120.94,0.0,Prometheus range query
+trigger_offered,3135.94,0.0,Prometheus range query
+trigger_offered,3150.94,0.0,Prometheus range query
+trigger_offered,3165.94,0.0,Prometheus range query
+trigger_offered,3180.94,0.0,Prometheus range query
+trigger_offered,3195.94,0.0,Prometheus range query
+trigger_offered,3210.94,0.0,Prometheus range query
+trigger_offered,3225.94,0.0,Prometheus range query
+trigger_offered,3240.94,0.0,Prometheus range query
+trigger_offered,3255.94,0.0,Prometheus range query
+trigger_offered,3270.94,0.0,Prometheus range query
+trigger_offered,3285.94,0.0,Prometheus range query
+trigger_offered,3300.94,0.0,Prometheus range query
+hpa_desired,0.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,15.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,30.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,45.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,60.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,75.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,90.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,105.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,120.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,135.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,150.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,165.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,180.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,195.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,210.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,225.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,240.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,255.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,270.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,285.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,300.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,315.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,330.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,345.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,360.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,375.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,390.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,405.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,420.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,435.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,450.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,465.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,480.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,495.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,510.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,525.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,540.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,555.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,570.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,585.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,600.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,615.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,630.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,645.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,660.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,675.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,690.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,705.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,720.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,735.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,750.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,765.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,780.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,795.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,810.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,825.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,840.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,855.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,870.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,885.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,900.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,915.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,930.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,945.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,960.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,975.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,990.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1005.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1020.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1035.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1050.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1065.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1080.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1095.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1110.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1125.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1140.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1155.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1170.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1185.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1200.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1215.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1230.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1245.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1260.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1275.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1290.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1305.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1320.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1335.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1350.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1365.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1380.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1395.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1410.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1425.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1440.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1455.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1470.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1485.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1500.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1515.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1530.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1545.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1560.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1575.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1590.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1605.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1620.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1635.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1650.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1665.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1680.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1695.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1710.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1725.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1740.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1755.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1770.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1785.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1800.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1815.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1830.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1845.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1860.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1875.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1890.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1905.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1920.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1935.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1950.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1965.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1980.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,1995.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2010.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2025.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2040.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2055.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2070.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2085.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2100.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2115.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2130.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2145.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2160.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2175.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2190.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2205.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2220.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2235.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2250.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2265.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2280.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2295.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2310.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2325.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2340.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2355.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2370.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2385.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2400.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2415.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2430.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2445.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2460.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2475.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2490.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2505.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2520.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2535.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2550.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2565.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2580.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2595.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2610.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2625.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2640.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2655.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2670.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2685.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2700.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2715.94,2,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2730.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2745.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2760.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2775.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2790.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2805.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2820.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2835.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2850.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2865.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2880.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2895.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2910.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2925.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2940.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2955.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2970.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,2985.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3000.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3015.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3030.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3045.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3060.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3075.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3090.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3105.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3120.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3135.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3150.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3165.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3180.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3195.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3210.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3225.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3240.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3255.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3270.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3285.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+hpa_desired,3300.94,3,autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+ready,0.94,2,replica_status_timeseries.json
+ready,15.94,2,replica_status_timeseries.json
+ready,30.94,2,replica_status_timeseries.json
+ready,45.94,2,replica_status_timeseries.json
+ready,60.94,2,replica_status_timeseries.json
+ready,75.94,2,replica_status_timeseries.json
+ready,90.94,2,replica_status_timeseries.json
+ready,105.94,2,replica_status_timeseries.json
+ready,120.94,2,replica_status_timeseries.json
+ready,135.94,2,replica_status_timeseries.json
+ready,150.94,2,replica_status_timeseries.json
+ready,165.94,2,replica_status_timeseries.json
+ready,180.94,2,replica_status_timeseries.json
+ready,195.94,2,replica_status_timeseries.json
+ready,210.94,2,replica_status_timeseries.json
+ready,225.94,2,replica_status_timeseries.json
+ready,240.94,2,replica_status_timeseries.json
+ready,255.94,2,replica_status_timeseries.json
+ready,270.94,2,replica_status_timeseries.json
+ready,285.94,2,replica_status_timeseries.json
+ready,300.94,2,replica_status_timeseries.json
+ready,315.94,2,replica_status_timeseries.json
+ready,330.94,2,replica_status_timeseries.json
+ready,345.94,2,replica_status_timeseries.json
+ready,360.94,2,replica_status_timeseries.json
+ready,375.94,2,replica_status_timeseries.json
+ready,390.94,2,replica_status_timeseries.json
+ready,405.94,2,replica_status_timeseries.json
+ready,420.94,2,replica_status_timeseries.json
+ready,435.94,2,replica_status_timeseries.json
+ready,450.94,2,replica_status_timeseries.json
+ready,465.94,2,replica_status_timeseries.json
+ready,480.94,2,replica_status_timeseries.json
+ready,495.94,2,replica_status_timeseries.json
+ready,510.94,2,replica_status_timeseries.json
+ready,525.94,2,replica_status_timeseries.json
+ready,540.94,2,replica_status_timeseries.json
+ready,555.94,2,replica_status_timeseries.json
+ready,570.94,2,replica_status_timeseries.json
+ready,585.94,2,replica_status_timeseries.json
+ready,600.94,2,replica_status_timeseries.json
+ready,615.94,2,replica_status_timeseries.json
+ready,630.94,2,replica_status_timeseries.json
+ready,645.94,2,replica_status_timeseries.json
+ready,660.94,2,replica_status_timeseries.json
+ready,675.94,2,replica_status_timeseries.json
+ready,690.94,2,replica_status_timeseries.json
+ready,705.94,2,replica_status_timeseries.json
+ready,720.94,2,replica_status_timeseries.json
+ready,735.94,2,replica_status_timeseries.json
+ready,750.94,2,replica_status_timeseries.json
+ready,765.94,2,replica_status_timeseries.json
+ready,780.94,2,replica_status_timeseries.json
+ready,795.94,2,replica_status_timeseries.json
+ready,810.94,2,replica_status_timeseries.json
+ready,825.94,2,replica_status_timeseries.json
+ready,840.94,2,replica_status_timeseries.json
+ready,855.94,2,replica_status_timeseries.json
+ready,870.94,2,replica_status_timeseries.json
+ready,885.94,2,replica_status_timeseries.json
+ready,900.94,2,replica_status_timeseries.json
+ready,915.94,2,replica_status_timeseries.json
+ready,930.94,2,replica_status_timeseries.json
+ready,945.94,2,replica_status_timeseries.json
+ready,960.94,2,replica_status_timeseries.json
+ready,975.94,2,replica_status_timeseries.json
+ready,990.94,2,replica_status_timeseries.json
+ready,1005.94,2,replica_status_timeseries.json
+ready,1020.94,2,replica_status_timeseries.json
+ready,1035.94,2,replica_status_timeseries.json
+ready,1050.94,2,replica_status_timeseries.json
+ready,1065.94,2,replica_status_timeseries.json
+ready,1080.94,2,replica_status_timeseries.json
+ready,1095.94,2,replica_status_timeseries.json
+ready,1110.94,2,replica_status_timeseries.json
+ready,1125.94,2,replica_status_timeseries.json
+ready,1140.94,2,replica_status_timeseries.json
+ready,1155.94,2,replica_status_timeseries.json
+ready,1170.94,2,replica_status_timeseries.json
+ready,1185.94,2,replica_status_timeseries.json
+ready,1200.94,2,replica_status_timeseries.json
+ready,1215.94,2,replica_status_timeseries.json
+ready,1230.94,2,replica_status_timeseries.json
+ready,1245.94,2,replica_status_timeseries.json
+ready,1260.94,2,replica_status_timeseries.json
+ready,1275.94,2,replica_status_timeseries.json
+ready,1290.94,2,replica_status_timeseries.json
+ready,1305.94,2,replica_status_timeseries.json
+ready,1320.94,2,replica_status_timeseries.json
+ready,1335.94,2,replica_status_timeseries.json
+ready,1350.94,2,replica_status_timeseries.json
+ready,1365.94,2,replica_status_timeseries.json
+ready,1380.94,2,replica_status_timeseries.json
+ready,1395.94,2,replica_status_timeseries.json
+ready,1410.94,2,replica_status_timeseries.json
+ready,1425.94,2,replica_status_timeseries.json
+ready,1440.94,2,replica_status_timeseries.json
+ready,1455.94,2,replica_status_timeseries.json
+ready,1470.94,2,replica_status_timeseries.json
+ready,1485.94,2,replica_status_timeseries.json
+ready,1500.94,2,replica_status_timeseries.json
+ready,1515.94,2,replica_status_timeseries.json
+ready,1530.94,2,replica_status_timeseries.json
+ready,1545.94,2,replica_status_timeseries.json
+ready,1560.94,2,replica_status_timeseries.json
+ready,1575.94,2,replica_status_timeseries.json
+ready,1590.94,2,replica_status_timeseries.json
+ready,1605.94,2,replica_status_timeseries.json
+ready,1620.94,2,replica_status_timeseries.json
+ready,1635.94,2,replica_status_timeseries.json
+ready,1650.94,2,replica_status_timeseries.json
+ready,1665.94,2,replica_status_timeseries.json
+ready,1680.94,2,replica_status_timeseries.json
+ready,1695.94,2,replica_status_timeseries.json
+ready,1710.94,2,replica_status_timeseries.json
+ready,1725.94,2,replica_status_timeseries.json
+ready,1740.94,2,replica_status_timeseries.json
+ready,1755.94,2,replica_status_timeseries.json
+ready,1770.94,2,replica_status_timeseries.json
+ready,1785.94,2,replica_status_timeseries.json
+ready,1800.94,2,replica_status_timeseries.json
+ready,1815.94,2,replica_status_timeseries.json
+ready,1830.94,2,replica_status_timeseries.json
+ready,1845.94,2,replica_status_timeseries.json
+ready,1860.94,2,replica_status_timeseries.json
+ready,1875.94,2,replica_status_timeseries.json
+ready,1890.94,2,replica_status_timeseries.json
+ready,1905.94,2,replica_status_timeseries.json
+ready,1920.94,2,replica_status_timeseries.json
+ready,1935.94,2,replica_status_timeseries.json
+ready,1950.94,2,replica_status_timeseries.json
+ready,1965.94,2,replica_status_timeseries.json
+ready,1980.94,2,replica_status_timeseries.json
+ready,1995.94,2,replica_status_timeseries.json
+ready,2010.94,2,replica_status_timeseries.json
+ready,2025.94,2,replica_status_timeseries.json
+ready,2040.94,2,replica_status_timeseries.json
+ready,2055.94,2,replica_status_timeseries.json
+ready,2070.94,2,replica_status_timeseries.json
+ready,2085.94,2,replica_status_timeseries.json
+ready,2100.94,2,replica_status_timeseries.json
+ready,2115.94,2,replica_status_timeseries.json
+ready,2130.94,2,replica_status_timeseries.json
+ready,2145.94,2,replica_status_timeseries.json
+ready,2160.94,2,replica_status_timeseries.json
+ready,2175.94,2,replica_status_timeseries.json
+ready,2190.94,2,replica_status_timeseries.json
+ready,2205.94,2,replica_status_timeseries.json
+ready,2220.94,2,replica_status_timeseries.json
+ready,2235.94,2,replica_status_timeseries.json
+ready,2250.94,2,replica_status_timeseries.json
+ready,2265.94,2,replica_status_timeseries.json
+ready,2280.94,2,replica_status_timeseries.json
+ready,2295.94,2,replica_status_timeseries.json
+ready,2310.94,2,replica_status_timeseries.json
+ready,2325.94,2,replica_status_timeseries.json
+ready,2340.94,2,replica_status_timeseries.json
+ready,2355.94,2,replica_status_timeseries.json
+ready,2370.94,2,replica_status_timeseries.json
+ready,2385.94,2,replica_status_timeseries.json
+ready,2400.94,2,replica_status_timeseries.json
+ready,2415.94,2,replica_status_timeseries.json
+ready,2430.94,2,replica_status_timeseries.json
+ready,2445.94,2,replica_status_timeseries.json
+ready,2460.94,2,replica_status_timeseries.json
+ready,2475.94,2,replica_status_timeseries.json
+ready,2490.94,2,replica_status_timeseries.json
+ready,2505.94,2,replica_status_timeseries.json
+ready,2520.94,2,replica_status_timeseries.json
+ready,2535.94,2,replica_status_timeseries.json
+ready,2550.94,2,replica_status_timeseries.json
+ready,2565.94,2,replica_status_timeseries.json
+ready,2580.94,2,replica_status_timeseries.json
+ready,2595.94,2,replica_status_timeseries.json
+ready,2610.94,2,replica_status_timeseries.json
+ready,2625.94,2,replica_status_timeseries.json
+ready,2640.94,2,replica_status_timeseries.json
+ready,2655.94,2,replica_status_timeseries.json
+ready,2670.94,2,replica_status_timeseries.json
+ready,2685.94,2,replica_status_timeseries.json
+ready,2700.94,2,replica_status_timeseries.json
+ready,2715.94,2,replica_status_timeseries.json
+ready,2730.94,2,replica_status_timeseries.json
+ready,2745.94,2,replica_status_timeseries.json
+ready,2760.94,2,replica_status_timeseries.json
+ready,2775.94,2,replica_status_timeseries.json
+ready,2790.94,2,replica_status_timeseries.json
+ready,2805.94,2,replica_status_timeseries.json
+ready,2820.94,2,replica_status_timeseries.json
+ready,2835.94,2,replica_status_timeseries.json
+ready,2850.94,3,replica_status_timeseries.json
+ready,2865.94,3,replica_status_timeseries.json
+ready,2880.94,3,replica_status_timeseries.json
+ready,2895.94,3,replica_status_timeseries.json
+ready,2910.94,3,replica_status_timeseries.json
+ready,2925.94,3,replica_status_timeseries.json
+ready,2940.94,3,replica_status_timeseries.json
+ready,2955.94,3,replica_status_timeseries.json
+ready,2970.94,3,replica_status_timeseries.json
+ready,2985.94,3,replica_status_timeseries.json
+ready,3000.94,3,replica_status_timeseries.json
+ready,3015.94,3,replica_status_timeseries.json
+ready,3030.94,3,replica_status_timeseries.json
+ready,3045.94,3,replica_status_timeseries.json
+ready,3060.94,3,replica_status_timeseries.json
+ready,3075.94,3,replica_status_timeseries.json
+ready,3090.94,3,replica_status_timeseries.json
+ready,3105.94,3,replica_status_timeseries.json
+ready,3120.94,3,replica_status_timeseries.json
+ready,3135.94,3,replica_status_timeseries.json
+ready,3150.94,3,replica_status_timeseries.json
+ready,3165.94,3,replica_status_timeseries.json
+ready,3180.94,3,replica_status_timeseries.json
+ready,3195.94,3,replica_status_timeseries.json
+ready,3210.94,3,replica_status_timeseries.json
+ready,3225.94,3,replica_status_timeseries.json
+ready,3240.94,3,replica_status_timeseries.json
+ready,3255.94,3,replica_status_timeseries.json
+ready,3270.94,3,replica_status_timeseries.json
+ready,3285.94,3,replica_status_timeseries.json
+ready,3300.94,3,replica_status_timeseries.json
+requested,0.94,2,replica_status_timeseries.json
+requested,15.94,2,replica_status_timeseries.json
+requested,30.94,2,replica_status_timeseries.json
+requested,45.94,2,replica_status_timeseries.json
+requested,60.94,2,replica_status_timeseries.json
+requested,75.94,2,replica_status_timeseries.json
+requested,90.94,2,replica_status_timeseries.json
+requested,105.94,2,replica_status_timeseries.json
+requested,120.94,2,replica_status_timeseries.json
+requested,135.94,2,replica_status_timeseries.json
+requested,150.94,2,replica_status_timeseries.json
+requested,165.94,2,replica_status_timeseries.json
+requested,180.94,2,replica_status_timeseries.json
+requested,195.94,2,replica_status_timeseries.json
+requested,210.94,2,replica_status_timeseries.json
+requested,225.94,2,replica_status_timeseries.json
+requested,240.94,2,replica_status_timeseries.json
+requested,255.94,2,replica_status_timeseries.json
+requested,270.94,2,replica_status_timeseries.json
+requested,285.94,2,replica_status_timeseries.json
+requested,300.94,2,replica_status_timeseries.json
+requested,315.94,2,replica_status_timeseries.json
+requested,330.94,2,replica_status_timeseries.json
+requested,345.94,2,replica_status_timeseries.json
+requested,360.94,2,replica_status_timeseries.json
+requested,375.94,2,replica_status_timeseries.json
+requested,390.94,2,replica_status_timeseries.json
+requested,405.94,2,replica_status_timeseries.json
+requested,420.94,2,replica_status_timeseries.json
+requested,435.94,2,replica_status_timeseries.json
+requested,450.94,2,replica_status_timeseries.json
+requested,465.94,2,replica_status_timeseries.json
+requested,480.94,2,replica_status_timeseries.json
+requested,495.94,2,replica_status_timeseries.json
+requested,510.94,2,replica_status_timeseries.json
+requested,525.94,2,replica_status_timeseries.json
+requested,540.94,2,replica_status_timeseries.json
+requested,555.94,2,replica_status_timeseries.json
+requested,570.94,2,replica_status_timeseries.json
+requested,585.94,2,replica_status_timeseries.json
+requested,600.94,2,replica_status_timeseries.json
+requested,615.94,2,replica_status_timeseries.json
+requested,630.94,2,replica_status_timeseries.json
+requested,645.94,2,replica_status_timeseries.json
+requested,660.94,2,replica_status_timeseries.json
+requested,675.94,2,replica_status_timeseries.json
+requested,690.94,2,replica_status_timeseries.json
+requested,705.94,2,replica_status_timeseries.json
+requested,720.94,2,replica_status_timeseries.json
+requested,735.94,2,replica_status_timeseries.json
+requested,750.94,2,replica_status_timeseries.json
+requested,765.94,2,replica_status_timeseries.json
+requested,780.94,2,replica_status_timeseries.json
+requested,795.94,2,replica_status_timeseries.json
+requested,810.94,2,replica_status_timeseries.json
+requested,825.94,2,replica_status_timeseries.json
+requested,840.94,2,replica_status_timeseries.json
+requested,855.94,2,replica_status_timeseries.json
+requested,870.94,2,replica_status_timeseries.json
+requested,885.94,2,replica_status_timeseries.json
+requested,900.94,2,replica_status_timeseries.json
+requested,915.94,2,replica_status_timeseries.json
+requested,930.94,2,replica_status_timeseries.json
+requested,945.94,2,replica_status_timeseries.json
+requested,960.94,2,replica_status_timeseries.json
+requested,975.94,2,replica_status_timeseries.json
+requested,990.94,2,replica_status_timeseries.json
+requested,1005.94,2,replica_status_timeseries.json
+requested,1020.94,2,replica_status_timeseries.json
+requested,1035.94,2,replica_status_timeseries.json
+requested,1050.94,2,replica_status_timeseries.json
+requested,1065.94,2,replica_status_timeseries.json
+requested,1080.94,2,replica_status_timeseries.json
+requested,1095.94,2,replica_status_timeseries.json
+requested,1110.94,2,replica_status_timeseries.json
+requested,1125.94,2,replica_status_timeseries.json
+requested,1140.94,2,replica_status_timeseries.json
+requested,1155.94,2,replica_status_timeseries.json
+requested,1170.94,2,replica_status_timeseries.json
+requested,1185.94,2,replica_status_timeseries.json
+requested,1200.94,2,replica_status_timeseries.json
+requested,1215.94,2,replica_status_timeseries.json
+requested,1230.94,2,replica_status_timeseries.json
+requested,1245.94,2,replica_status_timeseries.json
+requested,1260.94,2,replica_status_timeseries.json
+requested,1275.94,2,replica_status_timeseries.json
+requested,1290.94,2,replica_status_timeseries.json
+requested,1305.94,2,replica_status_timeseries.json
+requested,1320.94,2,replica_status_timeseries.json
+requested,1335.94,2,replica_status_timeseries.json
+requested,1350.94,2,replica_status_timeseries.json
+requested,1365.94,2,replica_status_timeseries.json
+requested,1380.94,2,replica_status_timeseries.json
+requested,1395.94,2,replica_status_timeseries.json
+requested,1410.94,2,replica_status_timeseries.json
+requested,1425.94,2,replica_status_timeseries.json
+requested,1440.94,2,replica_status_timeseries.json
+requested,1455.94,2,replica_status_timeseries.json
+requested,1470.94,2,replica_status_timeseries.json
+requested,1485.94,2,replica_status_timeseries.json
+requested,1500.94,2,replica_status_timeseries.json
+requested,1515.94,2,replica_status_timeseries.json
+requested,1530.94,2,replica_status_timeseries.json
+requested,1545.94,2,replica_status_timeseries.json
+requested,1560.94,2,replica_status_timeseries.json
+requested,1575.94,2,replica_status_timeseries.json
+requested,1590.94,2,replica_status_timeseries.json
+requested,1605.94,2,replica_status_timeseries.json
+requested,1620.94,2,replica_status_timeseries.json
+requested,1635.94,2,replica_status_timeseries.json
+requested,1650.94,2,replica_status_timeseries.json
+requested,1665.94,2,replica_status_timeseries.json
+requested,1680.94,2,replica_status_timeseries.json
+requested,1695.94,2,replica_status_timeseries.json
+requested,1710.94,2,replica_status_timeseries.json
+requested,1725.94,2,replica_status_timeseries.json
+requested,1740.94,2,replica_status_timeseries.json
+requested,1755.94,2,replica_status_timeseries.json
+requested,1770.94,2,replica_status_timeseries.json
+requested,1785.94,2,replica_status_timeseries.json
+requested,1800.94,2,replica_status_timeseries.json
+requested,1815.94,2,replica_status_timeseries.json
+requested,1830.94,2,replica_status_timeseries.json
+requested,1845.94,2,replica_status_timeseries.json
+requested,1860.94,2,replica_status_timeseries.json
+requested,1875.94,2,replica_status_timeseries.json
+requested,1890.94,2,replica_status_timeseries.json
+requested,1905.94,2,replica_status_timeseries.json
+requested,1920.94,2,replica_status_timeseries.json
+requested,1935.94,2,replica_status_timeseries.json
+requested,1950.94,2,replica_status_timeseries.json
+requested,1965.94,2,replica_status_timeseries.json
+requested,1980.94,2,replica_status_timeseries.json
+requested,1995.94,2,replica_status_timeseries.json
+requested,2010.94,2,replica_status_timeseries.json
+requested,2025.94,2,replica_status_timeseries.json
+requested,2040.94,2,replica_status_timeseries.json
+requested,2055.94,2,replica_status_timeseries.json
+requested,2070.94,2,replica_status_timeseries.json
+requested,2085.94,2,replica_status_timeseries.json
+requested,2100.94,2,replica_status_timeseries.json
+requested,2115.94,2,replica_status_timeseries.json
+requested,2130.94,2,replica_status_timeseries.json
+requested,2145.94,2,replica_status_timeseries.json
+requested,2160.94,2,replica_status_timeseries.json
+requested,2175.94,2,replica_status_timeseries.json
+requested,2190.94,2,replica_status_timeseries.json
+requested,2205.94,2,replica_status_timeseries.json
+requested,2220.94,2,replica_status_timeseries.json
+requested,2235.94,2,replica_status_timeseries.json
+requested,2250.94,2,replica_status_timeseries.json
+requested,2265.94,2,replica_status_timeseries.json
+requested,2280.94,2,replica_status_timeseries.json
+requested,2295.94,2,replica_status_timeseries.json
+requested,2310.94,2,replica_status_timeseries.json
+requested,2325.94,2,replica_status_timeseries.json
+requested,2340.94,2,replica_status_timeseries.json
+requested,2355.94,2,replica_status_timeseries.json
+requested,2370.94,2,replica_status_timeseries.json
+requested,2385.94,2,replica_status_timeseries.json
+requested,2400.94,2,replica_status_timeseries.json
+requested,2415.94,2,replica_status_timeseries.json
+requested,2430.94,2,replica_status_timeseries.json
+requested,2445.94,2,replica_status_timeseries.json
+requested,2460.94,2,replica_status_timeseries.json
+requested,2475.94,2,replica_status_timeseries.json
+requested,2490.94,2,replica_status_timeseries.json
+requested,2505.94,2,replica_status_timeseries.json
+requested,2520.94,2,replica_status_timeseries.json
+requested,2535.94,2,replica_status_timeseries.json
+requested,2550.94,2,replica_status_timeseries.json
+requested,2565.94,2,replica_status_timeseries.json
+requested,2580.94,2,replica_status_timeseries.json
+requested,2595.94,2,replica_status_timeseries.json
+requested,2610.94,2,replica_status_timeseries.json
+requested,2625.94,2,replica_status_timeseries.json
+requested,2640.94,2,replica_status_timeseries.json
+requested,2655.94,2,replica_status_timeseries.json
+requested,2670.94,2,replica_status_timeseries.json
+requested,2685.94,2,replica_status_timeseries.json
+requested,2700.94,2,replica_status_timeseries.json
+requested,2715.94,2,replica_status_timeseries.json
+requested,2730.94,3,replica_status_timeseries.json
+requested,2745.94,3,replica_status_timeseries.json
+requested,2760.94,3,replica_status_timeseries.json
+requested,2775.94,3,replica_status_timeseries.json
+requested,2790.94,3,replica_status_timeseries.json
+requested,2805.94,3,replica_status_timeseries.json
+requested,2820.94,3,replica_status_timeseries.json
+requested,2835.94,3,replica_status_timeseries.json
+requested,2850.94,3,replica_status_timeseries.json
+requested,2865.94,3,replica_status_timeseries.json
+requested,2880.94,3,replica_status_timeseries.json
+requested,2895.94,3,replica_status_timeseries.json
+requested,2910.94,3,replica_status_timeseries.json
+requested,2925.94,3,replica_status_timeseries.json
+requested,2940.94,3,replica_status_timeseries.json
+requested,2955.94,3,replica_status_timeseries.json
+requested,2970.94,3,replica_status_timeseries.json
+requested,2985.94,3,replica_status_timeseries.json
+requested,3000.94,3,replica_status_timeseries.json
+requested,3015.94,3,replica_status_timeseries.json
+requested,3030.94,3,replica_status_timeseries.json
+requested,3045.94,3,replica_status_timeseries.json
+requested,3060.94,3,replica_status_timeseries.json
+requested,3075.94,3,replica_status_timeseries.json
+requested,3090.94,3,replica_status_timeseries.json
+requested,3105.94,3,replica_status_timeseries.json
+requested,3120.94,3,replica_status_timeseries.json
+requested,3135.94,3,replica_status_timeseries.json
+requested,3150.94,3,replica_status_timeseries.json
+requested,3165.94,3,replica_status_timeseries.json
+requested,3180.94,3,replica_status_timeseries.json
+requested,3195.94,3,replica_status_timeseries.json
+requested,3210.94,3,replica_status_timeseries.json
+requested,3225.94,3,replica_status_timeseries.json
+requested,3240.94,3,replica_status_timeseries.json
+requested,3255.94,3,replica_status_timeseries.json
+requested,3270.94,3,replica_status_timeseries.json
+requested,3285.94,3,replica_status_timeseries.json
+requested,3300.94,3,replica_status_timeseries.json
+attainment,15.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,45.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,75.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,105.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,135.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,165.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,195.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,225.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,255.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,285.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,315.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,345.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,375.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,405.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,435.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,465.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,495.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,525.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,555.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,585.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,615.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,645.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,675.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,705.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,735.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,765.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,795.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,825.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,855.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,885.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,915.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,945.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,975.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1005.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1035.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1065.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1095.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1125.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1155.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1185.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1215.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1245.0,0.9799,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1275.0,0.0118,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1305.0,0.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1335.0,0.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1365.0,0.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1395.0,0.9346,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1425.0,0.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1455.0,0.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1485.0,0.9625,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1515.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1545.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1575.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1605.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1635.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1665.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1695.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1725.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1755.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1785.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1815.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1845.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1875.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1905.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1935.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1965.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,1995.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2025.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2055.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2085.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2115.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2145.0,0.9975,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2175.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2205.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2235.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2265.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2295.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2325.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2355.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2385.0,0.9989,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2415.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2445.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2475.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2505.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2535.0,0.8806,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2565.0,0.9092,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2595.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2625.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2655.0,0.998,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2685.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2715.0,0.9991,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2745.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2775.0,0.7717,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2805.0,0.7866,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2835.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2865.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2895.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2925.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2955.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,2985.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"
+attainment,3015.0,1.0,"client records; TTFT ≤ 2 s, TPOT ≤ 50 ms"

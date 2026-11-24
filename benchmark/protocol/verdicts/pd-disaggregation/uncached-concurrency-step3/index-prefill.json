@@ -11,265 +11,266 @@
   "min_replicas": 2,
   "stage_s": 600,
   "phase_s": 1200,
-  "C_req_s": 61.312,
+  "C_req_s": 38.766,
   "slo": {
    "ttft": 2.0,
    "tpot": 0.05
   },
-  "target": "blis"
+  "target": "blis",
+  "_prefill_need": "the same loads as index.json (C = 38.766 req/s, the decode pool's), with the prefill pool's capacities for `need`: 8192:256 knee 6.095 req/s, blend knee 15.328 req/s; 2048:2048 and 256:4096 never crossed in prefill (run 1 attempts), so 1e9 makes their need minReplicaCount. `need` is ceil(q / mu) and does not apply the minReplicaCount of 2"
  },
  "stair": {
-  "what": "SO-active staircase, blend, stages at (0.15, 0.3, 0.5, 0.7, 0.9) x C (C = 61.312 req/s)",
+  "what": "SO-active staircase, blend, stages at (0.15, 0.3, 0.5, 0.7, 0.9) x C (C = 38.766 req/s)",
   "seed": 102,
   "duration_s": 3000,
-  "expected_requests": 93807,
+  "expected_requests": 59312,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 600,
-    "rate": 9.1968,
+    "rate": 5.8149,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 600,
-    "rate": 18.3936,
+    "rate": 11.6298,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 600,
-    "rate": 30.656,
+    "rate": 19.383,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 600,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 600,
-    "rate": 55.1808,
+    "rate": 34.8894,
     "mix": "8192:256,2048:2048,256:4096"
    }
   ]
  },
  "mixshift": {
-  "what": "mix-shift at 12.190 req/s, one phase per mix: 8192:256 needs 2, 2048:2048 needs 1, 256:4096 needs 1 replicas",
+  "what": "mix-shift at 12.006 req/s, one phase per mix: 8192:256 needs 1, 2048:2048 needs 3, 256:4096 needs 3 replicas",
   "seed": 103,
   "duration_s": 3600,
-  "expected_requests": 43884,
+  "expected_requests": 43222,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 1200,
-    "rate": 12.19,
+    "rate": 12.006,
     "mix": "8192:256"
    },
    {
     "seconds": 1200,
-    "rate": 12.19,
+    "rate": 12.006,
     "mix": "2048:2048"
    },
    {
     "seconds": 1200,
-    "rate": 12.19,
+    "rate": 12.006,
     "mix": "256:4096"
    }
   ]
  },
  "overload-under": {
-  "what": "overload under the cap, blend: 18.394 then 0.8 x C = 49.050 req/s",
+  "what": "overload under the cap, blend: 7.753 then 0.8 x C = 31.013 req/s",
   "seed": 104,
   "duration_s": 2400,
-  "expected_requests": 80932,
+  "expected_requests": 46519,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 1200,
-    "rate": 18.3936,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1200,
-    "rate": 49.0496,
+    "rate": 31.0128,
     "mix": "8192:256,2048:2048,256:4096"
    }
   ]
  },
  "overload-over": {
-  "what": "overload over the cap, blend: 18.394 then 1.5 x C = 91.968 req/s",
+  "what": "overload over the cap, blend: 7.753 then 1.5 x C = 58.149 req/s",
   "seed": 105,
   "duration_s": 2400,
-  "expected_requests": 132434,
+  "expected_requests": 79083,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 1200,
-    "rate": 18.3936,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1200,
-    "rate": 91.968,
+    "rate": 58.149,
     "mix": "8192:256,2048:2048,256:4096"
    }
   ]
  },
  "bursty": {
-  "what": "bursty, blend: 4320 s at 0.2 x C = 12.262 req/s, then 3 x (1035 s at 0.7 x C = 42.918 req/s, 4320 s quiet)",
+  "what": "bursty, blend: 4320 s at 0.2 x C = 7.753 req/s, then 3 x (1035 s at 0.7 x C = 27.136 req/s, 4320 s quiet)",
   "seed": 108,
   "duration_s": 20385,
-  "expected_requests": 345156,
+  "expected_requests": 218233,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 4320,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1035,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1035,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1035,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    }
   ]
  },
  "short-spikes": {
-  "what": "short spikes, blend: 300 s at 0.2 x C, then 6 x (517 s at 0.7 x C = 42.918 req/s, 1800 s gap at 12.262 req/s), last gap 4320 s",
+  "what": "short spikes, blend: 300 s at 0.2 x C, then 6 x (517 s at 0.7 x C = 27.136 req/s, 1800 s gap at 7.753 req/s), last gap 4320 s",
   "seed": 109,
   "duration_s": 16722,
-  "expected_requests": 300147,
+  "expected_requests": 189775,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 300,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 517,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1800,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 517,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1800,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 517,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1800,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 517,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1800,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 517,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 1800,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 517,
-    "rate": 42.9184,
+    "rate": 27.1362,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 12.2624,
+    "rate": 7.7532,
     "mix": "8192:256,2048:2048,256:4096"
    }
   ]
  },
  "scale-down": {
-  "what": "scale-down, blend: 1755 s at 0.9 x C = 55.181 req/s, then 4320 s steps at 0.6, 0.3, 0.1 x C; needs 4, 3, 2, 1 replicas",
+  "what": "scale-down, blend: 1755 s at 0.9 x C = 34.889 req/s, then 4320 s steps at 0.6, 0.3, 0.1 x C; needs 6, 4, 2, 1 replicas",
   "seed": 110,
   "duration_s": 14715,
-  "expected_requests": 361710,
+  "expected_requests": 228700,
   "timeout_s": 311,
   "drain_s": 311,
   "phases": [
    {
     "seconds": 1755,
-    "rate": 55.1808,
+    "rate": 34.8894,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 36.7872,
+    "rate": 23.2596,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 18.3936,
+    "rate": 11.6298,
     "mix": "8192:256,2048:2048,256:4096"
    },
    {
     "seconds": 4320,
-    "rate": 6.1312,
+    "rate": 3.8766,
     "mix": "8192:256,2048:2048,256:4096"
    }
   ]
  },
  "agentic": {
-  "what": "agentic: 1.493 then 4.480 req/s = 0.1 and 0.3 x C x mean ISL of the blend (214510 prompt tok/s) / estimated mean prompt 14364",
+  "what": "agentic: 0.944 then 2.833 req/s = 0.1 and 0.3 x C x mean ISL of the blend (135629 prompt tok/s) / estimated mean prompt 14364",
   "seed": 106,
   "duration_s": 3600,
   "timeout_s": 311,
@@ -277,11 +278,11 @@
   "phases": [
    {
     "seconds": 1200,
-    "rate": 1.493
+    "rate": 0.944
    },
    {
     "seconds": 2400,
-    "rate": 4.48
+    "rate": 2.833
    }
   ],
   "mean_prompt_estimate": 14364.0

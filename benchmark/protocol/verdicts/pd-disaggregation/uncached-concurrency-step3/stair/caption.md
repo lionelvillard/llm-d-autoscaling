@@ -1,0 +1,1 @@
+The blend in five 600 s stages at 0.15, 0.3, 0.5, 0.7 and 0.9 x C (5.8 to 34.9 req/s). Decode went 2 to 5 Ready in stage 3 and to 6 in stage 5; prefill stayed at 2 until stage 5, then went to 3. A fell to 0.23 in the second two-minute bin of stage 3.
