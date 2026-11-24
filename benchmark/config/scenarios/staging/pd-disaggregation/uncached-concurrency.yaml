@@ -20,8 +20,10 @@
 #     fits one H100 per pod and is in blis-signal-lab's catalog (deepseek-v2-lite);
 #     maxModelLen 32768 and a 40Gi model PVC go with it.
 #   - min/max replicas sized to a 1-GPU-per-pod plant (task 0545 sized them for TP8 H200).
-# The per-pod constants in the formulas (marked CALIBRATE) are task 0545's GLM-5.3 TP8
-# H200 values until a knee run re-measures them on this model (protocol run-set.md §1).
+# The per-pod constants in the formulas (marked CALIBRATE) are calibrated for this model:
+# DeepSeek-V2-Lite, one H100 per pod, from the blis-signal-lab knees of the step 3
+# evaluation (benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency-step3.md),
+# with task 0545's rules. Task 0545's GLM-5.3 TP8 H200 values are given next to each one.
 #
 # This scenario deliberately contains NO backend-specific settings (image,
 # accelerator, per-role resources, vLLM command, plugins). Pick a backend by
@@ -257,9 +259,9 @@ scenario:
         scalingModifiers:
           target: "1"
           metricType: AverageValue
-          # 10850 = 0.7 x 15,500 computed prompt tokens/s per TP8 GLM-5.3 H200 prefill pod (BLIS).
-          # CALIBRATE: 0.7 x the knee of one prefill pod (deep-queue drain rate of uncached tokens).
-          formula: "max(done > 0 ? offered * comp / done : offered, comp) / 10850"
+          # CALIBRATE: 37540 = 0.7 x 53,628 computed prompt tokens/s, one DeepSeek-V2-Lite H100
+          # prefill pod's knee on the run set's blend (blis; GLM-5.3 TP8 H200: 10850).
+          formula: "max(done > 0 ? offered * comp / done : offered, comp) / 37540"
         triggers:
           - name: offered        # prompt tokens/s the router sends to prefill pods
             type: prometheus
@@ -325,10 +327,12 @@ scenario:
         scalingModifiers:
           target: "1"
           metricType: AverageValue
-          # CALIBRATE: 4 = 1.3 x the requests (running + waiting) one decode pod holds at its knee;
-          # 0.39 = the same operating point in completions/s per pod; 700 = the mean output length
-          # used before the first completion; 0.075 = the ITL SLO (s). Values: GLM-5.3 TP8 H200 (BLIS).
-          formula: "max(conc / 4, (ok > 0 ? lam * gen / ok : lam * 700) / (0.39 * 700), pods * kv / 0.8, pods * itl / 0.075)"
+          # CALIBRATE, one DeepSeek-V2-Lite H100 decode pod at the blend's knee (blis):
+          # 510 = 1.3 x the requests (running + waiting) it holds (GLM-5.3 TP8 H200: 4);
+          # 8.4 = the same operating point in completions/s (0.39); 2133 = the mean output length
+          # used before the first completion (700); 0.05 = the ITL SLO (s), the run set's TPOT
+          # limit (0.075).
+          formula: "max(conc / 510, (ok > 0 ? lam * gen / ok : lam * 2133) / (8.4 * 2133), pods * kv / 0.8, pods * itl / 0.05)"
         triggers:
           - name: conc           # driver: requests in progress on decode
             type: prometheus
