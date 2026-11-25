@@ -96,14 +96,14 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 
 | Pool | Mix | μ_SLO (req/s) | blis (step 3) | First plant (TCP) | Source |
 |---|---|---|---|---|---|
-| | | pending | | | |
+| decode | 8192:256 | 18.402 | 20.267 | 1.328 | [run 1a](uncached-concurrency-step5/knees/decode-8192x256/report.md): A 0.993 at 16.25 req/s, 0.910 at 20.40; KV binds (0.975) |
 
 ## Runs
 
 | # | Run | Status | Outcome | A | Errors | GPU-s (prefill + decode) | Report |
 |---|---|---|---|---|---|---|---|
-| 1a | knee decode 8192:256 | running | | | | | |
-| 1b | knee decode 2048:2048 | pending | | | | | |
+| 1a | knee decode 8192:256 | done (third attempt) | as expected; μ_SLO 18.402 req/s; KV binds, and the `kv` guard is the term that sizes decode | 0.645 (whole run) | 680 timeout | 8,400 (7,200 + 1,200) | [report](uncached-concurrency-step5/knees/decode-8192x256/report.md) |
+| 1b | knee decode 2048:2048 | running | | | | | |
 | 1c | knee decode 256:4096 | pending | | | | | |
 | 1d | knee decode blend | pending | | | | | |
 | 1e | knee prefill 8192:256 | pending | | | | | |
@@ -201,3 +201,5 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   04:42 UTC: both Deployments patched with the node anti-affinity; all pods
   rescheduled on GPUs reading 1,980 MHz by 04:51 UTC. Probe at 1,980 MHz:
   8192:256 at 8 req/s TPOT p50 10.6 ms, at 14 req/s 16.6 ms.
+- 2026-11-25 04:58–05:19 UTC: run 1a done, μ_SLO(8192:256, decode) =
+  18.402 req/s; lowest SM clock 1,290 MHz (a prefill GPU under load).

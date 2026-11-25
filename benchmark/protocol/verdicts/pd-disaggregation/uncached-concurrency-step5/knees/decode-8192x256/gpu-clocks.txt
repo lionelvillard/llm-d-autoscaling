@@ -1,0 +1,7 @@
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4 pokprod-b93r38s2 00000000:AB:00.0 1290
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4 pokprod-b93r38s3 00000000:2A:00.0 1635
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg pokprod-b93r39s0 00000000:18:00.0 1680
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w pokprod-b93r43s3 00000000:5D:00.0 1515
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x pokprod-b93r44s2 00000000:AB:00.0 1695
+deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd pokprod-b93r44s2 00000000:BA:00.0 1965
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk pokprod-b93r44s3 00000000:18:00.0 1635
