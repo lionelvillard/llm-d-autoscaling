@@ -98,6 +98,7 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 |---|---|---|---|---|---|
 | decode | 8192:256 | 18.402 | 20.267 | 1.328 | [run 1a](uncached-concurrency-step5/knees/decode-8192x256/report.md): A 0.993 at 16.25 req/s, 0.910 at 20.40; KV binds (0.975) |
 | decode | 2048:2048 | 6.525 | 5.647 | 4.931 | [run 1b](uncached-concurrency-step5/knees/decode-2048x2048/report.md): A 0.997 at 6.44 req/s, 0.192 at 7.94; KV binds (0.998) |
+| decode | 256:4096 | 3.826 | 4.002 | not measured | [run 1c](uncached-concurrency-step5/knees/decode-256x4096/report.md): A 1.000 at 3.60 req/s, 0.801 at 4.49; KV binds (0.967); an upper bound (300 s stages, 80 to 185 s requests) |
 
 ## Runs
 
@@ -105,8 +106,8 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 |---|---|---|---|---|---|---|---|
 | 1a | knee decode 8192:256 | done (third attempt) | as expected; μ_SLO 18.402 req/s; KV binds, and the `kv` guard is the term that sizes decode | 0.645 (whole run) | 680 timeout | 8,400 (7,200 + 1,200) | [report](uncached-concurrency-step5/knees/decode-8192x256/report.md) |
 | 1b | knee decode 2048:2048 | done (second attempt) | as expected; μ_SLO 6.525 req/s; KV binds; the composite reads 0.97 at the knee | 0.434 (whole run) | 2,671 timeout | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-2048x2048/report.md) |
-| 1c | knee decode 256:4096 | running | | | | | |
-| 1d | knee decode blend | pending | | | | | |
+| 1c | knee decode 256:4096 | done | as expected; μ_SLO 3.826 req/s (upper bound); KV binds | 0.606 (whole run) | 859 timeout | 3,600 (2,400 + 1,200) | [report](uncached-concurrency-step5/knees/decode-256x4096/report.md) |
+| 1d | knee decode blend | running | | | | | |
 | 1e | knee prefill 8192:256 | pending | | | | | |
 | 1f | knee prefill blend | pending | | | | | |
 | 2 | SO-active staircase | pending | | | | | |
@@ -207,3 +208,5 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   18.402 req/s; lowest SM clock 1,290 MHz (a prefill GPU under load).
 - 2026-11-25 05:29–05:50 UTC: run 1b's attempt at 5 req/s, discarded (stage 4
   passed). 06:01–06:24 UTC: run 1b done, μ_SLO(2048:2048, decode) = 6.525 req/s.
+- 2026-11-25 06:36–07:04 UTC: run 1c done, μ_SLO(256:4096, decode) = 3.826 req/s.
+  The blend's estimate: 3 / (1/18.402 + 1/6.525 + 1/3.826) = 6.397 req/s.
