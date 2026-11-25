@@ -78,14 +78,17 @@ TTFT p90 0.24 and 0.27 s, and vLLM's KV transfer log read 28 to 37 ms per
 
 ## μ_SLO
 
-Pending on the second plant. Each knee pins its pool at 1 and the other pool
-high enough not to bind.
+Each knee pins its pool at 1 and the other pool high enough not to bind.
+
+| Pool | Mix | μ_SLO (req/s) | blis (step 3) | First plant (TCP) | Source |
+|---|---|---|---|---|---|
+| decode | 8192:256 | 7.696 | 20.267 | 1.328 | [run 1a](uncached-concurrency-step5/knees/decode-8192x256/report.md): A 0.979 at 7.64 req/s, 0.061 at 9.40; TPOT then KV bind |
 
 ## Runs
 
 | # | Run | Status | Outcome | A | Errors | GPU-s (prefill + decode) | Report |
 |---|---|---|---|---|---|---|---|
-| 1a | knee decode 8192:256 | pending | | | | | |
+| 1a | knee decode 8192:256 | done (second attempt) | as expected; μ_SLO 7.696 req/s; TPOT then KV bind; `itl` is the largest decode term at the knee | 0.391 (whole run) | 3,108 timeout | 6,000 (4,800 + 1,200) | [report](uncached-concurrency-step5/knees/decode-8192x256/report.md) |
 | 1b | knee decode 2048:2048 | pending | | | | | |
 | 1c | knee decode 256:4096 | pending | | | | | |
 | 1d | knee decode blend | pending | | | | | |
@@ -114,6 +117,7 @@ rows are on the first (TCP) plant.
 | 1b, knee decode 2048:2048, estimate 4 req/s | `villardl-20261124-192912-484` | Stage 4 (4.97 req/s) A 0.988: the crossing is above the stages | estimate 6 req/s (run 1b) |
 | 1c, knee decode 256:4096, estimate 3 req/s | `villardl-20261124-203400-452` | Tool fault: harness pod deleted 11 min into the load after one failed API call (see "First plant") | not rerun on the first plant |
 | first plant | all of the above | the KV transfer over TCP; the owner had the plant rebuilt with RDMA | every knee, on the second plant |
+| 1a, knee decode 8192:256 at blis's estimate, 20.267 req/s (second plant) | `villardl-20261124-213215-481` | Stage 1 (12.2 req/s) A 0.000: TPOT p50 70 ms, KV 1.0; the generator also fell behind in stages 3 and 4. Probes through the router (150 s each) read TPOT p50 24 ms at 4 req/s and 34 ms at 7 req/s | estimate 9.5 req/s (run 1a) |
 
 ## Conclusions
 
@@ -169,3 +173,10 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   wrapper on the workstation that retries a failed read-only `get` on a
   transient API error and points every call at the one kubeconfig the owner
   refreshes. It changes no request the tool sends.
+- 2026-11-25 02:33–03:00 UTC: run 1a's first attempt on the second plant,
+  discarded (stage 1 failed). `llmdbenchmark`'s `oc cp` of the 73 MB results
+  ran at about 60 KB/s through the API server; it was stopped and the results
+  copied as an `xz` stream (5.3 MB, 79 s). From run 1a on, `run` uses
+  `--data-collect skip` and the results are copied that way.
+- 2026-11-25 03:34–03:55 UTC: run 1a done, μ_SLO(8192:256, decode) =
+  7.696 req/s.

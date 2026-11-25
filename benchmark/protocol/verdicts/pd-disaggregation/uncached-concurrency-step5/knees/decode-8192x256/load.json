@@ -1,0 +1,32 @@
+{
+ "knee-decode-8192x256": {
+  "what": "knee, 8192x256 (8192:256), stages at (0.6, 0.8, 1.0, 1.25) x estimate 9.5 req/s",
+  "seed": 1,
+  "duration_s": 1200,
+  "requests": 10409,
+  "timeout_s": 60,
+  "drain_s": 240,
+  "phases": [
+   {
+    "seconds": 300,
+    "rate": 5.7,
+    "mix": "8192:256"
+   },
+   {
+    "seconds": 300,
+    "rate": 7.6,
+    "mix": "8192:256"
+   },
+   {
+    "seconds": 300,
+    "rate": 9.5,
+    "mix": "8192:256"
+   },
+   {
+    "seconds": 300,
+    "rate": 11.875,
+    "mix": "8192:256"
+   }
+  ]
+ }
+}

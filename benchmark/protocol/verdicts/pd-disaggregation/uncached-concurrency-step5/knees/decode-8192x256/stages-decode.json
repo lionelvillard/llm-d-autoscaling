@@ -1,0 +1,146 @@
+{
+ "run": "knee-decode-8192x256",
+ "aligned_by": "first row of /private/tmp/claude-501/t551/s5/load2/knee-decode-8192x256.csv",
+ "rows": [
+  {
+   "stage": 1,
+   "seconds": 300,
+   "rate": 5.7,
+   "mix": "8192:256",
+   "offered_req_s": 5.6,
+   "lambda_in": 45875.2,
+   "lambda_out": 1607.2433333333333,
+   "sent": 1680,
+   "errors": {},
+   "A": 0.9821428571428571,
+   "ttft": [
+    0.4714029859751463,
+    0.717852583155036,
+    1.1127477288246155
+   ],
+   "tpot": [
+    0.037079703289211965,
+    0.042819473203124965,
+    0.0629068229073549
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 300.0,
+   "ready_replica_s": 300.0
+  },
+  {
+   "stage": 2,
+   "seconds": 300,
+   "rate": 7.6,
+   "mix": "8192:256",
+   "offered_req_s": 7.64,
+   "lambda_in": 62586.88,
+   "lambda_out": 2313.6366666666668,
+   "sent": 2292,
+   "errors": {},
+   "A": 0.9794938917975567,
+   "ttft": [
+    0.5231305444613099,
+    0.7942200899124146,
+    1.24035026691854
+   ],
+   "tpot": [
+    0.046710829980963584,
+    0.04770046663967517,
+    0.07074297493951913
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 300.0,
+   "ready_replica_s": 300.0
+  },
+  {
+   "stage": 3,
+   "seconds": 300,
+   "rate": 9.5,
+   "mix": "8192:256",
+   "offered_req_s": 9.396666666666667,
+   "lambda_in": 76977.49333333333,
+   "lambda_out": 2867.3233333333333,
+   "sent": 2819,
+   "errors": {},
+   "A": 0.061014544164597374,
+   "ttft": [
+    11.36758593749255,
+    23.599084426648915,
+    25.876413552090526
+   ],
+   "tpot": [
+    0.07026592452882552,
+    0.07117805982251531,
+    0.1057962736388778
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 300.0,
+   "ready_replica_s": 300.0
+  },
+  {
+   "stage": 4,
+   "seconds": 300,
+   "rate": 11.875,
+   "mix": "8192:256",
+   "offered_req_s": 12.06,
+   "lambda_in": 13926.4,
+   "lambda_out": 431.29,
+   "sent": 3618,
+   "errors": {
+    "error": 3108
+   },
+   "A": 0.0,
+   "ttft": [
+    31.900669704191387,
+    39.32691170182079,
+    49.28948955051601
+   ],
+   "tpot": [
+    0.07025546598083833,
+    0.07073039659755487,
+    0.10503436590836951
+   ],
+   "ready": [
+    1,
+    1
+   ],
+   "need": null,
+   "requested_replica_s": 300.0,
+   "ready_replica_s": 300.0
+  }
+ ],
+ "summary": {
+  "sent": 10409,
+  "A": 0.39071956960322796,
+  "errors": {
+   "error": 3108
+  },
+  "requested_replica_s": 1200.0,
+  "gpu_s": 1200.0,
+  "placement": {
+   "before_first_stage": 0,
+   "after_last_stage": 0,
+   "stages_off_rate": []
+  },
+  "knee": {
+   "mu_slo": 7.69640947368557,
+   "between_stages": [
+    2,
+    3
+   ],
+   "inside": true
+  }
+ }
+}
