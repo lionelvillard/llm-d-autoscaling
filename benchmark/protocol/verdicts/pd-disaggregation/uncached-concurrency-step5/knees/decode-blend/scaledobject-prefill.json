@@ -1,0 +1,194 @@
+{
+    "apiVersion": "keda.sh/v1alpha1",
+    "kind": "ScaledObject",
+    "metadata": {
+        "annotations": {
+            "autoscaling.keda.sh/paused-replicas": "3",
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"keda.sh/v1alpha1\",\"kind\":\"ScaledObject\",\"metadata\":{\"annotations\":{\"llm-d.ai/managed\":\"true\",\"llm-d.ai/model-id\":\"deepseek-ai/DeepSeek-V2-Lite\"},\"name\":\"deepseek-569eb6ed--v2-lite-prefill\",\"namespace\":\"step5-uncached-concurrency-20261125\"},\"spec\":{\"advanced\":{\"horizontalPodAutoscalerConfig\":{\"behavior\":{\"scaleDown\":{\"policies\":[{\"periodSeconds\":600,\"type\":\"Pods\",\"value\":1}],\"selectPolicy\":\"Max\",\"stabilizationWindowSeconds\":3600},\"scaleUp\":{\"policies\":[{\"periodSeconds\":300,\"type\":\"Pods\",\"value\":1}],\"selectPolicy\":\"Max\",\"stabilizationWindowSeconds\":900}}},\"scalingModifiers\":{\"formula\":\"max(done \\u003e 0 ? offered * comp / done : offered, comp) / 37540\",\"metricType\":\"AverageValue\",\"target\":\"1\"}},\"fallback\":{\"behavior\":\"currentReplicasIfHigher\",\"failureThreshold\":3,\"replicas\":2},\"maxReplicaCount\":4,\"minReplicaCount\":2,\"pollingInterval\":15,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"deepseek-569eb6ed--v2-lite-prefill\"},\"triggers\":[{\"authenticationRef\":{\"name\":\"keda-prometheus-auth\"},\"metadata\":{\"activationThreshold\":\"0\",\"authModes\":\"bearer\",\"ignoreNullValues\":\"false\",\"query\":\"sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace=\\\"step5-uncached-concurrency-20261125\\\",job=\\\"deepseek-569eb6ed--v2-lite-router-epp\\\",plugin_name=\\\"approx-prefix-cache-producer\\\",endpoint_role=\\\"prefill\\\"}[1m]))\\n\",\"serverAddress\":\"https://thanos-querier.openshift-monitoring.svc.cluster.local:9091\",\"threshold\":\"1\"},\"metricType\":\"AverageValue\",\"name\":\"offered\",\"type\":\"prometheus\"},{\"authenticationRef\":{\"name\":\"keda-prometheus-auth\"},\"metadata\":{\"activationThreshold\":\"0\",\"authModes\":\"bearer\",\"ignoreNullValues\":\"false\",\"query\":\"sum(rate(vllm:prompt_tokens_by_source_total{namespace=\\\"step5-uncached-concurrency-20261125\\\",role=\\\"prefill\\\",pod=~\\\"deepseek-569eb6ed--v2-lite-prefill-.*\\\",source=\\\"local_compute\\\"}[5m]))\\n\",\"serverAddress\":\"https://thanos-querier.openshift-monitoring.svc.cluster.local:9091\",\"threshold\":\"1\"},\"metricType\":\"AverageValue\",\"name\":\"comp\",\"type\":\"prometheus\"},{\"authenticationRef\":{\"name\":\"keda-prometheus-auth\"},\"metadata\":{\"activationThreshold\":\"0\",\"authModes\":\"bearer\",\"ignoreNullValues\":\"false\",\"query\":\"sum(rate(vllm:prompt_tokens_total{namespace=\\\"step5-uncached-concurrency-20261125\\\",role=\\\"prefill\\\",pod=~\\\"deepseek-569eb6ed--v2-lite-prefill-.*\\\"}[5m]))\\n\",\"serverAddress\":\"https://thanos-querier.openshift-monitoring.svc.cluster.local:9091\",\"threshold\":\"1\"},\"metricType\":\"AverageValue\",\"name\":\"done\",\"type\":\"prometheus\"}]}}\n",
+            "llm-d.ai/managed": "true",
+            "llm-d.ai/model-id": "deepseek-ai/DeepSeek-V2-Lite"
+        },
+        "creationTimestamp": "2026-11-25T02:07:59Z",
+        "finalizers": [
+            "finalizer.keda.sh"
+        ],
+        "generation": 1,
+        "labels": {
+            "scaledobject.keda.sh/name": "deepseek-569eb6ed--v2-lite-prefill"
+        },
+        "name": "deepseek-569eb6ed--v2-lite-prefill",
+        "namespace": "step5-uncached-concurrency-20261125",
+        "resourceVersion": "3190662557",
+        "uid": "94bf2d06-a3f2-4100-9a69-f425bd7b1ca9"
+    },
+    "spec": {
+        "advanced": {
+            "horizontalPodAutoscalerConfig": {
+                "behavior": {
+                    "scaleDown": {
+                        "policies": [
+                            {
+                                "periodSeconds": 600,
+                                "type": "Pods",
+                                "value": 1
+                            }
+                        ],
+                        "selectPolicy": "Max",
+                        "stabilizationWindowSeconds": 3600
+                    },
+                    "scaleUp": {
+                        "policies": [
+                            {
+                                "periodSeconds": 300,
+                                "type": "Pods",
+                                "value": 1
+                            }
+                        ],
+                        "selectPolicy": "Max",
+                        "stabilizationWindowSeconds": 900
+                    }
+                }
+            },
+            "scalingModifiers": {
+                "formula": "max(done \u003e 0 ? offered * comp / done : offered, comp) / 37540",
+                "metricType": "AverageValue",
+                "target": "1"
+            }
+        },
+        "fallback": {
+            "behavior": "currentReplicasIfHigher",
+            "failureThreshold": 3,
+            "replicas": 2
+        },
+        "maxReplicaCount": 4,
+        "minReplicaCount": 2,
+        "pollingInterval": 15,
+        "scaleTargetRef": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "name": "deepseek-569eb6ed--v2-lite-prefill"
+        },
+        "triggers": [
+            {
+                "authenticationRef": {
+                    "name": "keda-prometheus-auth"
+                },
+                "metadata": {
+                    "activationThreshold": "0",
+                    "authModes": "bearer",
+                    "ignoreNullValues": "false",
+                    "query": "sum(rate(llm_d_epp_prefix_prompt_tokens_sum{namespace=\"step5-uncached-concurrency-20261125\",job=\"deepseek-569eb6ed--v2-lite-router-epp\",plugin_name=\"approx-prefix-cache-producer\",endpoint_role=\"prefill\"}[1m]))\n",
+                    "serverAddress": "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091",
+                    "threshold": "1"
+                },
+                "metricType": "AverageValue",
+                "name": "offered",
+                "type": "prometheus"
+            },
+            {
+                "authenticationRef": {
+                    "name": "keda-prometheus-auth"
+                },
+                "metadata": {
+                    "activationThreshold": "0",
+                    "authModes": "bearer",
+                    "ignoreNullValues": "false",
+                    "query": "sum(rate(vllm:prompt_tokens_by_source_total{namespace=\"step5-uncached-concurrency-20261125\",role=\"prefill\",pod=~\"deepseek-569eb6ed--v2-lite-prefill-.*\",source=\"local_compute\"}[5m]))\n",
+                    "serverAddress": "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091",
+                    "threshold": "1"
+                },
+                "metricType": "AverageValue",
+                "name": "comp",
+                "type": "prometheus"
+            },
+            {
+                "authenticationRef": {
+                    "name": "keda-prometheus-auth"
+                },
+                "metadata": {
+                    "activationThreshold": "0",
+                    "authModes": "bearer",
+                    "ignoreNullValues": "false",
+                    "query": "sum(rate(vllm:prompt_tokens_total{namespace=\"step5-uncached-concurrency-20261125\",role=\"prefill\",pod=~\"deepseek-569eb6ed--v2-lite-prefill-.*\"}[5m]))\n",
+                    "serverAddress": "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091",
+                    "threshold": "1"
+                },
+                "metricType": "AverageValue",
+                "name": "done",
+                "type": "prometheus"
+            }
+        ]
+    },
+    "status": {
+        "authenticationsTypes": "keda-prometheus-auth",
+        "compositeScalerName": "composite-metric",
+        "conditions": [
+            {
+                "message": "ScaledObject is paused",
+                "reason": "ScaledObjectReady",
+                "status": "True",
+                "type": "Ready"
+            },
+            {
+                "message": "Scaling is performed because triggers are active",
+                "reason": "ScalerActive",
+                "status": "True",
+                "type": "Active"
+            },
+            {
+                "message": "No fallbacks are active on this scaled object",
+                "reason": "NoFallbackFound",
+                "status": "False",
+                "type": "Fallback"
+            },
+            {
+                "message": "ScaledObject is paused",
+                "reason": "ScaledObjectPaused",
+                "status": "True",
+                "type": "Paused"
+            }
+        ],
+        "externalMetricNames": [
+            "s0-prometheus",
+            "s1-prometheus",
+            "s2-prometheus"
+        ],
+        "health": {
+            "s0-prometheus": {
+                "numberOfFailures": 0,
+                "status": "Happy"
+            },
+            "s1-prometheus": {
+                "numberOfFailures": 0,
+                "status": "Happy"
+            },
+            "s2-prometheus": {
+                "numberOfFailures": 0,
+                "status": "Happy"
+            }
+        },
+        "hpaName": "keda-hpa-deepseek-569eb6ed--v2-lite-prefill",
+        "lastActiveTime": "2026-11-25T02:28:13Z",
+        "originalReplicaCount": 1,
+        "pausedReplicaCount": 3,
+        "scaleTargetGVKR": {
+            "group": "apps",
+            "kind": "Deployment",
+            "resource": "deployments",
+            "version": "v1"
+        },
+        "scaleTargetKind": "apps/v1.Deployment",
+        "triggersActivity": {
+            "s0-prometheus": {
+                "isActive": false
+            },
+            "s1-prometheus": {
+                "isActive": false
+            },
+            "s2-prometheus": {
+                "isActive": false
+            }
+        },
+        "triggersTypes": "prometheus"
+    }
+}

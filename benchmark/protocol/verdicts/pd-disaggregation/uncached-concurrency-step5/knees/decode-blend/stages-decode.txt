@@ -1,0 +1,11 @@
+knee-decode-blend: 7109 requests in the records; schedule aligned by first row of /private/tmp/claude-501/t551/s5/load2/knee-decode-blend.csv (first request at offset 0.038 s)
+| stage | s | set req/s | offered req/s | λ_in tok/s | λ_out tok/s | sent | errors | A | TTFT p50/p90/p99 s | TPOT p50/p90/p99 ms | Ready | need | requested replica-s | Ready replica-s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 300 | 3.838 | 3.890 | 13,071 | 8,656 | 1,167 | 0 | 99.9 % | 0.20/0.35/0.51 | 18.3/19.7/20.7 | 1–1 | – | 300 | 300 |
+| 2 | 300 | 5.118 | 5.207 | 18,384 | 11,065 | 1,562 | 0 | 99.7 % | 0.23/0.37/0.47 | 22.0/22.9/31.5 | 1–1 | – | 300 | 300 |
+| 3 | 300 | 6.397 | 6.587 | 23,020 | 14,186 | 1,976 | 0 | 98.1 % | 0.31/0.47/3.14 | 29.8/34.3/38.3 | 1–1 | – | 300 | 300 |
+| 4 | 300 | 7.996 | 8.013 | 28,621 | 17,070 | 2,404 | 0 | 0.7 % | 31.86/71.21/74.35 | 35.6/37.4/51.1 | 1–1 | – | 300 | 300 |
+
+run: 7,109 sent, A 65.8 %, errors 0, requested 1,200 replica-s = 1,200 GPU-s at 1 GPU per replica
+placement: 0 request(s) before the first stage, 0 after the last; stages more than 3 sd off their set rate: none: ok
+knee: μ_SLO = 6.632 req/s (A crosses 0.95 between stages 3 and 4)
