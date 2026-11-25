@@ -1,0 +1,1 @@
+The blend at 0.2 x C for 300 s, then six 517 s spikes at 0.7 x C (27.1 req/s) separated by 1,800 s gaps at 0.2 x C (7.75 req/s), then 4,320 s at 0.2 x C. Decode scaled up in every spike (2 to 5 or 6 Ready) and back to 2 afterwards; prefill never left 2. A was 0.088 to 0.095 in the spikes and 0.848 to 0.927 in the first five gaps.

@@ -1,0 +1,70 @@
+# step 3 run short-spikes, written by gen_load.py; do not edit by hand.
+# short spikes, blend: 300 s at 0.2 x C, then 6 x (517 s at 0.7 x C = 27.136 req/s, 1800 s gap at 7.753 req/s), last gap 4320 s
+# Absolute-rate mode (aggregate_rate: 0): each window's trace_rate is that client's req/s.
+version: "2"
+aggregate_rate: 0
+seed: 109
+clients:
+  - id: "8192x256"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 8192 } }
+    output_distribution: { type: constant, params: { value: 256 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 300000000, trace_rate: 2.5844 }
+        - { start_us: 300000000, end_us: 817000000, trace_rate: 9.0454 }
+        - { start_us: 817000000, end_us: 2617000000, trace_rate: 2.5844 }
+        - { start_us: 2617000000, end_us: 3134000000, trace_rate: 9.0454 }
+        - { start_us: 3134000000, end_us: 4934000000, trace_rate: 2.5844 }
+        - { start_us: 4934000000, end_us: 5451000000, trace_rate: 9.0454 }
+        - { start_us: 5451000000, end_us: 7251000000, trace_rate: 2.5844 }
+        - { start_us: 7251000000, end_us: 7768000000, trace_rate: 9.0454 }
+        - { start_us: 7768000000, end_us: 9568000000, trace_rate: 2.5844 }
+        - { start_us: 9568000000, end_us: 10085000000, trace_rate: 9.0454 }
+        - { start_us: 10085000000, end_us: 11885000000, trace_rate: 2.5844 }
+        - { start_us: 11885000000, end_us: 12402000000, trace_rate: 9.0454 }
+        - { start_us: 12402000000, end_us: 16722000000, trace_rate: 2.5844 }
+  - id: "2048x2048"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 2048 } }
+    output_distribution: { type: constant, params: { value: 2048 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 300000000, trace_rate: 2.5844 }
+        - { start_us: 300000000, end_us: 817000000, trace_rate: 9.0454 }
+        - { start_us: 817000000, end_us: 2617000000, trace_rate: 2.5844 }
+        - { start_us: 2617000000, end_us: 3134000000, trace_rate: 9.0454 }
+        - { start_us: 3134000000, end_us: 4934000000, trace_rate: 2.5844 }
+        - { start_us: 4934000000, end_us: 5451000000, trace_rate: 9.0454 }
+        - { start_us: 5451000000, end_us: 7251000000, trace_rate: 2.5844 }
+        - { start_us: 7251000000, end_us: 7768000000, trace_rate: 9.0454 }
+        - { start_us: 7768000000, end_us: 9568000000, trace_rate: 2.5844 }
+        - { start_us: 9568000000, end_us: 10085000000, trace_rate: 9.0454 }
+        - { start_us: 10085000000, end_us: 11885000000, trace_rate: 2.5844 }
+        - { start_us: 11885000000, end_us: 12402000000, trace_rate: 9.0454 }
+        - { start_us: 12402000000, end_us: 16722000000, trace_rate: 2.5844 }
+  - id: "256x4096"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 256 } }
+    output_distribution: { type: constant, params: { value: 4096 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 300000000, trace_rate: 2.5844 }
+        - { start_us: 300000000, end_us: 817000000, trace_rate: 9.0454 }
+        - { start_us: 817000000, end_us: 2617000000, trace_rate: 2.5844 }
+        - { start_us: 2617000000, end_us: 3134000000, trace_rate: 9.0454 }
+        - { start_us: 3134000000, end_us: 4934000000, trace_rate: 2.5844 }
+        - { start_us: 4934000000, end_us: 5451000000, trace_rate: 9.0454 }
+        - { start_us: 5451000000, end_us: 7251000000, trace_rate: 2.5844 }
+        - { start_us: 7251000000, end_us: 7768000000, trace_rate: 9.0454 }
+        - { start_us: 7768000000, end_us: 9568000000, trace_rate: 2.5844 }
+        - { start_us: 9568000000, end_us: 10085000000, trace_rate: 9.0454 }
+        - { start_us: 10085000000, end_us: 11885000000, trace_rate: 2.5844 }
+        - { start_us: 11885000000, end_us: 12402000000, trace_rate: 9.0454 }
+        - { start_us: 12402000000, end_us: 16722000000, trace_rate: 2.5844 }

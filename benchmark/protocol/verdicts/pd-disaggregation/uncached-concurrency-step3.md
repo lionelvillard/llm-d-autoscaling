@@ -146,7 +146,7 @@ because `minReplicaCount` is 2 (run-set.md §2).
 | 4b | overload over the cap | done (lab patch from the start) | as expected for the cap, no trigger fault: decode at 6 from t = 1,365 s with its trigger at or above 6; prefill reached its cap of 4 only at t = 2,520 s, after the load; A 0.003 in the 58.1 req/s phase (62,008 timeouts, 37,165 unfinished) | 0.120 | 62,008 timeout | 14,580 (5,100 + 9,480) |
 | 5 | agentic | done | as expected: both pools at their floor of 2; A 1.000; 0 errors; longest prompt 28,309 of 32,768 tokens | 1.000 | 0 | 14,400 (7,200 + 7,200) |
 | 8 | bursty | done (second attempt, lab patch) | problem shown: A 0.043 to 0.048 in all three spikes (26,518 timeouts); quiet phases A >= 0.996; prefill's third pod Ready 15 s after every spike and held about 3,900 s after; decode's sixth pod Ready 180 s after the third spike | 0.630 | 26,518 timeout | 111,420 (52,980 + 58,440) |
-| 9 | short spikes | pending | | | | | |
+| 9 | short spikes | done (lab patch from the start) | problem shown: A 0.848 to 0.927 in five of six gaps (0.088 to 0.095 in the spikes); decode scaled up in all six spikes (5th pod Ready after spike 4 ended), prefill in none (900 s window > 517 s spike) | 0.553 | 8,860 timeout | 87,828 (33,444 + 54,384) |
 | 10 | scale-down | pending | | | | | |
 | 6 | static-replica baseline | done | cost reference: prefill 3 and decode 6 pinned (run 3's peak), A 1.000 in every phase | 1.000 | 0 | 32,400 (10,800 + 21,600) |
 | 7 | scale from zero | not run | `minReplicaCount` is 2 (run-set.md §2: only with `minReplicaCount: 0`) | | | | |

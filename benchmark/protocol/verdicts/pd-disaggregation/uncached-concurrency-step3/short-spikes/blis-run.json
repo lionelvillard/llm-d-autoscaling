@@ -1,0 +1,118 @@
+{
+ "run": "short-spikes",
+ "epoch0": 1767225600.0,
+ "first_arrival_s": 0.245178,
+ "horizon_s": 17033.0,
+ "lead_in_s": 0.0,
+ "ready_at_load_start": {
+  "prefill": 2,
+  "decode": 2
+ },
+ "arm": {
+  "pin": null,
+  "static": null,
+  "start": {
+   "prefill": 2,
+   "decode": 2
+  }
+ },
+ "lab": "/private/tmp/claude-501/t551/lab-ttft",
+ "lab_commit": "25f2dfb6259853e784ee9e85911c8e4fa63770c6",
+ "scenario": "deepseek-v2-lite-h100-pd.yaml",
+ "seed": null,
+ "memory": {
+  "available_at_start_gib": 52.44,
+  "reserve_gib": 6.4,
+  "max_rss_gib": 46.04,
+  "peak_rss_gib": 40.57,
+  "killed": null
+ },
+ "fates": {
+  "generated": 189789,
+  "completed": 189789,
+  "timed_out": 0,
+  "in_flight_at_horizon": 0,
+  "queued_at_horizon": 0,
+  "not_started": 0,
+  "length_capped": 0
+ },
+ "hpa_log_sha256": {
+  "signals-hpa-decode.csv": "c61dde2f5cdff63e354dd150542089605c286190398e5729e7c11b5f3d4c1e70",
+  "signals-hpa-prefill.csv": "1f8f86538261fac4eaabaf4ce0dd65056965c0402ad340042cfadbb5936ccadb"
+ },
+ "schedule": {
+  "what": "short spikes, blend: 300 s at 0.2 x C, then 6 x (517 s at 0.7 x C = 27.136 req/s, 1800 s gap at 7.753 req/s), last gap 4320 s",
+  "seed": 109,
+  "duration_s": 16722,
+  "expected_requests": 189775,
+  "timeout_s": 311,
+  "drain_s": 311,
+  "phases": [
+   {
+    "seconds": 300,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 517,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 1800,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 517,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 1800,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 517,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 1800,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 517,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 1800,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 517,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 1800,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 517,
+    "rate": 27.1362,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 4320,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   }
+  ]
+ }
+}
