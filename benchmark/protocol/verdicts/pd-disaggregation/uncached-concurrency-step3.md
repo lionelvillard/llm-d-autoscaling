@@ -236,7 +236,7 @@ shown:
    pods to the end of the load (its trigger read 0.35 to 0.38 from t = 11,700 s, and
    the 3,600 s window had not ended), and decode first read 2 Ready 1,695 s into
    the last step, never 2 during the 0.3 x C step that needs 2. In the quiet
-   phases of runs 8 and 9, decode returned to 2 about 820 to 1,155 s after a
+   phases of runs 8 and 9, decode returned to 2 about 818 to 1,155 s after a
    spike and prefill's extra pod stayed 3,900 s.
 6. **Cost.** Run 3 used 38 % fewer GPU-seconds than the static fleet of its peak
    (19,950 against 32,400) and lost A only in phase 3 (0.840 against 1.000).
