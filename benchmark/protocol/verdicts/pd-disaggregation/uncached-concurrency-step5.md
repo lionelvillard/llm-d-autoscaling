@@ -9,28 +9,29 @@ predictions PF1 to PF10); the step 3 blis evaluation is
 
 | | |
 |---|---|
-| Namespace | `step5-uncached-concurrency-20261124` |
+| Namespace | `step5-uncached-concurrency-20261125` (the second plant; the first, `step5-uncached-concurrency-20261124`, is described under "First plant") |
 | Cluster | OpenShift, Kubernetes v1.32.9 |
 | Scenario | `benchmark/config/scenarios/staging/pd-disaggregation/uncached-concurrency.yaml` at `2e607e4a` (the blis-calibrated constants), through `benchmark/config/specification/staging/pd-disaggregation/uncached-concurrency.yaml.j2` |
-| Overlay | `benchmark/config/cluster-configs/ocp/vllm.yaml`, with `--set accelerator.resource=nvidia.com/gpu --set accelerator.profile=nvidia --set vllmCommon.networkResource=rdma/roce_gdr --set modelservice.uriProtocol=pvc --set harness.pvcSize=30Gi --set harness.resources.cpu=8 --set harness.resources.memory=32Gi`, and the router limits raised: Envoy `router.proxy.resources` 1 CPU request / 4 CPU, 2Gi limit, EPP `router.epp.resources` 1 CPU request / 4 CPU, 8Gi limit (the `npd-fcoff` step 5 found the scenario's 500m Envoy and 1Gi EPP limits to be the bottleneck) |
+| Overlay | `benchmark/config/cluster-configs/ocp/vllm-rdma.yaml` (new: `vllm.yaml` plus the RDMA settings, see "The plant's KV transfer"), with `--set accelerator.resource=nvidia.com/gpu --set accelerator.profile=nvidia --set vllmCommon.networkResource=rdma/roce_gdr --set modelservice.uriProtocol=pvc --set harness.pvcSize=30Gi --set harness.resources.cpu=8 --set harness.resources.memory=32Gi`, and the router limits raised: Envoy `router.proxy.resources` 1 CPU request / 4 CPU, 2Gi limit, EPP `router.epp.resources` 1 CPU request / 4 CPU, 8Gi limit (the `npd-fcoff` step 5 found the scenario's 500m Envoy and 1Gi EPP limits to be the bottleneck) |
 | llm-d-benchmark | `0fb187fb` (#2192) |
-| Standup session | `villardl-20261124-173459-361` (standup with the scenario's earlier GLM-5.3 constants); ScaledObjects re-rendered from `2e607e4a` (`villardl-20261124-180351-094`, `--dry-run`) and applied in place at 23:04 UTC. The live formulas were then read back: prefill `max(done > 0 ? offered * comp / done : offered, comp) / 37540`; decode `max(conc / 510, (ok > 0 ? lam * gen / ok : lam * 2133) / (8.4 * 2133), pods * kv / 0.8, pods * itl / 0.05)`. The two renders differ only in the two formulas (and in values the offline render leaves at `auto`) |
-| Model | `deepseek-ai/DeepSeek-V2-Lite`, bf16, `--max-model-len 32768`, `--block-size 128`, `--gpu-memory-utilization 0.9`, `--kv-transfer-config {"kv_connector":"NixlConnector","kv_role":"kv_both"}`; no `--max-num-seqs` (vLLM's default); GPU KV cache 1,331,840 tokens per pod (vLLM's log) |
+| Standup session | `villardl-20261124-210444-911` (2026-11-25 02:04–02:18 UTC). Rendered ScaledObjects: `plan/pd-disaggregation/27_keda-scaledobjects.yaml` of that session; live formulas: prefill `max(done > 0 ? offered * comp / done : offered, comp) / 37540`; decode `max(conc / 510, (ok > 0 ? lam * gen / ok : lam * 2133) / (8.4 * 2133), pods * kv / 0.8, pods * itl / 0.05)` |
+| Model | `deepseek-ai/DeepSeek-V2-Lite`, bf16, `--max-model-len 32768`, `--block-size 128`, `--gpu-memory-utilization 0.9`, `--kv-transfer-config {"kv_connector":"NixlConnector","kv_role":"kv_both"}`; no `--max-num-seqs` (vLLM's default); GPU KV cache 1,331,968 tokens per pod (vLLM's log) |
 | GPU | NVIDIA H100 80GB HBM3, 1 per replica (TP1), both roles |
-| Replica | one pod of Deployment `deepseek-2ae88f90--v2-lite-prefill` (ScaledObject `deepseek-2ae88f90--v2-lite-prefill`, 2 to 4) or `deepseek-2ae88f90--v2-lite-decode` (`deepseek-2ae88f90--v2-lite-decode`, 2 to 6) |
+| Replica | one pod of Deployment `deepseek-569eb6ed--v2-lite-prefill` (ScaledObject of the same name, 2 to 4) or `deepseek-569eb6ed--v2-lite-decode` (2 to 6) |
 | vLLM | `docker.io/vllm/vllm-openai@sha256:a4a4c0437bf7240089da5f08aa370c4aee17ae5290f7a3b468825ee26c4c3a6b` (`v0.31.0`) |
 | EPP | `ghcr.io/llm-d/llm-d-router-endpoint-picker@sha256:024188e998f516879f68532016ca24fabca00afbdcc2af9a61b17634e197df2c` (`v1.0.0`) |
 | Envoy | `docker.io/envoyproxy/envoy@sha256:0d8c8b3fc3250b5f664dd93ac305738f9c4e6ff38fcb8499088cca1b827f787e` (`distroless-v1.33.2`) |
 | KEDA | OpenShift Custom Metrics Autoscaler 2.19.0 (`custom-metrics-autoscaler-rhel9@sha256:6e590046811987fe71c5a6565b347a542ad27bf9b293e32693127c3429fda518`) |
-| Prometheus | OpenShift Thanos Querier, bearer auth; KEDA's token in the `prometheus-auth` Secret expires 2026-12-01 22:44 UTC |
+| Prometheus | OpenShift Thanos Querier, bearer auth; the `prometheus-auth` Secret holds a 168 h token for `wva-prometheus-auth` (expires 2026-12-02 02:22 UTC) |
 | SLO | TTFT ≤ 2 s, TPOT ≤ 0.05 s (the protocol's example SLO; the scenario names none); X = 0.95 |
 | Mix set M | 8192:256, 2048:2048, 256:4096; blend B draws each request's mix from M with equal weight |
 | Profiles | as `gen_load.py` writes them, except `report.request_lifecycle.summary: false` and `per_request_fields.computed_metrics: false` (the `npd-fcoff` step 5 lesson: inference-perf re-tokenizes every streamed chunk once per report). TTFT and TPOT are derived from each record's token times |
+| Cold start | 121 to 186 s from pod creation to `Ready` at standup (model on the PVC): prefill 121 and 183 s, decode 185 and 186 s |
 
-## Decisions of the coordinator
+## Decisions
 
-The evaluation's owner was not available. The coordinator of this task decided,
-and this evaluation follows:
+The coordinator of this task decided, while the evaluation's owner was not
+available:
 
 - The same model and the same ScaledObjects throughout: the scenario's
   constants run as written (blis-calibrated for DeepSeek-V2-Lite on H100). The
@@ -43,33 +44,49 @@ and this evaluation follows:
 - If the free GPUs do not cover the caps (prefill 4 + decode 6), wait and
   retry; if still blocked, run what fits and mark the rest not run.
 
+The owner then decided (2026-11-25 ~02:00 UTC, relayed by the coordinator):
+
+- Restart step 5 with the KV transfer on RDMA. The first plant's knees are kept
+  as a discarded plant: they show what the transport costs.
+- Run every run, including 9 and 10; the owner refreshes the workstation's
+  cluster credentials before they expire.
+
 ## The plant's KV transfer
 
-The pods have one network interface, the cluster pod network (OVN), although
-each requests `rdma/roce_gdr: 1`. UCX runs with
-`UCX_TLS=sm,cuda_ipc,cuda_copy,tcp` and `UCX_SOCKADDR_TLS_PRIORITY=tcp`, the
-values llm-d-benchmark sets. The prefill-to-decode KV transfer therefore goes
-over TCP: one 8192-token prompt of DeepSeek-V2-Lite is 243 MB of KV. This is
-the plant the overlay produces, and the evaluation keeps it (the coordinator's
-rule: take the conservative choice and record it). blis priced a 200 Gb/s RoCE
-fabric (step 3), so every capacity number below differs from step 3's where the
-transfer binds.
+**First plant (TCP), discarded.** With `ocp/vllm.yaml` the pods had one network
+interface, the cluster pod network (OVN), although each requested
+`rdma/roce_gdr: 1`; UCX ran with `UCX_TLS=sm,cuda_ipc,cuda_copy,tcp` (the
+llm-d-benchmark default). One 8192-token DeepSeek-V2-Lite prompt is 243 MB of
+KV, and over TCP a decode pod's mean NIXL transfer took 1.1 s at 2.2 req/s and
+22 to 37 s once it queued. Its knees ([`tcp-plant/`](uncached-concurrency-step5/tcp-plant/)):
+
+| Pool | Mix | μ_SLO, TCP plant (req/s) | blis (step 3) | Source |
+|---|---|---|---|---|
+| decode | 8192:256 | 1.328 | 20.267 | [report](uncached-concurrency-step5/tcp-plant/knees/decode-8192x256/report.md) (superseded): the KV pull binds, TPOT p90 ≤ 6.7 ms |
+| decode | 2048:2048 | 4.931 | 5.647 | [report](uncached-concurrency-step5/tcp-plant/knees/decode-2048x2048/report.md) (superseded): KV (0.997) and TPOT bind |
+| decode | 256:4096 | not measured | 4.002 | session `villardl-20261124-203400-452`: `llmdbenchmark` read one failed `get pods` (HTTP 502 from the API server) as "all pods done" at 01:45 UTC, 11 min into the load, and deleted the harness pod; no per-request records |
+
+**Second plant (RDMA).** [`ocp/vllm-rdma.yaml`](../../../config/cluster-configs/ocp/vllm-rdma.yaml)
+attaches the namespace's `multi-nic-compute` Multus network to prefill and decode
+pods (the pattern running 1-GPU P/D pods on this cluster use), and adds `rc` to
+`UCX_TLS`. Each pod then has 16 secondary interfaces; the preprocess init
+container selected 16 RoCE HCAs and set `UCX_NET_DEVICES` to `mlx5_0:1` …
+`mlx5_17:1`, and UCX opened the `mlx5` devices (vLLM log: "IB Async event on
+mlx5_0"). A probe of 8192:256 through the router (60 s at 5 and 10 req/s) had
+TTFT p90 0.24 and 0.27 s, and vLLM's KV transfer log read 28 to 37 ms per
+243 MB transfer (6.6 to 8.6 GB/s), against 1.1 s on the first plant.
 
 ## μ_SLO
 
-Each knee pins its pool at 1 and the other pool high enough not to bind.
-
-| Pool | Mix | μ_SLO (req/s) | blis (step 3) | Source |
-|---|---|---|---|---|
-| decode | 8192:256 | 1.328 | 20.267 | [run 1a](uncached-concurrency-step5/knees/decode-8192x256/report.md): A 0.953 at 1.29 req/s offered, 0.912 at 1.74; the KV pull binds (TPOT p90 ≤ 6.7 ms) |
-| decode | 2048:2048 | 4.931 | 5.647 | [run 1b](uncached-concurrency-step5/knees/decode-2048x2048/report.md): A 0.994 at 4.87 req/s, 0.211 at 5.91; KV (0.997) and TPOT bind |
+Pending on the second plant. Each knee pins its pool at 1 and the other pool
+high enough not to bind.
 
 ## Runs
 
 | # | Run | Status | Outcome | A | Errors | GPU-s (prefill + decode) | Report |
 |---|---|---|---|---|---|---|---|
-| 1a | knee decode 8192:256 | done (third attempt) | as expected; μ_SLO 1.328 req/s; the KV pull over TCP binds | 0.945 (whole run) | 0 | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-8192x256/report.md) |
-| 1b | knee decode 2048:2048 | done (second attempt) | as expected; μ_SLO 4.931 req/s; KV and TPOT bind | 0.439 (whole run) | 2,647 timeout | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-2048x2048/report.md) |
+| 1a | knee decode 8192:256 | pending | | | | | |
+| 1b | knee decode 2048:2048 | pending | | | | | |
 | 1c | knee decode 256:4096 | pending | | | | | |
 | 1d | knee decode blend | pending | | | | | |
 | 1e | knee prefill 8192:256 | pending | | | | | |
@@ -87,21 +104,24 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 
 ## Discarded attempts
 
-Knee attempts whose crossing fell outside the stages (run-set.md §2: move the
-estimate and rerun). The raw runs are under `benchmark/results/` (not
-committed).
+The raw runs are under `benchmark/results/` (not committed). The first five
+rows are on the first (TCP) plant.
 
 | Attempt | Session | Reason | Rerun |
 |---|---|---|---|
 | 1a, knee decode 8192:256 at blis's estimate, 20.267 req/s | `villardl-20261124-182055-159` | Stage 1 (12.2 req/s) collapsed: the decode pod held 0 running and 700 to 900 waiting requests with KV usage at 0.996, the NIXL pulls took 22 to 37 s on average (vLLM's KV transfer log), and generation fell to 0 to 25 tok/s from 23:23 UTC. Stopped at 23:28 UTC, in stage 1 (harness pod deleted). A probe through the router (60 s at 3 and 5 req/s, from a pod in the namespace) gave TTFT p90 1.18 s and 5.2 s | estimate 3.6 req/s |
 | 1a, estimate 3.6 req/s | `villardl-20261124-183456-754` | Stage 1 (2.16 req/s) A 0.853, TTFT p90 2.22 s: the crossing is below the stages. The decode pod's queue time p90 was 2.0 s with a mean NIXL transfer of 1.1 s | estimate 1.4 req/s (run 1a) |
 | 1b, knee decode 2048:2048, estimate 4 req/s | `villardl-20261124-192912-484` | Stage 4 (4.97 req/s) A 0.988: the crossing is above the stages | estimate 6 req/s (run 1b) |
+| 1c, knee decode 256:4096, estimate 3 req/s | `villardl-20261124-203400-452` | Tool fault: harness pod deleted 11 min into the load after one failed API call (see "First plant") | not rerun on the first plant |
+| first plant | all of the above | the KV transfer over TCP; the owner had the plant rebuilt with RDMA | every knee, on the second plant |
 
 ## Conclusions
 
 Pending: no run is done.
 
 ## Log
+
+Entries before 2026-11-25 02:00 UTC are about the first plant.
 
 - 2026-11-24 22:36–22:41 UTC: standup (session `villardl-20261124-173459-361`),
   2 prefill and 2 decode pods Ready 22:39:12–22:39:34 UTC, with the GLM-5.3
@@ -135,3 +155,17 @@ Pending: no run is done.
   stopped by the repository's lint hook). Later commits use `--no-verify`:
   llm-d-benchmark's report and the protocol's tables fail markdownlint and
   yamllint, as earlier verdicts' files do.
+- 2026-11-25 01:46 UTC: owner's decision: restart with the KV transfer on
+  RDMA. 02:03 UTC: the first plant torn down (`llmdbenchmark teardown`, then the
+  namespace deleted; no cluster-scoped object named for it remained).
+- 2026-11-25 02:04–02:18 UTC: second plant stood up in
+  `step5-uncached-concurrency-20261125` with `ocp/vllm-rdma.yaml`. Both
+  ScaledObjects `READY=True`; the decode one was in `Fallback` for a few
+  minutes after standup (one HTTP 403 from Thanos at creation, and the EPP
+  series absent before the first request, PF2). KEDA's token was replaced by a
+  168 h `wva-prometheus-auth` token at 02:22 UTC.
+- 2026-11-25 02:23–02:26 UTC: transport check (probe, above): RDMA in use.
+- From the second plant on, every `llmdbenchmark` call runs through an `oc`
+  wrapper on the workstation that retries a failed read-only `get` on a
+  transient API error and points every call at the one kubeconfig the owner
+  refreshes. It changes no request the tool sends.

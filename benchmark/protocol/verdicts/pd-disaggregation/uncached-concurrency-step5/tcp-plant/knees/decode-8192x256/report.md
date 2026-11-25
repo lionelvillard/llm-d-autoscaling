@@ -1,6 +1,12 @@
 # Step 5, run 1a: knee 8192:256, decode pool (pd-disaggregation/uncached-concurrency)
 
-Part of the [step 5 summary](../../../uncached-concurrency-step5.md).
+Part of the [step 5 summary](../../../../uncached-concurrency-step5.md).
+
+**Superseded (2026-11-25).** This knee ran on the first plant, whose KV
+transfer went over TCP on the pod network. The evaluation's owner had the plant
+rebuilt with the RDMA NICs attached (overlay `ocp/vllm-rdma.yaml`) and every
+knee rerun; see the summary's "First plant" section. The numbers below hold for
+the TCP plant only.
 
 | | |
 |---|---|
@@ -85,4 +91,7 @@ stages).
 
 ## Amendments
 
-None.
+- 2026-11-25 02:30 UTC: marked superseded. The plant was rebuilt with the
+  RDMA network attached (the owner's decision after this knee showed the TCP
+  transfer binding); the rerun is in `../../../knees/` of the summary's tree.
+  No number in this report changed.

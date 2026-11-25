@@ -1,0 +1,254 @@
+# BACKEND OVERLAY — real vLLM on GPU, P/D KV transfer over RDMA (RoCE)
+# Apply with: --cluster-config benchmark/config/cluster-configs/ocp/vllm-rdma.yaml
+#
+# A copy of vllm.yaml plus the settings that put the NIXL KV transfer on the
+# RDMA NICs. With vllm.yaml alone the pods get only the cluster pod network
+# (eth0): `vllmCommon.networkResource: auto` adds the `rdma/roce_gdr` resource
+# but attaches no secondary network, and llm-d-benchmark's default
+# UCX_TLS=sm,cuda_ipc,cuda_copy,tcp keeps UCX on TCP. One 8192-token
+# DeepSeek-V2-Lite prompt is 243 MB of KV; over TCP one decode pod pulled about
+# 1.3 such prompts per second within a 2 s TTFT (the uncached-concurrency
+# step 5, first plant). This overlay:
+#   - attaches the namespace's `multi-nic-compute` Multus network
+#     (k8s.v1.cni.cncf.io/networks) to prefill and decode pods, the pattern
+#     working 1-GPU P/D pods on this cluster use;
+#   - requests one `rdma/roce_gdr` device per pod;
+#   - adds `rc` (RDMA reliable connection) to UCX_TLS, so the preprocess init
+#     container pins UCX_NET_DEVICES to the RoCE HCAs it finds (mlx5_N:1).
+# Verify in a vLLM log that UCX uses rc over mlx5 devices, not tcp.
+#
+# BACKEND OVERLAY — real vLLM on GPU
+# Apply with: --cluster-config benchmark/config/cluster-configs/ocp/vllm.yaml
+#
+# Priority backend. Runs the real vLLM serving stack on GPUs with NixlConnector
+# P/D KV transfer, mirroring the upstream llm-d pd-disaggregation guide. Native
+# vllm: Prometheus metrics drive the scenario's KEDA scaling strategy unchanged.
+#
+# This is a STARTING POINT for a real GPU cluster; tune for your hardware:
+#   - accelerator.count / decode.parallelism.tensor (TP size)
+#   - decode/prefill resources (GPU memory, CPU)
+#   - affinity.nodeSelector (GPU product label)
+#   - model (swap facebook/opt-125m for a larger model as capacity allows)
+#
+# Merge note: dicts deep-merge, lists replace wholesale. `vllmCommon.volumes`
+# below fully replaces the scenario's shared-memory-only list (adds shared-config
+# required by the preprocess initContainer). This overlay sets `keda.prometheus`
+# (connection/auth only) for OpenShift clusters — see below.
+# `keda.scaledObjects` (triggers/thresholds) still comes from the scenario.
+#
+# KEDA PROMETHEUS AUTH (OpenShift): there is no `monitoring` namespace on
+# this cluster, and direct Prometheus access requires bearer-token auth
+# anyway, so triggers go through the Thanos Querier route instead (same
+# pattern already proven by the EPP+KEDA saturation path). The ServiceAccount
+# + ClusterRoleBinding below grant it read access to Thanos; the
+# `prometheus-auth` Secret (keys: bearerToken, ca.crt) they authenticate with
+# is NOT created here — KEDA's generic-scaledObjects path treats it as
+# user-supplied (see 27a_keda-triggerauthentication.yaml.j2 in llm-d-benchmark).
+# Create it once per namespace after standup:
+#   oc create token wva-prometheus-auth -n <namespace> --duration=24h > /tmp/tok
+#   oc get cm openshift-service-ca.crt -n <namespace> \
+#     -o jsonpath='{.data.service-ca\.crt}' > /tmp/ca.crt
+#   oc create secret generic prometheus-auth -n <namespace> \
+#     --from-file=ca.crt=/tmp/ca.crt --from-literal=bearerToken="$(cat /tmp/tok)"
+keda:
+  prometheus:
+    baseUrl: https://thanos-querier.openshift-monitoring.svc.cluster.local
+    port: 9091
+    authMode: bearer-secret
+    secretName: prometheus-auth
+
+extraObjects:
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: wva-prometheus-auth
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: allow-thanos-querier-api-access-${namespace.name}
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: allow-thanos-querier-api-access
+    subjects:
+      - kind: ServiceAccount
+        name: wva-prometheus-auth
+        namespace: ${namespace.name}
+
+# Secondary network for the RDMA NICs (see the header).
+annotations:
+  prefill:
+    pod:
+      k8s.v1.cni.cncf.io/networks: multi-nic-compute
+  decode:
+    pod:
+      k8s.v1.cni.cncf.io/networks: multi-nic-compute
+
+# GPU scheduling. Uncomment nodeSelector to pin to a GPU product.
+affinity:
+  enabled: false
+  # enabled: true
+  # nodeSelector:
+  #   nvidia.com/gpu.product: NVIDIA-H100-80GB-HBM3   # OpenShift
+  #   # gpu.nvidia.com/model: H200                     # Kubernetes
+  #   # cloud.google.com/gke-accelerator: nvidia-h100-80gb  # GKE
+
+accelerator:
+  count: 1
+  profile: auto
+  resource: auto
+
+model:
+  gpuMemoryUtilization: 0.90
+  blockSize: 128
+
+images:
+  vllm:
+    # Upstream vLLM v0.31.0, the image llm-d's GPU recipes use. llm-d no longer
+    # builds a CUDA image: ghcr.io/llm-d/llm-d-cuda stops at v0.9.0 (vLLM v0.26.0).
+    repository: docker.io/vllm/vllm-openai
+    tag: v0.31.0
+
+# shared-config carries llmdbench_env.sh written by the preprocess initContainer;
+# dshm is vLLM's shared-memory scratch. Replaces the scenario's dshm-only list.
+vllmCommon:
+  # RDMA data plane for the NIXL KV transfer (see the header).
+  ucxTls: "rc,sm,cuda_ipc,cuda_copy,tcp"
+  networkResource: "rdma/roce_gdr"
+  networkNr: "1"
+  volumes:
+    - name: shared-config
+      type: emptyDir
+      emptyDir: {}
+    - name: dshm
+      type: emptyDir
+      emptyDir:
+        medium: Memory
+        sizeLimit: 16Gi
+  volumeMounts:
+    - name: shared-config
+      mountPath: /shared-config
+    - name: dshm
+      mountPath: /dev/shm
+
+decode:
+  accelerator:
+    count: 1
+  parallelism:
+    tensor: 1
+    data: 1
+    dataLocal: 1
+    workers: 1
+  resources:
+    limits:
+      memory: 32Gi
+      cpu: "8"
+    requests:
+      memory: 32Gi
+      cpu: "8"
+  initContainers:
+    - name: preprocess
+      imageKey: benchmark
+      imagePullPolicy: Always
+      command: ["set_llmdbench_environment.py", "-e", "/shared-config/llmdbench_env.sh", "-i"]
+      volumeMounts:
+        - name: shared-config
+          mountPath: /shared-config
+  extraEnvVars:
+    - name: NVSHMEM_DEBUG
+      value: "none"
+    - name: NCCL_DEBUG
+      value: "WARN"
+    - name: NIXL_LOG_LEVEL
+      value: debug
+    - name: UCX_MAX_RMA_RAILS
+      value: "1"
+  extraContainerConfig:
+    securityContext:
+      capabilities:
+        add:
+          - "IPC_LOCK"
+          - "SYS_RAWIO"
+          - "NET_ADMIN"
+          - "NET_RAW"
+      runAsGroup: 0
+      runAsUser: 0
+    imagePullPolicy: Always
+  vllm:
+    customCommand: |
+      ${accelerator.runtimePreamble}
+      . /shared-config/llmdbench_env.sh
+      vllm serve /model-cache/$MODEL_PATH \
+      --host 0.0.0.0 \
+      --served-model-name $MODEL_NAME \
+      --port $VLLM_METRICS_PORT \
+      --block-size $VLLM_BLOCK_SIZE \
+      --max-model-len $VLLM_MAX_MODEL_LEN \
+      --tensor-parallel-size $TP_SIZE \
+      --gpu-memory-utilization $VLLM_ACCELERATOR_MEM_UTIL \
+      --kv-transfer-config '{"kv_connector":"NixlConnector", "kv_role":"kv_both"${accelerator.kvBufferDeviceJson}}' \
+      --disable-uvicorn-access-log \
+      --disable-access-log-for-endpoints=/health,/metrics,/v1/models \
+      ${accelerator.dtypeArgs} \
+      ${accelerator.executionArgs}
+
+prefill:
+  accelerator:
+    count: 1
+  parallelism:
+    tensor: 1
+    data: 1
+    dataLocal: 1
+    workers: 1
+  resources:
+    limits:
+      memory: 32Gi
+      cpu: "8"
+    requests:
+      memory: 32Gi
+      cpu: "8"
+  initContainers:
+    - name: preprocess
+      imageKey: benchmark
+      imagePullPolicy: Always
+      command: ["set_llmdbench_environment.py", "-e", "/shared-config/llmdbench_env.sh", "-i"]
+      volumeMounts:
+        - name: shared-config
+          mountPath: /shared-config
+  extraEnvVars:
+    - name: NVSHMEM_DEBUG
+      value: "none"
+    - name: NCCL_DEBUG
+      value: "WARN"
+    - name: NIXL_LOG_LEVEL
+      value: debug
+    - name: UCX_MAX_RMA_RAILS
+      value: "1"
+  extraContainerConfig:
+    securityContext:
+      capabilities:
+        add:
+          - "IPC_LOCK"
+          - "SYS_RAWIO"
+          - "NET_ADMIN"
+          - "NET_RAW"
+      runAsGroup: 0
+      runAsUser: 0
+    imagePullPolicy: Always
+  vllm:
+    customCommand: |
+      ${accelerator.runtimePreamble}
+      . /shared-config/llmdbench_env.sh
+      vllm serve /model-cache/$MODEL_PATH \
+      --host 0.0.0.0 \
+      --served-model-name $MODEL_NAME \
+      --port $VLLM_INFERENCE_PORT \
+      --block-size $VLLM_BLOCK_SIZE \
+      --max-model-len $VLLM_MAX_MODEL_LEN \
+      --tensor-parallel-size $TP_SIZE \
+      --gpu-memory-utilization $VLLM_ACCELERATOR_MEM_UTIL \
+      --kv-transfer-config '{"kv_connector":"NixlConnector", "kv_role":"kv_both"${accelerator.kvBufferDeviceJson}}' \
+      --disable-uvicorn-access-log \
+      --disable-access-log-for-endpoints=/health,/metrics,/v1/models \
+      ${accelerator.dtypeArgs} \
+      ${accelerator.executionArgs}
