@@ -1,0 +1,9 @@
+wrote /Users/villardl/.command-center/worktrees/task-0551/llm-d-autoscaling/benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency-step3/mixshift-static/load-vs-supply-prefill.svg and /Users/villardl/.command-center/worktrees/task-0551/llm-d-autoscaling/benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency-step3/mixshift-static/load-vs-supply-prefill.csv
+  offered load   : client records (open loop): input tokens/s, output tokens/s
+  ready replicas : replica_status_timeseries.json
+  requested      : yes
+  HPA desired    : autoscaler_timeseries.json (keda-hpa-pd-disaggregation-prefill)
+  trigger        : composite: Prometheus range query; threshold 1 AverageValue (from ScaledObject pd-disaggregation-prefill); offered: Prometheus range query; threshold 1 AverageValue (from ScaledObject pd-disaggregation-prefill)
+  SLO attainment : client records; TTFT ≤ 2 s, TPOT ≤ 50 ms
+  note: clock bridge: perf_counter -> epoch via stage-0 run.time.start; scheduled_time present
+  note: pd-disaggregation-prefill uses scalingModifiers: the HPA reads one composite metric (max(done > 0 ? offered * comp / done : offered, comp) / 37540, target 1, AverageValue), not each trigger. Pass its series as --trigger FILE:composite to draw what the HPA used

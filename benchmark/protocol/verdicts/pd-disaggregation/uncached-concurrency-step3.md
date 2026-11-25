@@ -148,7 +148,7 @@ because `minReplicaCount` is 2 (run-set.md §2).
 | 8 | bursty | pending | | | | | |
 | 9 | short spikes | pending | | | | | |
 | 10 | scale-down | pending | | | | | |
-| 6 | static-replica baseline | pending | | | | | |
+| 6 | static-replica baseline | done | cost reference: prefill 3 and decode 6 pinned (run 3's peak), A 1.000 in every phase | 1.000 | 0 | 32,400 (10,800 + 21,600) |
 | 7 | scale from zero | not run | `minReplicaCount` is 2 (run-set.md §2: only with `minReplicaCount: 0`) | | | | |
 
 ## Discarded attempts
@@ -164,6 +164,25 @@ move the estimate and rerun). They are not reports; the raw runs are under
 | decode 256:4096, estimate 4.5 req/s | crossing between stages 2 and 3 (A 1.000 to 0.835): inside the stages, but 3.87 req/s was an interpolation across a 0.8 req/s span, so the estimate was recentered | estimate 3.9 (run 1c: 4.002) |
 | prefill 2048:2048, estimates 22 and 40 req/s | A 1.000 in all stages up to 50 req/s (102,400 tok/s) | none: the pool's capacity for this mix is above what the decode pool (16 pods) can feed |
 | 4a, overload under the cap (1.2 x μ_SLO(B), then 0.8 x C = 31.013 req/s), first attempt | blis exited 1: `the emitted Result does not validate against blis-schemas`, with `request_rows[15129].e2e_us: is 197718867, less than ttft_us 197828060` and a negative `tpot_us`, on 1 row. Memory was not the cause (peak 25.2 of a 37.5 GiB budget, not killed). The same simulator defect as in `coordinator-kv`'s run 4b: a decode sub-request preempted after its first token has its TTFT rebuilt from a scheduling delay re-stamped at re-admission. Outside the configuration | rerun on the lab with the TTFT projection of inference-sim `dfa8987` (#2237) applied ([`lab-patch.diff`](uncached-concurrency-step3/overload-under/lab-patch.diff)): it changes the reported TTFT of disaggregated requests, not what the HPAs read. Used for runs 4a and 4b (4b ran on it from the start); the other runs ran without it unless they fail the same way |
+
+## Run 3 against run 6
+
+The same schedule (`mixshift`, seed 103), autoscaled from 2 pods per pool (run
+3) and pinned at run 3's peak Ready counts, prefill 3 and decode 6 (run 6).
+GPU-seconds are requested replica-seconds x 1 GPU, both pools.
+
+| Phase | Mix | A, run 3 | A after settling, run 3 | A, run 6 | GPU-s, run 3 | GPU-s, run 6 | Run 3 / run 6 |
+|---|---|---|---|---|---|---|---|
+| 1 | 8192:256 | 1.000 | 1.000 | 1.000 | 5,100 | 10,800 | 0.47 |
+| 2 | 2048:2048 | 1.000 | 1.000 | 1.000 | 6,000 | 10,800 | 0.56 |
+| 3 | 256:4096 | 0.840 | 1.000 | 1.000 | 8,850 | 10,800 | 0.82 |
+| all | | 0.947 | | 1.000 | 19,950 | 32,400 | 0.62 |
+
+Run 3 used 38 % fewer GPU-seconds (19,950 against 32,400). Its attainment cost
+was phase 3 (A 0.840 against 1.000): decode took 570 s to go from 2 to 6 Ready
+after the mix changed, with A 1.000 from t = 2,880 s ("after settling" is the
+last 720 s of phase 3). Run 3's phase 2 held decode at 2 against run 6's 6 with
+A 1.000 in both (n = 1 each).
 
 ## Conclusions
 

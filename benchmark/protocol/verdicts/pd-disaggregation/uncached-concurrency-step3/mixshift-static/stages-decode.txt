@@ -1,0 +1,9 @@
+mixshift: 43224 requests in the records; schedule aligned by blis-run.json (first request at offset 0.030 s)
+| stage | s | set req/s | offered req/s | λ_in tok/s | λ_out tok/s | sent | errors | A | TTFT p50/p90/p99 s | TPOT p50/p90/p99 ms | Ready | need | requested replica-s | Ready replica-s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1200 | 12.006 | 12.007 | 98,359 | 3,074 | 14,408 | 0 | 100.0 % | 0.22/0.39/0.55 | 7.5/9.5/11.0 | 6–6 | 1 | 7,200 | 7,200 |
+| 2 | 1200 | 12.006 | 12.007 | 24,590 | 24,590 | 14,408 | 0 | 100.0 % | 0.12/0.12/0.15 | 16.8/17.2/17.6 | 6–6 | 3 | 7,200 | 7,200 |
+| 3 | 1200 | 12.006 | 12.007 | 3,074 | 49,179 | 14,408 | 0 | 100.0 % | 0.10/0.11/0.12 | 18.9/19.3/20.0 | 6–6 | 3 | 7,200 | 7,200 |
+
+run: 43,224 sent, A 100.0 %, errors 0, requested 21,600 replica-s = 21,600 GPU-s at 1 GPU per replica
+placement: 0 request(s) before the first stage, 0 after the last; stages more than 3 sd off their set rate: none: ok
