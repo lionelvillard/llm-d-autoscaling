@@ -162,8 +162,8 @@ inference-perf holds every request's token times in memory.
 | 1d | knee decode blend | done | as expected; μ_SLO 6.632 req/s; KV binds; the `kv` guard crosses 1.1 at the knee, the drivers past it | 0.658 (whole run) | 0 | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-blend/report.md) |
 | 1e | knee prefill 8192:256 | done (second attempt) | as expected; μ_SLO 7.978 req/s (65,356 tok/s); the prefill composite reads about 2.8 at this knee | 0.385 (whole run) | 2,479 timeout | 3,600 (1,200 + 2,400) | [report](uncached-concurrency-step5/knees/prefill-8192x256/report.md) |
 | 1f | knee prefill blend | done | as expected; μ_SLO 15.205 req/s (53,202 tok/s); the prefill composite reads 2.19 at the knee (EPP tokens 1.6 × engine tokens) | 0.627 (whole run) | 82 `ClientConnectorError`, 4 HTTP 503 | 7,200 (1,200 + 6,000) | [report](uncached-concurrency-step5/knees/prefill-blend/report.md) |
-| 2 | SO-active staircase | running | | | | | |
-| 3 | mix-shift | pending | | | | | |
+| 2 | SO-active staircase | done | problem shown: A 0.078 to 0.137 from 0.5 × C on; decode one stage late (180 s cold start), prefill 915 s after its ask (PF6); the router's Envoy at its 4-CPU limit, 3,546 connection errors | 0.259 | 1,328 timeout, 3,546 `ClientConnectorError`, 263 `ClientPayloadError`, 30 HTTP 503 | 19,809 (7,612 + 12,197) | [report](uncached-concurrency-step5/stair/report.md) |
+| 3 | mix-shift | running | | | | | |
 | 4a | overload under the cap | pending | | | | | |
 | 4b | overload over the cap | pending | | | | | |
 | 5 | agentic | pending | | | | | |
@@ -193,7 +193,23 @@ rows are on the first (TCP) plant.
 
 ## Conclusions
 
-Pending: no run is done.
+2026-11-25 12:05 UTC, partial: the knees and run 2. Runs 3, 4a, 4b, 5, 8, 9,
+10 and 6 are pending.
+
+- On the RDMA plant the GPU knees are close to blis's: decode 0.91 to 1.16 ×
+  (8192:256 18.40, 2048:2048 6.53, 256:4096 3.83, blend 6.63 req/s), prefill
+  1.31 × on 8192:256 and 0.99 × on the blend. The scenario's constants, taken
+  from blis, are within 10 % of what the same rules give on the GPU (37,241,
+  570, 8.62 against 37,540, 510, 8.4).
+- The EPP counts 1.55 to 1.64 × the engine's prompt tokens in every knee
+  (PF3), so the prefill ScaledObject asks for about 1.6 × the pods its 0.7
+  target means.
+- KV binds decode on every mix, and the `kv` guard, not `conc` or the
+  offered-output term, is what crosses the HPA's tolerance first at the
+  8192:256 and blend knees (PF10, PF5).
+- Run 2: decode follows load but one stage late, and the router's Envoy
+  saturates its 4-CPU limit above about 20 req/s of the blend; A falls to 0.08
+  to 0.14 from 0.5 × C with the GPU pools at or near their need.
 
 ## Log
 
@@ -274,3 +290,8 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   PVC was grown from 30 Gi to 150 Gi (09:51 UTC).
 - 2026-11-25 09:53 UTC: run 2 armed (both pools pinned at 2 for 300 s, then
   resumed).
+- 2026-11-25 10:01–11:00 UTC: run 2's load; the harness wrote its results at
+  11:50 UTC (about 50 min of post-processing, 107 GiB resident). Run 3 armed at
+  11:52 UTC.
+- 2026-11-25 12:00 UTC: question to the owner (through the coordinator): raise
+  the router's Envoy CPU limit? Until an answer, the plant stays unchanged.

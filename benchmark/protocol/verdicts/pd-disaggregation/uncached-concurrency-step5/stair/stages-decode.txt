@@ -1,0 +1,11 @@
+stair: 64108 requests in the records; schedule aligned by first row of /private/tmp/claude-501/t551/s5/load2/stair.csv (first request at offset 0.027 s)
+| stage | s | set req/s | offered req/s | λ_in tok/s | λ_out tok/s | sent | errors | A | TTFT p50/p90/p99 s | TPOT p50/p90/p99 ms | Ready | need | requested replica-s | Ready replica-s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 630 | 5.969 | 5.829 | 19,986 | 12,580 | 3,672 | 0 | 99.7 % | 0.22/0.38/0.54 | 16.3/17.1/23.7 | 2–2 | 1 | 1,260 | 1,260 |
+| 2 | 630 | 11.938 | 11.738 | 41,185 | 25,209 | 7,395 | 0 | 99.7 % | 0.31/0.45/0.59 | 24.6/25.3/34.3 | 2–2 | 2 | 1,260 | 1,260 |
+| 3 | 630 | 19.896 | 20.144 | 62,512 | 37,635 | 12,691 | 1547 error | 7.8 % | 82.35/124.51/173.17 | 36.7/45.6/67.4 | 2–5 | 4 | 2,488 | 1,983 |
+| 4 | 630 | 27.854 | 27.932 | 90,236 | 56,533 | 17,597 | 1150 error | 8.3 % | 13.50/36.15/138.46 | 38.4/57.2/83.7 | 5–6 | 5 | 3,748 | 3,290 |
+| 5 | 630 | 35.813 | 36.116 | 113,145 | 68,871 | 22,753 | 2470 error | 13.7 % | 9.31/19.95/28.52 | 32.0/50.5/68.2 | 5–6 | 6 | 3,441 | 3,441 |
+
+run: 64,108 sent, A 25.9 %, errors {'error': 5167}, requested 12,197 replica-s = 12,197 GPU-s at 1 GPU per replica
+placement: 0 request(s) before the first stage, 0 after the last; stages more than 3 sd off their set rate: none: ok
