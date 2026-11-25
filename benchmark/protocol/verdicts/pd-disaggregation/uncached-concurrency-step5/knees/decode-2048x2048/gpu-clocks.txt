@@ -1,0 +1,4 @@
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w pokprod-b93r43s3 00000000:5D:00.0 1965
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x pokprod-b93r44s2 00000000:AB:00.0 1980
+deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd pokprod-b93r44s2 00000000:BA:00.0 1605
+deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk pokprod-b93r44s3 00000000:18:00.0 1965

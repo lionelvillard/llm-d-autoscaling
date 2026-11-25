@@ -1,0 +1,221 @@
+LAST SEEN   TYPE      REASON                   OBJECT                                                     MESSAGE
+111m        Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x to pokprod-b93r44s2
+107m        Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w to pokprod-b93r43s3
+28m         Normal    Scheduled                pod/inference-perf-dzd0oieq                                Successfully assigned step5-uncached-concurrency-20261125/inference-perf-dzd0oieq to pokprod-b93r44s2
+143m        Normal    Scheduled                pod/inference-perf-faa5isb3                                Successfully assigned step5-uncached-concurrency-20261125/inference-perf-faa5isb3 to pokprod-b93r44s2
+96m         Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4 to pokprod-b93r38s3
+59m         Normal    Scheduled                pod/inference-perf-jmhj97h2                                Successfully assigned step5-uncached-concurrency-20261125/inference-perf-jmhj97h2 to pokprod-b93r44s2
+89m         Normal    Scheduled                pod/inference-perf-p7j50uz4                                Successfully assigned step5-uncached-concurrency-20261125/inference-perf-p7j50uz4 to pokprod-b93r44s2
+175m        Normal    Scheduled                pod/inference-perf-s9mnjmfr                                Successfully assigned step5-uncached-concurrency-20261125/inference-perf-s9mnjmfr to pokprod-b93r44s2
+96m         Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg to pokprod-b93r39s0
+28m         Normal    Scheduled                pod/smoketest-3nyt1ipa                                     Successfully assigned step5-uncached-concurrency-20261125/smoketest-3nyt1ipa to pokprod-b93r44s2
+175m        Normal    Scheduled                pod/smoketest-8y0ndxty                                     Successfully assigned step5-uncached-concurrency-20261125/smoketest-8y0ndxty to pokprod-b93r44s2
+60m         Normal    Scheduled                pod/smoketest-mcel1the                                     Successfully assigned step5-uncached-concurrency-20261125/smoketest-mcel1the to pokprod-b93r44s2
+143m        Normal    Scheduled                pod/smoketest-q4elfam4                                     Successfully assigned step5-uncached-concurrency-20261125/smoketest-q4elfam4 to pokprod-b93r44s2
+96m         Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4 to pokprod-b93r38s2
+109m        Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk to pokprod-b93r44s3
+111m        Normal    Scheduled                pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Successfully assigned step5-uncached-concurrency-20261125/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd to pokprod-b93r44s2
+89m         Normal    Scheduled                pod/smoketest-xkvatfzs                                     Successfully assigned step5-uncached-concurrency-20261125/smoketest-xkvatfzs to pokprod-b93r44s2
+176m        Normal    Pulled                   pod/step5-stage-traces                                     Container image "quay.io/fedora/fedora:latest" already present on machine
+176m        Normal    Created                  pod/step5-stage-traces                                     Created container: copy
+176m        Normal    Started                  pod/step5-stage-traces                                     Started container copy
+176m        Normal    AddedInterface           pod/step5-stage-traces                                     Add eth0 [10.131.7.157/23] from ovn-kubernetes
+176m        Normal    Killing                  pod/step5-stage-traces                                     Stopping container copy
+176m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-xs97q    Stopping container vllm
+176m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled down replica set deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd from 6 to 4
+176m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-mxmvg
+176m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-mxmvg    Stopping container vllm
+176m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-xs97q
+176m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-mxmvg    Readiness probe failed: Get "http://10.130.3.96:8000/health": dial tcp 10.130.3.96:8000: connect: connection refused
+176m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-xs97q    Readiness probe failed: Get "http://10.131.5.165:8000/health": dial tcp 10.131.5.165:8000: connect: connection refused
+175m        Normal    AddedInterface           pod/smoketest-8y0ndxty                                     Add eth0 [10.128.4.224/23] from ovn-kubernetes
+175m        Normal    Started                  pod/smoketest-8y0ndxty                                     Started container smoketest-8y0ndxty
+175m        Normal    Created                  pod/smoketest-8y0ndxty                                     Created container: smoketest-8y0ndxty
+175m        Normal    Pulled                   pod/smoketest-8y0ndxty                                     Container image "quay.io/fedora/fedora:45" already present on machine
+175m        Normal    AddedInterface           pod/inference-perf-s9mnjmfr                                Add eth0 [10.128.4.225/23] from ovn-kubernetes
+175m        Normal    Pulled                   pod/inference-perf-s9mnjmfr                                Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 491ms (491ms including waiting). Image size: 7775415425 bytes.
+175m        Normal    Pulling                  pod/inference-perf-s9mnjmfr                                Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+175m        Normal    Started                  pod/inference-perf-s9mnjmfr                                Started container harness
+175m        Normal    Created                  pod/inference-perf-s9mnjmfr                                Created container: harness
+144m        Normal    AddedInterface           pod/step5-stage-traces                                     Add eth0 [10.131.7.159/23] from ovn-kubernetes
+144m        Normal    Created                  pod/step5-stage-traces                                     Created container: copy
+144m        Normal    Pulled                   pod/step5-stage-traces                                     Container image "quay.io/fedora/fedora:latest" already present on machine
+144m        Normal    Started                  pod/step5-stage-traces                                     Started container copy
+144m        Normal    Killing                  pod/step5-stage-traces                                     Stopping container copy
+144m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled down replica set deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd from 4 to 3
+144m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-5gncg    Stopping container vllm
+144m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-5gncg
+144m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-5gncg    Readiness probe failed: Get "http://10.128.4.193:8000/health": dial tcp 10.128.4.193:8000: connect: connection refused
+143m        Normal    AddedInterface           pod/smoketest-q4elfam4                                     Add eth0 [10.128.4.234/23] from ovn-kubernetes
+143m        Normal    Pulled                   pod/smoketest-q4elfam4                                     Container image "quay.io/fedora/fedora:45" already present on machine
+143m        Normal    Started                  pod/smoketest-q4elfam4                                     Started container smoketest-q4elfam4
+143m        Normal    Created                  pod/smoketest-q4elfam4                                     Created container: smoketest-q4elfam4
+143m        Normal    SuccessfulAttachVolume   pod/inference-perf-faa5isb3                                AttachVolume.Attach succeeded for volume "pvc-d321d042-4af5-4c93-9daa-6eb6b3dec417"
+143m        Normal    Pulling                  pod/inference-perf-faa5isb3                                Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+143m        Normal    AddedInterface           pod/inference-perf-faa5isb3                                Add eth0 [10.128.4.241/23] from ovn-kubernetes
+143m        Normal    Pulled                   pod/inference-perf-faa5isb3                                Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 443ms (444ms including waiting). Image size: 7775415425 bytes.
+143m        Normal    Started                  pod/inference-perf-faa5isb3                                Started container harness
+143m        Normal    Created                  pod/inference-perf-faa5isb3                                Created container: harness
+112m        Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Created pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x
+112m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled up replica set deepseek-569eb6ed--v2-lite-prefill-6d48c955fd from 0 to 1
+111m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-decode               Scaled up replica set deepseek-569eb6ed--v2-lite-decode-7549c47cfd from 0 to 1
+111m        Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-decode-7549c47cfd    Created pod: deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd
+111m        Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    AttachVolume.Attach succeeded for volume "pvc-d321d042-4af5-4c93-9daa-6eb6b3dec417"
+111m        Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    AttachVolume.Attach succeeded for volume "pvc-214dcf43-ad96-445d-b8df-f6f063b8e503"
+111m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Add eth0 [10.128.4.251/23] from ovn-kubernetes
+111m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Add eth0 [10.128.4.250/23] from ovn-kubernetes
+111m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Add net1 [172.22.131.98/21 172.22.139.98/21 172.22.147.34/21 172.22.155.34/21 172.22.161.98/21 172.22.169.98/21 172.22.177.98/21 172.22.185.98/21 172.22.193.98/21 172.22.201.98/21 172.22.209.98/21 172.22.217.98/21 172.22.225.98/21 172.22.233.98/21 172.22.241.98/21 172.22.249.98/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+111m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 329ms (329ms including waiting). Image size: 7775415425 bytes.
+111m        Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+111m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Started container preprocess
+111m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Created container: preprocess
+111m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Add net1 [172.22.131.99/21 172.22.139.99/21 172.22.147.35/21 172.22.155.35/21 172.22.161.99/21 172.22.169.99/21 172.22.177.99/21 172.22.185.99/21 172.22.193.99/21 172.22.201.99/21 172.22.209.99/21 172.22.217.99/21 172.22.225.99/21 172.22.233.99/21 172.22.241.99/21 172.22.249.99/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+111m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Successfully pulled image "ghcr.io/llm-d/llm-d-router-disagg-sidecar:v1.0.0" in 334ms (334ms including waiting). Image size: 49107170 bytes.
+111m        Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Pulling image "ghcr.io/llm-d/llm-d-router-disagg-sidecar:v1.0.0"
+111m        Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+111m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Created container: routing-proxy
+111m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Started container routing-proxy
+111m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Created container: preprocess
+111m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Started container preprocess
+111m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 455ms (455ms including waiting). Image size: 7775415425 bytes.
+111m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+111m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Created container: vllm
+111m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Started container vllm
+111m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Started container vllm
+111m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+111m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Created container: vllm
+110m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-decode-7549c47cfd-ndzmd     Startup probe failed: Get "http://10.128.4.251:8200/health": dial tcp 10.128.4.251:8200: connect: connection refused
+110m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jgx4x    Startup probe failed: Get "http://10.128.4.250:8000/health": dial tcp 10.128.4.250:8000: connect: connection refused
+109m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-decode               Scaled down replica set deepseek-569eb6ed--v2-lite-decode-77ff4d7448 from 1 to 0
+109m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-decode-77ff4d7448-fk6cm     Stopping container routing-proxy
+109m        Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Created pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk
+109m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-9mt5m    Stopping container vllm
+109m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-9mt5m
+109m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled down replica set deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd from 3 to 2
+109m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled up replica set deepseek-569eb6ed--v2-lite-prefill-6d48c955fd from 1 to 2
+109m        Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    AttachVolume.Attach succeeded for volume "pvc-214dcf43-ad96-445d-b8df-f6f063b8e503"
+109m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-decode-77ff4d7448-fk6cm     Stopping container vllm
+109m        Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    AttachVolume.Attach succeeded for volume "pvc-d321d042-4af5-4c93-9daa-6eb6b3dec417"
+109m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-decode-77ff4d7448    Deleted pod: deepseek-569eb6ed--v2-lite-decode-77ff4d7448-fk6cm
+109m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-decode-77ff4d7448-fk6cm     Readiness probe failed: Get "http://10.130.3.94:8200/health": dial tcp 10.130.3.94:8200: connect: connection refused
+109m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Add eth0 [10.131.5.167/23] from ovn-kubernetes
+109m        Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+109m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Add net1 [172.22.128.129/21 172.22.136.129/21 172.22.144.129/21 172.22.152.129/21 172.22.160.65/21 172.22.168.65/21 172.22.176.65/21 172.22.184.65/21 172.22.192.65/21 172.22.200.65/21 172.22.208.65/21 172.22.216.65/21 172.22.224.65/21 172.22.232.65/21 172.22.240.65/21 172.22.248.65/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+109m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Created container: preprocess
+109m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 738ms (738ms including waiting). Image size: 7775415425 bytes.
+109m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Started container preprocess
+109m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Started container vllm
+109m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Created container: vllm
+109m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+108m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-5blsk    Startup probe failed: Get "http://10.131.5.167:8000/health": dial tcp 10.131.5.167:8000: connect: connection refused
+107m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled down replica set deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd from 2 to 1
+107m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled up replica set deepseek-569eb6ed--v2-lite-prefill-6d48c955fd from 2 to 3
+107m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-wxzsg    Stopping container vllm
+107m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-wxzsg
+107m        Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    AttachVolume.Attach succeeded for volume "pvc-d321d042-4af5-4c93-9daa-6eb6b3dec417"
+107m        Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Created pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w
+107m        Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    AttachVolume.Attach succeeded for volume "pvc-214dcf43-ad96-445d-b8df-f6f063b8e503"
+107m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Add eth0 [10.130.4.170/23] from ovn-kubernetes
+107m        Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Add net1 [172.22.131.1/21 172.22.139.1/21 172.22.146.193/21 172.22.154.193/21 172.22.161.65/21 172.22.169.65/21 172.22.177.65/21 172.22.185.65/21 172.22.193.65/21 172.22.201.65/21 172.22.209.65/21 172.22.217.65/21 172.22.225.65/21 172.22.233.65/21 172.22.241.65/21 172.22.249.65/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+107m        Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+106m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Created container: preprocess
+106m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 52.637s (52.637s including waiting). Image size: 7775415425 bytes.
+106m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Started container preprocess
+106m        Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Created container: vllm
+106m        Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+106m        Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Started container vllm
+104m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-dd55w    Startup probe failed: Get "http://10.130.4.170:8000/health": dial tcp 10.130.4.170:8000: connect: connection refused
+104m        Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled down replica set deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd from 1 to 0
+104m        Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-p8mn9
+104m        Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-p8mn9    Readiness probe failed: Get "http://10.128.8.172:8000/health": dial tcp 10.128.8.172:8000: connect: connection refused
+104m        Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-5cdcb65fdd-p8mn9    Stopping container vllm
+96m         Normal    Started                  pod/step5-stage-traces                                     Started container copy
+96m         Normal    AddedInterface           pod/step5-stage-traces                                     Add eth0 [10.131.7.174/23] from ovn-kubernetes
+96m         Normal    Pulled                   pod/step5-stage-traces                                     Container image "quay.io/fedora/fedora:latest" already present on machine
+96m         Normal    Created                  pod/step5-stage-traces                                     Created container: copy
+96m         Normal    Killing                  pod/step5-stage-traces                                     Stopping container copy
+96m         Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Created pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4
+96m         Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    AttachVolume.Attach succeeded for volume "pvc-214dcf43-ad96-445d-b8df-f6f063b8e503"
+96m         Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled up replica set deepseek-569eb6ed--v2-lite-prefill-6d48c955fd from 3 to 6
+96m         Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    AttachVolume.Attach succeeded for volume "pvc-d321d042-4af5-4c93-9daa-6eb6b3dec417"
+96m         Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Created pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg
+96m         Normal    SuccessfulCreate         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Created pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4
+96m         Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    AttachVolume.Attach succeeded for volume "pvc-d321d042-4af5-4c93-9daa-6eb6b3dec417"
+96m         Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    AttachVolume.Attach succeeded for volume "pvc-214dcf43-ad96-445d-b8df-f6f063b8e503"
+96m         Normal    SuccessfulAttachVolume   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    AttachVolume.Attach succeeded for volume "pvc-214dcf43-ad96-445d-b8df-f6f063b8e503"
+96m         Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Add eth0 [10.129.6.148/23] from ovn-kubernetes
+95m         Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+95m         Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Add net1 [172.22.130.1/21 172.22.138.1/21 172.22.145.193/21 172.22.153.193/21 172.22.160.225/21 172.22.168.225/21 172.22.176.225/21 172.22.184.225/21 172.22.192.225/21 172.22.200.225/21 172.22.208.225/21 172.22.216.225/21 172.22.224.225/21 172.22.232.225/21 172.22.240.225/21 172.22.248.225/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+95m         Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Add eth0 [10.128.8.187/23] from ovn-kubernetes
+95m         Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Add eth0 [10.131.9.11/23] from ovn-kubernetes
+95m         Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Add net1 [172.22.130.129/21 172.22.138.129/21 172.22.146.65/21 172.22.154.65/21 172.22.161.1/21 172.22.169.1/21 172.22.177.1/21 172.22.185.1/21 172.22.193.1/21 172.22.201.1/21 172.22.209.1/21 172.22.217.1/21 172.22.225.1/21 172.22.233.1/21 172.22.241.1/21 172.22.249.1/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+95m         Normal    AddedInterface           pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Add net1 [172.22.130.193/21 172.22.138.193/21 172.22.146.129/21 172.22.154.129/21 172.22.161.33/21 172.22.169.33/21 172.22.177.33/21 172.22.185.33/21 172.22.193.33/21 172.22.201.33/21 172.22.209.33/21 172.22.217.33/21 172.22.225.33/21 172.22.233.33/21 172.22.241.33/21 172.22.249.33/21] from step5-uncached-concurrency-20261125/multi-nic-compute
+95m         Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+95m         Normal    Pulling                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+95m         Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Started container preprocess
+95m         Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Created container: preprocess
+95m         Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 453ms (453ms including waiting). Image size: 7775415425 bytes.
+95m         Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Started container vllm
+95m         Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Created container: vllm
+95m         Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+93m         Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Startup probe failed: Get "http://10.128.8.187:8000/health": dial tcp 10.128.8.187:8000: connect: connection refused
+92m         Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Created container: preprocess
+92m         Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 3m4.342s (3m4.342s including waiting). Image size: 7775415425 bytes.
+92m         Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Started container preprocess
+92m         Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Created container: preprocess
+92m         Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 3m9.086s (3m9.086s including waiting). Image size: 7775415425 bytes.
+92m         Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Started container preprocess
+92m         Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Created container: vllm
+92m         Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Started container vllm
+92m         Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+92m         Normal    Started                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Started container vllm
+92m         Normal    Pulled                   pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Container image "docker.io/vllm/vllm-openai:v0.31.0" already present on machine
+92m         Normal    Created                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Created container: vllm
+91m         Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Startup probe failed: Get "http://10.129.6.148:8000/health": dial tcp 10.129.6.148:8000: connect: connection refused
+90m         Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Startup probe failed: Get "http://10.131.9.11:8000/health": dial tcp 10.131.9.11:8000: connect: connection refused
+89m         Normal    Created                  pod/smoketest-xkvatfzs                                     Created container: smoketest-xkvatfzs
+89m         Normal    Started                  pod/smoketest-xkvatfzs                                     Started container smoketest-xkvatfzs
+89m         Normal    Pulled                   pod/smoketest-xkvatfzs                                     Container image "quay.io/fedora/fedora:45" already present on machine
+89m         Normal    AddedInterface           pod/smoketest-xkvatfzs                                     Add eth0 [10.128.4.254/23] from ovn-kubernetes
+89m         Normal    Pulled                   pod/inference-perf-p7j50uz4                                Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 310ms (310ms including waiting). Image size: 7775415425 bytes.
+89m         Normal    AddedInterface           pod/inference-perf-p7j50uz4                                Add eth0 [10.128.4.255/23] from ovn-kubernetes
+89m         Normal    Pulling                  pod/inference-perf-p7j50uz4                                Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+89m         Normal    Started                  pod/inference-perf-p7j50uz4                                Started container harness
+89m         Normal    Created                  pod/inference-perf-p7j50uz4                                Created container: harness
+60m         Normal    Pulled                   pod/step5-stage-traces                                     Container image "quay.io/fedora/fedora:latest" already present on machine
+60m         Normal    AddedInterface           pod/step5-stage-traces                                     Add eth0 [10.131.7.184/23] from ovn-kubernetes
+60m         Normal    Started                  pod/step5-stage-traces                                     Started container copy
+60m         Normal    Created                  pod/step5-stage-traces                                     Created container: copy
+60m         Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg
+60m         Normal    Killing                  pod/step5-stage-traces                                     Stopping container copy
+60m         Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4
+60m         Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Stopping container vllm
+60m         Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-kkhkg    Stopping container vllm
+60m         Normal    SuccessfulDelete         replicaset/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd   Deleted pod: deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4
+60m         Normal    Killing                  pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Stopping container vllm
+60m         Normal    ScalingReplicaSet        deployment/deepseek-569eb6ed--v2-lite-prefill              Scaled down replica set deepseek-569eb6ed--v2-lite-prefill-6d48c955fd from 6 to 3
+60m         Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-tdkz4    Readiness probe failed: Get "http://10.131.9.11:8000/health": dial tcp 10.131.9.11:8000: connect: connection refused
+60m         Warning   Unhealthy                pod/deepseek-569eb6ed--v2-lite-prefill-6d48c955fd-jzvp4    Readiness probe failed: Get "http://10.128.8.187:8000/health": dial tcp 10.128.8.187:8000: connect: connection refused
+60m         Normal    AddedInterface           pod/smoketest-mcel1the                                     Add eth0 [10.128.5.11/23] from ovn-kubernetes
+60m         Normal    Pulled                   pod/smoketest-mcel1the                                     Container image "quay.io/fedora/fedora:45" already present on machine
+60m         Normal    Started                  pod/smoketest-mcel1the                                     Started container smoketest-mcel1the
+60m         Normal    Created                  pod/smoketest-mcel1the                                     Created container: smoketest-mcel1the
+59m         Normal    AddedInterface           pod/inference-perf-jmhj97h2                                Add eth0 [10.128.5.12/23] from ovn-kubernetes
+59m         Normal    Pulling                  pod/inference-perf-jmhj97h2                                Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+59m         Normal    Pulled                   pod/inference-perf-jmhj97h2                                Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 369ms (369ms including waiting). Image size: 7775415425 bytes.
+59m         Normal    Created                  pod/inference-perf-jmhj97h2                                Created container: harness
+59m         Normal    Started                  pod/inference-perf-jmhj97h2                                Started container harness
+28m         Normal    Created                  pod/step5-stage-traces                                     Created container: copy
+28m         Normal    Pulled                   pod/step5-stage-traces                                     Container image "quay.io/fedora/fedora:latest" already present on machine
+28m         Normal    AddedInterface           pod/step5-stage-traces                                     Add eth0 [10.131.7.188/23] from ovn-kubernetes
+28m         Normal    Started                  pod/step5-stage-traces                                     Started container copy
+28m         Normal    Killing                  pod/step5-stage-traces                                     Stopping container copy
+28m         Normal    Pulled                   pod/smoketest-3nyt1ipa                                     Container image "quay.io/fedora/fedora:45" already present on machine
+28m         Normal    AddedInterface           pod/smoketest-3nyt1ipa                                     Add eth0 [10.128.5.16/23] from ovn-kubernetes
+28m         Normal    Created                  pod/smoketest-3nyt1ipa                                     Created container: smoketest-3nyt1ipa
+28m         Normal    Started                  pod/smoketest-3nyt1ipa                                     Started container smoketest-3nyt1ipa
+28m         Normal    AddedInterface           pod/inference-perf-dzd0oieq                                Add eth0 [10.128.5.19/23] from ovn-kubernetes
+28m         Normal    Pulling                  pod/inference-perf-dzd0oieq                                Pulling image "ghcr.io/llm-d/llm-d-benchmark:nightly"
+28m         Normal    Pulled                   pod/inference-perf-dzd0oieq                                Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:nightly" in 353ms (353ms including waiting). Image size: 7775415425 bytes.
+27m         Normal    Created                  pod/inference-perf-dzd0oieq                                Created container: harness
+27m         Normal    Started                  pod/inference-perf-dzd0oieq                                Started container harness
