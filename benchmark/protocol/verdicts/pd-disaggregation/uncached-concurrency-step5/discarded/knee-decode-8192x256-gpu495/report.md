@@ -2,6 +2,12 @@
 
 Part of the [step 5 summary](../../../uncached-concurrency-step5.md).
 
+**Discarded (2026-11-25 04:50 UTC).** The decode pod of this knee ran on a GPU
+whose SM clock read 495 MHz at 100 % utilization (DCGM and `nvidia-smi`; the
+nominal clock is 1,980 MHz, and every other GPU of the plant read 1,980 MHz).
+The knee measured a throttled GPU, an infrastructure fault; it is rerun on a
+GPU at full clock. See the summary's "GPU clocks".
+
 | | |
 |---|---|
 | Namespace | `step5-uncached-concurrency-20261125`, Kubernetes v1.32.9 (OpenShift) |
@@ -98,4 +104,5 @@ stages).
 
 ## Amendments
 
-None.
+- 2026-11-25 04:50 UTC: discarded (throttled GPU, above); moved from
+  `knees/decode-8192x256/`. No number in this report changed.

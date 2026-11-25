@@ -27,6 +27,7 @@ predictions PF1 to PF10); the step 3 blis evaluation is
 | Mix set M | 8192:256, 2048:2048, 256:4096; blend B draws each request's mix from M with equal weight |
 | Profiles | as `gen_load.py` writes them, except `report.request_lifecycle.summary: false` and `per_request_fields.computed_metrics: false` (the `npd-fcoff` step 5 lesson: inference-perf re-tokenizes every streamed chunk once per report). TTFT and TPOT are derived from each record's token times |
 | Cold start | 121 to 186 s from pod creation to `Ready` at standup (model on the PVC): prefill 121 and 183 s, decode 185 and 186 s |
+| Scheduling | from 2026-11-25 04:42 UTC both Deployments carry a node anti-affinity (`kubernetes.io/hostname NotIn` three nodes), patched with `kubectl`: each of those nodes held a GPU whose SM clock read 495 MHz under load (see "GPU clocks"). Every run checks the SM clock of every GPU the namespace holds (DCGM `DCGM_FI_DEV_SM_CLOCK`, minimum over the run) |
 
 ## Decisions
 
@@ -76,19 +77,32 @@ mlx5_0"). A probe of 8192:256 through the router (60 s at 5 and 10 req/s) had
 TTFT p90 0.24 and 0.27 s, and vLLM's KV transfer log read 28 to 37 ms per
 243 MB transfer (6.6 to 8.6 GB/s), against 1.1 s on the first plant.
 
+## GPU clocks
+
+On 2026-11-25 04:30 UTC the decode pod of runs 1a and 1b (second plant) and one
+prefill pod ran on GPUs whose SM clock read 495 MHz at 100 % utilization
+(`nvidia-smi`: no clock-event reason active, large cumulative "SW Thermal
+Slowdown" counters); every other GPU the namespace held read 1,980 MHz, the
+nominal clock. On the throttled decode GPU, 8192:256 at 5.7 req/s had TPOT p50
+37.1 ms; on a GPU at 1,980 MHz a probe at 8 req/s had TPOT p50 10.6 ms. The
+cluster's DCGM metrics showed one more GPU at 495 MHz, held by another
+namespace. Runs on a throttled GPU fail the gate's infrastructure check and are
+discarded. The three nodes holding the throttled GPUs are excluded by node
+anti-affinity (header); a GPU elsewhere that shows 495 MHz adds its node.
+
 ## μ_SLO
 
 Each knee pins its pool at 1 and the other pool high enough not to bind.
 
 | Pool | Mix | μ_SLO (req/s) | blis (step 3) | First plant (TCP) | Source |
 |---|---|---|---|---|---|
-| decode | 8192:256 | 7.696 | 20.267 | 1.328 | [run 1a](uncached-concurrency-step5/knees/decode-8192x256/report.md): A 0.979 at 7.64 req/s, 0.061 at 9.40; TPOT then KV bind |
+| | | pending | | | |
 
 ## Runs
 
 | # | Run | Status | Outcome | A | Errors | GPU-s (prefill + decode) | Report |
 |---|---|---|---|---|---|---|---|
-| 1a | knee decode 8192:256 | done (second attempt) | as expected; μ_SLO 7.696 req/s; TPOT then KV bind; `itl` is the largest decode term at the knee | 0.391 (whole run) | 3,108 timeout | 6,000 (4,800 + 1,200) | [report](uncached-concurrency-step5/knees/decode-8192x256/report.md) |
+| 1a | knee decode 8192:256 | running | | | | | |
 | 1b | knee decode 2048:2048 | pending | | | | | |
 | 1c | knee decode 256:4096 | pending | | | | | |
 | 1d | knee decode blend | pending | | | | | |
@@ -117,7 +131,9 @@ rows are on the first (TCP) plant.
 | 1b, knee decode 2048:2048, estimate 4 req/s | `villardl-20261124-192912-484` | Stage 4 (4.97 req/s) A 0.988: the crossing is above the stages | estimate 6 req/s (run 1b) |
 | 1c, knee decode 256:4096, estimate 3 req/s | `villardl-20261124-203400-452` | Tool fault: harness pod deleted 11 min into the load after one failed API call (see "First plant") | not rerun on the first plant |
 | first plant | all of the above | the KV transfer over TCP; the owner had the plant rebuilt with RDMA | every knee, on the second plant |
-| 1a, knee decode 8192:256 at blis's estimate, 20.267 req/s (second plant) | `villardl-20261124-213215-481` | Stage 1 (12.2 req/s) A 0.000: TPOT p50 70 ms, KV 1.0; the generator also fell behind in stages 3 and 4. Probes through the router (150 s each) read TPOT p50 24 ms at 4 req/s and 34 ms at 7 req/s | estimate 9.5 req/s (run 1a) |
+| 1a, knee decode 8192:256 at blis's estimate, 20.267 req/s (second plant) | `villardl-20261124-213215-481` | Stage 1 (12.2 req/s) A 0.000: TPOT p50 70 ms, KV 1.0; the generator also fell behind in stages 3 and 4. Probes through the router (150 s each) read TPOT p50 24 ms at 4 req/s and 34 ms at 7 req/s | estimate 9.5 req/s |
+| 1a, estimate 9.5 req/s (second plant) | `villardl-20261124-223310-750` | Done as a knee (μ_SLO 7.696 req/s, [report](uncached-concurrency-step5/discarded/knee-decode-8192x256-gpu495/report.md)), then found to have run on a decode GPU at 495 MHz (see "GPU clocks"): infrastructure fault | estimate 20.267 req/s, on a GPU at 1,980 MHz (run 1a) |
+| 1b, knee decode 2048:2048, estimate 5 req/s (second plant) | `villardl-20261124-230455-495` | Same throttled decode GPU: stage 1 (2.94 req/s) A 0.278, TPOT p50 55.6 ms | after run 1a |
 
 ## Conclusions
 
@@ -180,3 +196,8 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   `--data-collect skip` and the results are copied that way.
 - 2026-11-25 03:34–03:55 UTC: run 1a done, μ_SLO(8192:256, decode) =
   7.696 req/s.
+- 2026-11-25 04:05–04:30 UTC: run 1b's attempt on the second plant
+  (discarded, throttled GPU). 04:30 UTC: the decode GPU found at 495 MHz.
+  04:42 UTC: both Deployments patched with the node anti-affinity; all pods
+  rescheduled on GPUs reading 1,980 MHz by 04:51 UTC. Probe at 1,980 MHz:
+  8192:256 at 8 req/s TPOT p50 10.6 ms, at 14 req/s 16.6 ms.
