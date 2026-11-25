@@ -1,0 +1,52 @@
+# step 3 run bursty, written by gen_load.py; do not edit by hand.
+# bursty, blend: 4320 s at 0.2 x C = 7.753 req/s, then 3 x (1035 s at 0.7 x C = 27.136 req/s, 4320 s quiet)
+# Absolute-rate mode (aggregate_rate: 0): each window's trace_rate is that client's req/s.
+version: "2"
+aggregate_rate: 0
+seed: 108
+clients:
+  - id: "8192x256"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 8192 } }
+    output_distribution: { type: constant, params: { value: 256 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 4320000000, trace_rate: 2.5844 }
+        - { start_us: 4320000000, end_us: 5355000000, trace_rate: 9.0454 }
+        - { start_us: 5355000000, end_us: 9675000000, trace_rate: 2.5844 }
+        - { start_us: 9675000000, end_us: 10710000000, trace_rate: 9.0454 }
+        - { start_us: 10710000000, end_us: 15030000000, trace_rate: 2.5844 }
+        - { start_us: 15030000000, end_us: 16065000000, trace_rate: 9.0454 }
+        - { start_us: 16065000000, end_us: 20385000000, trace_rate: 2.5844 }
+  - id: "2048x2048"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 2048 } }
+    output_distribution: { type: constant, params: { value: 2048 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 4320000000, trace_rate: 2.5844 }
+        - { start_us: 4320000000, end_us: 5355000000, trace_rate: 9.0454 }
+        - { start_us: 5355000000, end_us: 9675000000, trace_rate: 2.5844 }
+        - { start_us: 9675000000, end_us: 10710000000, trace_rate: 9.0454 }
+        - { start_us: 10710000000, end_us: 15030000000, trace_rate: 2.5844 }
+        - { start_us: 15030000000, end_us: 16065000000, trace_rate: 9.0454 }
+        - { start_us: 16065000000, end_us: 20385000000, trace_rate: 2.5844 }
+  - id: "256x4096"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 256 } }
+    output_distribution: { type: constant, params: { value: 4096 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 4320000000, trace_rate: 2.5844 }
+        - { start_us: 4320000000, end_us: 5355000000, trace_rate: 9.0454 }
+        - { start_us: 5355000000, end_us: 9675000000, trace_rate: 2.5844 }
+        - { start_us: 9675000000, end_us: 10710000000, trace_rate: 9.0454 }
+        - { start_us: 10710000000, end_us: 15030000000, trace_rate: 2.5844 }
+        - { start_us: 15030000000, end_us: 16065000000, trace_rate: 9.0454 }
+        - { start_us: 16065000000, end_us: 20385000000, trace_rate: 2.5844 }

@@ -1,0 +1,1 @@
+The blend at 0.2 x C (7.75 req/s) for 4,320 s, then three cycles of a 1,035 s spike at 0.7 x C (27.1 req/s) and 4,320 s at 0.2 x C. In each spike decode went from 2 to 6 Ready and prefill's third pod became Ready 15 s after the spike ended; A was 0.04 to 0.05 in every spike and 0.996 or more in every quiet phase.
