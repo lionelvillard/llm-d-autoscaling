@@ -1,0 +1,11 @@
+wrote benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency-step5/knees/prefill-8192x256/load-vs-supply-decode.svg and benchmark/protocol/verdicts/pd-disaggregation/uncached-concurrency-step5/knees/prefill-8192x256/load-vs-supply-decode.csv
+  offered load   : client records (open loop): input tokens/s, output tokens/s, requests/s
+  ready replicas : replica_status_timeseries.json
+  requested      : yes
+  HPA desired    : not available
+  trigger        : conc: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); lam: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); gen: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); ok: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); pods: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); kv: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); itl: Prometheus range query; threshold 1 AverageValue (from ScaledObject deepseek-569eb6ed--v2-lite-decode); composite: Prometheus range query; threshold 1 AverageValue (explicit)
+  SLO attainment : client records; TTFT ≤ 2 s, TPOT ≤ 50 ms
+  note: clock bridge: perf_counter -> epoch via stage-0 run.time.start; no scheduled_time in the records (inference-perf v0.7.0): error up to the first inter-arrival gap
+  note: latency of 8452 request(s) derived from start/end and token times (no computed_metrics: set per_request_fields.computed_metrics: true for inference-perf's tokenizer-corrected values)
+  note: deepseek-569eb6ed--v2-lite-decode uses scalingModifiers: the HPA reads one composite metric (max(conc / 510, (ok > 0 ? lam * gen / ok : lam * 2133) / (8.4 * 2133), pods * kv / 0.8, pods * itl / 0.05), target 1, AverageValue), not each trigger. Pass its series as --trigger FILE:composite to draw what the HPA used
+  note: attainment: 1 completed request(s) lack a latency the SLO needs and are left out (inference-perf: per_request_fields.computed_metrics: true)

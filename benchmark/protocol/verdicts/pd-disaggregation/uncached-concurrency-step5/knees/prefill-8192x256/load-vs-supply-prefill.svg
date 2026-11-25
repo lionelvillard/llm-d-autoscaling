@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1716" viewBox="0 0 720 1716" role="img" aria-label="uncached-concurrency: knee prefill 8192:256, prefill pool (step 5)">
+<title>uncached-concurrency: knee prefill 8192:256, prefill pool (step 5)</title>
+<style>
+  .bg { fill: #fcfcfb; }
+  .ink { fill: #0b0b0b; } .ink2 { fill: #52514e; } .muted { fill: #898781; }
+  .grid { stroke: #e1e0d9; stroke-width: 1; }
+  .axis { stroke: #c3c2b7; stroke-width: 1; }
+  .s1 { stroke: #2a78d6; } .f1 { fill: #2a78d6; }
+  .s2 { stroke: #eb6834; } .f2 { fill: #eb6834; }
+  .s3 { stroke: #1baf7a; } .f3 { fill: #1baf7a; }
+  .s4 { stroke: #eda100; } .f4 { fill: #eda100; }
+  .track { fill: #e1e0d9; }
+  .ring { stroke: #fcfcfb; stroke-width: 2; }
+  .ref { stroke: #898781; stroke-width: 1.5; stroke-dasharray: 5 4; }
+  text { font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  @media (prefers-color-scheme: dark) {
+    .bg { fill: #1a1a19; }
+    .ink { fill: #ffffff; } .ink2 { fill: #c3c2b7; }
+    .grid { stroke: #2c2c2a; } .axis { stroke: #383835; }
+    .s1 { stroke: #3987e5; } .f1 { fill: #3987e5; }
+    .s2 { stroke: #d95926; } .f2 { fill: #d95926; }
+    .s3 { stroke: #199e70; } .f3 { fill: #199e70; }
+    .s4 { stroke: #c98500; } .f4 { fill: #c98500; }
+    .track { fill: #2c2c2a; }
+    .ring { stroke: #1a1a19; }
+  }
+</style>
+<rect class="bg" width="720" height="1716" rx="8"/>
+<text x="24.0" y="28.0" class="ink" font-size="14" text-anchor="start" font-weight="600">uncached-concurrency: knee prefill 8192:256, prefill pool (step 5)</text>
+<text x="24.0" y="46.0" class="muted" font-size="12" text-anchor="start" font-weight="normal">DeepSeek-V2-Lite, 1 x H100 80GB per replica, 2026-11-25</text>
+<text x="70.0" y="72.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">Offered input tokens/s (client records, sent per 30 s)</text>
+<line x1="70.0" y1="204.0" x2="690.0" y2="204.0" class="grid"/>
+<text x="62.0" y="208.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="164.0" x2="690.0" y2="164.0" class="grid"/>
+<text x="62.0" y="168.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">50k</text>
+<line x1="70.0" y1="124.0" x2="690.0" y2="124.0" class="grid"/>
+<text x="62.0" y="128.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">100k</text>
+<line x1="70.0" y1="84.0" x2="690.0" y2="84.0" class="grid"/>
+<text x="62.0" y="88.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">150k</text>
+<line x1="70.0" y1="204.0" x2="690.0" y2="204.0" class="axis"/>
+<path d="M77.4,163.4 L92.1,167.5 L106.8,164.0 L121.6,164.0 L136.3,169.0 L151.0,168.2 L165.8,162.7 L180.5,164.5 L195.2,167.5 L210.0,159.7 L224.7,152.0 L239.4,147.4 L254.2,155.1 L268.9,150.7 L283.6,157.0 L298.3,146.5 L313.1,152.4 L327.8,153.8 L342.5,151.6 L357.3,157.3 L372.0,134.8 L386.7,137.4 L401.5,140.6 L416.2,139.3 L430.9,140.2 L445.7,133.4 L460.4,137.6 L475.1,139.6 L489.9,143.1 L504.6,140.6 L519.3,121.6 L534.1,120.6 L548.8,114.4 L563.5,172.5 L578.3,204.0 L593.0,204.0 L607.7,204.0 L622.5,204.0 L637.2,203.8 L651.9,204.0 L666.7,203.6 L681.4,204.0" class="s2" fill="none" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="254.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">Offered output tokens/s (client records, sent per 30 s)</text>
+<line x1="70.0" y1="386.0" x2="690.0" y2="386.0" class="grid"/>
+<text x="62.0" y="390.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="346.0" x2="690.0" y2="346.0" class="grid"/>
+<text x="62.0" y="350.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">2k</text>
+<line x1="70.0" y1="306.0" x2="690.0" y2="306.0" class="grid"/>
+<text x="62.0" y="310.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">4k</text>
+<line x1="70.0" y1="266.0" x2="690.0" y2="266.0" class="grid"/>
+<text x="62.0" y="270.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">6k</text>
+<line x1="70.0" y1="386.0" x2="690.0" y2="386.0" class="axis"/>
+<path d="M77.4,343.7 L92.1,352.5 L106.8,349.7 L121.6,344.3 L136.3,359.1 L151.0,358.8 L165.8,343.1 L180.5,355.4 L195.2,358.2 L210.0,346.4 L224.7,329.7 L239.4,342.3 L254.2,348.4 L268.9,333.9 L283.6,344.2 L298.3,336.0 L313.1,346.0 L327.8,347.3 L342.5,345.5 L357.3,333.4 L372.0,316.1 L386.7,312.5 L401.5,331.6 L416.2,325.4 L430.9,331.5 L445.7,325.9 L460.4,318.5 L475.1,325.4 L489.9,328.3 L504.6,337.1 L519.3,306.0 L534.1,316.0 L548.8,316.9 L563.5,356.5 L578.3,386.0 L593.0,386.0 L607.7,386.0 L622.5,386.0 L637.2,385.8 L651.9,386.0 L666.7,385.7 L681.4,386.0" class="s2" fill="none" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="436.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">Offered requests/s (client records, sent per 30 s)</text>
+<line x1="70.0" y1="568.0" x2="690.0" y2="568.0" class="grid"/>
+<text x="62.0" y="572.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="538.0" x2="690.0" y2="538.0" class="grid"/>
+<text x="62.0" y="542.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">5</text>
+<line x1="70.0" y1="508.0" x2="690.0" y2="508.0" class="grid"/>
+<text x="62.0" y="512.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">10</text>
+<line x1="70.0" y1="478.0" x2="690.0" y2="478.0" class="grid"/>
+<text x="62.0" y="482.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">15</text>
+<line x1="70.0" y1="448.0" x2="690.0" y2="448.0" class="grid"/>
+<text x="62.0" y="452.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">20</text>
+<line x1="70.0" y1="568.0" x2="690.0" y2="568.0" class="axis"/>
+<path d="M77.4,530.8 L92.1,534.6 L106.8,531.4 L121.6,531.4 L136.3,536.0 L151.0,535.2 L165.8,530.2 L180.5,531.8 L195.2,534.6 L210.0,527.4 L224.7,520.4 L239.4,516.2 L254.2,523.2 L268.9,519.2 L283.6,525.0 L298.3,515.4 L313.1,520.8 L327.8,522.0 L342.5,520.0 L357.3,525.2 L372.0,504.6 L386.7,507.0 L401.5,510.0 L416.2,508.8 L430.9,509.6 L445.7,503.4 L460.4,507.2 L475.1,509.0 L489.9,512.2 L504.6,510.0 L519.3,492.6 L534.1,491.6 L548.8,486.0 L563.5,494.8 L578.3,491.6 L593.0,490.6 L607.7,497.2 L622.5,489.4 L637.2,494.8 L651.9,493.0 L666.7,567.4 L681.4,568.0" class="s2" fill="none" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="618.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">What KEDA read: trigger offered (Prometheus range query; AverageValue: HPA asks ceil(value ÷ 1))</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="grid"/>
+<text x="62.0" y="754.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="720.0" x2="690.0" y2="720.0" class="grid"/>
+<text x="62.0" y="724.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">50k</text>
+<line x1="70.0" y1="690.0" x2="690.0" y2="690.0" class="grid"/>
+<text x="62.0" y="694.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">100k</text>
+<line x1="70.0" y1="660.0" x2="690.0" y2="660.0" class="grid"/>
+<text x="62.0" y="664.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">150k</text>
+<line x1="70.0" y1="630.0" x2="690.0" y2="630.0" class="grid"/>
+<text x="62.0" y="634.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">200k</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="axis"/>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">threshold 1: 2 replicas above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">3 above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">4 above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">5 above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">6 above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">7 above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">8 above</text>
+<line x1="70.0" y1="750.0" x2="690.0" y2="750.0" class="ref"/>
+<text x="686.0" y="744.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">9 above</text>
+<path d="M70.7,750.0 L78.1,738.2 L85.5,727.7 L92.8,709.4 L100.2,702.5 L107.6,702.9 L114.9,703.7 L122.3,702.2 L129.7,702.1 L137.0,702.2 L144.4,703.0 L151.8,706.7 L159.1,708.5 L166.5,703.7 L173.9,702.6 L181.2,700.2 L188.6,701.6 L196.0,704.6 L203.3,704.0 L210.7,704.8 L218.1,701.1 L225.4,693.6 L232.8,692.3 L240.2,687.7 L247.5,682.8 L254.9,684.9 L262.3,688.1 L269.6,686.9 L277.0,685.8 L284.4,685.5 L291.7,689.0 L299.1,690.9 L306.5,690.3 L313.8,682.8 L321.2,683.0 L328.6,685.5 L335.9,688.7 L343.3,689.6 L350.7,687.5 L358.0,687.7 L365.4,690.6 L372.8,684.2 L380.1,680.2 L387.5,665.6 L394.9,664.9 L402.2,672.7 L409.6,671.5 L416.9,672.9 L424.3,670.7 L431.7,671.5 L439.0,672.4 L446.4,668.6 L453.8,668.5 L461.1,665.7 L468.5,668.6 L475.9,670.3 L483.2,671.0 L490.6,673.9 L498.0,674.6 L505.3,674.8 L512.7,675.1 L520.1,661.8 L527.4,661.6 L534.8,653.5 L542.2,652.0 L549.5,646.6 L556.9,644.7 L564.3,646.7 L571.6,648.0 L579.0,652.5 L586.4,649.8 L593.7,649.2 L601.1,647.6 L608.5,650.4 L615.8,648.1 L623.2,650.8 L630.6,649.7 L637.9,651.1 L645.3,647.4 L652.7,654.6 L660.0,649.2 L667.4,676.1 L674.8,695.2 L682.1,735.0 L689.5,750.0" class="s3" fill="none" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="800.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">What KEDA read: trigger comp (Prometheus range query; AverageValue: HPA asks ceil(value ÷ 1))</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="grid"/>
+<text x="62.0" y="936.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="902.0" x2="690.0" y2="902.0" class="grid"/>
+<text x="62.0" y="906.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">25k</text>
+<line x1="70.0" y1="872.0" x2="690.0" y2="872.0" class="grid"/>
+<text x="62.0" y="876.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">50k</text>
+<line x1="70.0" y1="842.0" x2="690.0" y2="842.0" class="grid"/>
+<text x="62.0" y="846.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">75k</text>
+<line x1="70.0" y1="812.0" x2="690.0" y2="812.0" class="grid"/>
+<text x="62.0" y="816.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">100k</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="axis"/>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">threshold 1: 2 replicas above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">3 above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">4 above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">5 above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">6 above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">7 above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">8 above</text>
+<line x1="70.0" y1="932.0" x2="690.0" y2="932.0" class="ref"/>
+<text x="686.0" y="926.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">9 above</text>
+<path d="M70.7,932.0 L78.1,929.3 L85.5,925.9 L92.8,923.0 L100.2,920.1 L107.6,916.9 L114.9,913.9 L122.3,910.9 L129.7,907.5 L137.0,904.6 L144.4,902.0 L151.8,899.4 L159.1,896.6 L166.5,892.7 L173.9,889.9 L181.2,886.9 L188.6,883.5 L196.0,881.1 L203.3,877.8 L210.7,874.7 L218.1,873.8 L225.4,872.9 L232.8,871.7 L240.2,870.4 L247.5,869.0 L254.9,868.3 L262.3,867.4 L269.6,866.2 L277.0,865.2 L284.4,863.8 L291.7,862.8 L299.1,861.6 L306.5,860.9 L313.8,859.0 L321.2,858.2 L328.6,857.8 L335.9,855.9 L343.3,855.5 L350.7,854.0 L358.0,853.9 L365.4,854.8 L372.8,854.2 L380.1,853.6 L387.5,853.4 L394.9,852.3 L402.2,851.3 L409.6,851.0 L416.9,850.2 L424.3,849.3 L431.7,848.1 L439.0,847.2 L446.4,846.9 L453.8,846.8 L461.1,845.8 L468.5,844.8 L475.9,844.2 L483.2,843.1 L490.6,842.8 L498.0,841.7 L505.3,840.3 L512.7,840.0 L520.1,840.0 L527.4,840.0 L534.8,840.0 L542.2,840.0 L549.5,840.0 L556.9,840.0 L564.3,840.0 L571.6,840.0 L579.0,840.0 L586.4,840.0 L593.7,840.0 L601.1,840.8 L608.5,841.8 L615.8,842.7 L623.2,843.6 L630.6,844.7 L637.9,845.3 L645.3,846.3 L652.7,847.3 L660.0,848.1 L667.4,848.7 L674.8,849.7 L682.1,850.4 L689.5,851.4" class="s3" fill="none" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="982.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">What KEDA read: trigger done (Prometheus range query; AverageValue: HPA asks ceil(value ÷ 1))</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="grid"/>
+<text x="62.0" y="1118.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="1084.0" x2="690.0" y2="1084.0" class="grid"/>
+<text x="62.0" y="1088.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">25k</text>
+<line x1="70.0" y1="1054.0" x2="690.0" y2="1054.0" class="grid"/>
+<text x="62.0" y="1058.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">50k</text>
+<line x1="70.0" y1="1024.0" x2="690.0" y2="1024.0" class="grid"/>
+<text x="62.0" y="1028.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">75k</text>
+<line x1="70.0" y1="994.0" x2="690.0" y2="994.0" class="grid"/>
+<text x="62.0" y="998.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">100k</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="axis"/>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">threshold 1: 2 replicas above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">3 above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">4 above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">5 above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">6 above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">7 above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">8 above</text>
+<line x1="70.0" y1="1114.0" x2="690.0" y2="1114.0" class="ref"/>
+<text x="686.0" y="1108.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">9 above</text>
+<path d="M70.7,1114.0 L78.1,1111.3 L85.5,1107.9 L92.8,1105.0 L100.2,1102.1 L107.6,1098.9 L114.9,1095.9 L122.3,1092.9 L129.7,1089.5 L137.0,1086.6 L144.4,1084.0 L151.8,1081.4 L159.1,1078.6 L166.5,1074.7 L173.9,1071.9 L181.2,1068.9 L188.6,1065.5 L196.0,1063.1 L203.3,1059.8 L210.7,1056.7 L218.1,1055.8 L225.4,1054.9 L232.8,1053.7 L240.2,1052.4 L247.5,1051.0 L254.9,1050.3 L262.3,1049.4 L269.6,1048.2 L277.0,1047.2 L284.4,1045.8 L291.7,1044.8 L299.1,1043.6 L306.5,1042.9 L313.8,1041.0 L321.2,1040.2 L328.6,1039.8 L335.9,1037.9 L343.3,1037.5 L350.7,1036.0 L358.0,1035.9 L365.4,1036.8 L372.8,1036.2 L380.1,1035.6 L387.5,1035.4 L394.9,1034.3 L402.2,1033.3 L409.6,1033.0 L416.9,1032.2 L424.3,1031.3 L431.7,1030.1 L439.0,1029.2 L446.4,1028.9 L453.8,1028.8 L461.1,1027.8 L468.5,1026.8 L475.9,1026.2 L483.2,1025.1 L490.6,1024.8 L498.0,1023.7 L505.3,1022.3 L512.7,1022.0 L520.1,1022.0 L527.4,1022.0 L534.8,1022.0 L542.2,1022.0 L549.5,1022.0 L556.9,1022.0 L564.3,1022.0 L571.6,1022.0 L579.0,1022.0 L586.4,1022.0 L593.7,1022.0 L601.1,1022.8 L608.5,1023.8 L615.8,1024.7 L623.2,1025.6 L630.6,1026.7 L637.9,1027.3 L645.3,1028.3 L652.7,1029.3 L660.0,1030.1 L667.4,1030.7 L674.8,1031.7 L682.1,1032.4 L689.5,1033.4" class="s3" fill="none" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="1164.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">What KEDA read: trigger composite (Prometheus range query; AverageValue: HPA asks ceil(value ÷ 1))</text>
+<line x1="70.0" y1="1296.0" x2="690.0" y2="1296.0" class="grid"/>
+<text x="62.0" y="1300.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="1256.0" x2="690.0" y2="1256.0" class="grid"/>
+<text x="62.0" y="1260.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">2</text>
+<line x1="70.0" y1="1216.0" x2="690.0" y2="1216.0" class="grid"/>
+<text x="62.0" y="1220.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">4</text>
+<line x1="70.0" y1="1176.0" x2="690.0" y2="1176.0" class="grid"/>
+<text x="62.0" y="1180.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">6</text>
+<line x1="70.0" y1="1296.0" x2="690.0" y2="1296.0" class="axis"/>
+<line x1="70.0" y1="1276.0" x2="690.0" y2="1276.0" class="ref"/>
+<text x="686.0" y="1270.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">threshold 1: 2 replicas above</text>
+<line x1="70.0" y1="1256.0" x2="690.0" y2="1256.0" class="ref"/>
+<text x="686.0" y="1250.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">3 above</text>
+<line x1="70.0" y1="1236.0" x2="690.0" y2="1236.0" class="ref"/>
+<text x="686.0" y="1230.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">4 above</text>
+<line x1="70.0" y1="1216.0" x2="690.0" y2="1216.0" class="ref"/>
+<text x="686.0" y="1210.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">5 above</text>
+<line x1="70.0" y1="1196.0" x2="690.0" y2="1196.0" class="ref"/>
+<text x="686.0" y="1190.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">6 above</text>
+<path d="M70.7,1296.0 L78.1,1285.5 L85.5,1276.2 L92.8,1259.9 L100.2,1253.9 L107.6,1254.1 L114.9,1254.9 L122.3,1253.6 L129.7,1253.4 L137.0,1253.6 L144.4,1254.3 L151.8,1257.5 L159.1,1259.1 L166.5,1254.9 L173.9,1253.9 L181.2,1251.8 L188.6,1253.0 L196.0,1255.7 L203.3,1255.1 L210.7,1255.8 L218.1,1252.6 L225.4,1245.9 L232.8,1244.8 L240.2,1240.7 L247.5,1236.4 L254.9,1238.2 L262.3,1241.0 L269.6,1240.0 L277.0,1239.0 L284.4,1238.7 L291.7,1241.9 L299.1,1243.6 L306.5,1243.0 L313.8,1236.3 L321.2,1236.5 L328.6,1238.8 L335.9,1241.6 L343.3,1242.4 L350.7,1240.5 L358.0,1240.7 L365.4,1243.2 L372.8,1237.6 L380.1,1234.1 L387.5,1221.0 L394.9,1220.5 L402.2,1227.4 L409.6,1226.3 L416.9,1227.6 L424.3,1225.6 L431.7,1226.3 L439.0,1227.1 L446.4,1223.7 L453.8,1223.6 L461.1,1221.2 L468.5,1223.7 L475.9,1225.3 L483.2,1225.8 L490.6,1228.4 L498.0,1229.1 L505.3,1229.2 L512.7,1229.5 L520.1,1217.7 L527.4,1217.5 L534.8,1210.3 L542.2,1209.0 L549.5,1204.2 L556.9,1202.5 L564.3,1204.3 L571.6,1205.5 L579.0,1209.4 L586.4,1207.0 L593.7,1206.5 L601.1,1205.1 L608.5,1207.6 L615.8,1205.5 L623.2,1207.9 L630.6,1206.9 L637.9,1208.2 L645.3,1204.9 L652.7,1211.3 L660.0,1206.5 L667.4,1230.4 L674.8,1247.4 L682.1,1259.8 L689.5,1260.2" class="s3" fill="none" stroke-width="1.25" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="1346.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">Replicas (replica_status_timeseries.json)</text>
+<line x1="597.0" y1="1342" x2="615.0" y2="1342" class="s1" stroke-width="3" stroke-dasharray="5 4"/>
+<text x="621.0" y="1346.0" class="ink" font-size="12" text-anchor="start" font-weight="normal">requested</text>
+<line x1="532.0" y1="1342" x2="550.0" y2="1342" class="s1" stroke-width="3"/>
+<text x="556.0" y="1346.0" class="ink" font-size="12" text-anchor="start" font-weight="normal">Ready</text>
+<line x1="70.0" y1="1478.0" x2="690.0" y2="1478.0" class="grid"/>
+<text x="62.0" y="1482.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0</text>
+<line x1="70.0" y1="1418.0" x2="690.0" y2="1418.0" class="grid"/>
+<text x="62.0" y="1422.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">1</text>
+<line x1="70.0" y1="1358.0" x2="690.0" y2="1358.0" class="grid"/>
+<text x="62.0" y="1362.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">2</text>
+<line x1="70.0" y1="1478.0" x2="690.0" y2="1478.0" class="axis"/>
+<path d="M70.0,1418.0 L74.2,1418.0 L74.2,1418.0 L82.0,1418.0 L82.0,1418.0 L90.4,1418.0 L90.4,1418.0 L98.2,1418.0 L98.2,1418.0 L106.6,1418.0 L106.6,1418.0 L114.9,1418.0 L114.9,1418.0 L122.8,1418.0 L122.8,1418.0 L131.1,1418.0 L131.1,1418.0 L139.0,1418.0 L139.0,1418.0 L147.4,1418.0 L147.4,1418.0 L155.2,1418.0 L155.2,1418.0 L163.6,1418.0 L163.6,1418.0 L171.4,1418.0 L171.4,1418.0 L179.8,1418.0 L179.8,1418.0 L187.6,1418.0 L187.6,1418.0 L196.0,1418.0 L196.0,1418.0 L203.8,1418.0 L203.8,1418.0 L212.2,1418.0 L212.2,1418.0 L220.0,1418.0 L220.0,1418.0 L228.4,1418.0 L228.4,1418.0 L236.2,1418.0 L236.2,1418.0 L244.6,1418.0 L244.6,1418.0 L252.4,1418.0 L252.4,1418.0 L260.3,1418.0 L260.3,1418.0 L268.6,1418.0 L268.6,1418.0 L276.5,1418.0 L276.5,1418.0 L284.9,1418.0 L284.9,1418.0 L292.7,1418.0 L292.7,1418.0 L301.1,1418.0 L301.1,1418.0 L308.9,1418.0 L308.9,1418.0 L317.3,1418.0 L317.3,1418.0 L325.6,1418.0 L325.6,1418.0 L333.5,1418.0 L333.5,1418.0 L341.8,1418.0 L341.8,1418.0 L349.7,1418.0 L349.7,1418.0 L358.0,1418.0 L358.0,1418.0 L366.4,1418.0 L366.4,1418.0 L374.7,1418.0 L374.7,1418.0 L383.1,1418.0 L383.1,1418.0 L391.4,1418.0 L391.4,1418.0 L400.3,1418.0 L400.3,1418.0 L408.6,1418.0 L408.6,1418.0 L416.9,1418.0 L416.9,1418.0 L425.8,1418.0 L425.8,1418.0 L433.6,1418.0 L433.6,1418.0 L442.0,1418.0 L442.0,1418.0 L449.9,1418.0 L449.9,1418.0 L458.2,1418.0 L458.2,1418.0 L466.5,1418.0 L466.5,1418.0 L474.9,1418.0 L474.9,1418.0 L483.2,1418.0 L483.2,1418.0 L491.1,1418.0 L491.1,1418.0 L499.4,1418.0 L499.4,1418.0 L507.3,1418.0 L507.3,1418.0 L515.7,1418.0 L515.7,1418.0 L523.5,1418.0 L523.5,1418.0 L531.9,1418.0 L531.9,1418.0 L539.7,1418.0 L539.7,1418.0 L548.1,1418.0 L548.1,1418.0 L555.9,1418.0 L555.9,1418.0 L564.8,1418.0 L564.8,1418.0 L572.6,1418.0 L572.6,1418.0 L581.0,1418.0 L581.0,1418.0 L589.3,1418.0 L589.3,1418.0 L597.7,1418.0 L597.7,1418.0 L606.0,1418.0 L606.0,1418.0 L614.4,1418.0 L614.4,1418.0 L622.2,1418.0 L622.2,1418.0 L630.6,1418.0 L630.6,1418.0 L638.9,1418.0 L638.9,1418.0 L646.8,1418.0 L646.8,1418.0 L655.1,1418.0 L655.1,1418.0 L663.5,1418.0 L663.5,1418.0 L671.3,1418.0 L671.3,1418.0 L679.7,1418.0 L679.7,1418.0 L688.0,1418.0 L688.0,1418.0 L690.0,1418.0 L690.0,1418.0" class="s1" fill="none" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M70.0,1418.0 L74.2,1418.0 L74.2,1418.0 L82.0,1418.0 L82.0,1418.0 L90.4,1418.0 L90.4,1418.0 L98.2,1418.0 L98.2,1418.0 L106.6,1418.0 L106.6,1418.0 L114.9,1418.0 L114.9,1418.0 L122.8,1418.0 L122.8,1418.0 L131.1,1418.0 L131.1,1418.0 L139.0,1418.0 L139.0,1418.0 L147.4,1418.0 L147.4,1418.0 L155.2,1418.0 L155.2,1418.0 L163.6,1418.0 L163.6,1418.0 L171.4,1418.0 L171.4,1418.0 L179.8,1418.0 L179.8,1418.0 L187.6,1418.0 L187.6,1418.0 L196.0,1418.0 L196.0,1418.0 L203.8,1418.0 L203.8,1418.0 L212.2,1418.0 L212.2,1418.0 L220.0,1418.0 L220.0,1418.0 L228.4,1418.0 L228.4,1418.0 L236.2,1418.0 L236.2,1418.0 L244.6,1418.0 L244.6,1418.0 L252.4,1418.0 L252.4,1418.0 L260.3,1418.0 L260.3,1418.0 L268.6,1418.0 L268.6,1418.0 L276.5,1418.0 L276.5,1418.0 L284.9,1418.0 L284.9,1418.0 L292.7,1418.0 L292.7,1418.0 L301.1,1418.0 L301.1,1418.0 L308.9,1418.0 L308.9,1418.0 L317.3,1418.0 L317.3,1418.0 L325.6,1418.0 L325.6,1418.0 L333.5,1418.0 L333.5,1418.0 L341.8,1418.0 L341.8,1418.0 L349.7,1418.0 L349.7,1418.0 L358.0,1418.0 L358.0,1418.0 L366.4,1418.0 L366.4,1418.0 L374.7,1418.0 L374.7,1418.0 L383.1,1418.0 L383.1,1418.0 L391.4,1418.0 L391.4,1418.0 L400.3,1418.0 L400.3,1418.0 L408.6,1418.0 L408.6,1418.0 L416.9,1418.0 L416.9,1418.0 L425.8,1418.0 L425.8,1418.0 L433.6,1418.0 L433.6,1418.0 L442.0,1418.0 L442.0,1418.0 L449.9,1418.0 L449.9,1418.0 L458.2,1418.0 L458.2,1418.0 L466.5,1418.0 L466.5,1418.0 L474.9,1418.0 L474.9,1418.0 L483.2,1418.0 L483.2,1418.0 L491.1,1418.0 L491.1,1418.0 L499.4,1418.0 L499.4,1418.0 L507.3,1418.0 L507.3,1418.0 L515.7,1418.0 L515.7,1418.0 L523.5,1418.0 L523.5,1418.0 L531.9,1418.0 L531.9,1418.0 L539.7,1418.0 L539.7,1418.0 L548.1,1418.0 L548.1,1418.0 L555.9,1418.0 L555.9,1418.0 L564.8,1418.0 L564.8,1418.0 L572.6,1418.0 L572.6,1418.0 L581.0,1418.0 L581.0,1418.0 L589.3,1418.0 L589.3,1418.0 L597.7,1418.0 L597.7,1418.0 L606.0,1418.0 L606.0,1418.0 L614.4,1418.0 L614.4,1418.0 L622.2,1418.0 L622.2,1418.0 L630.6,1418.0 L630.6,1418.0 L638.9,1418.0 L638.9,1418.0 L646.8,1418.0 L646.8,1418.0 L655.1,1418.0 L655.1,1418.0 L663.5,1418.0 L663.5,1418.0 L671.3,1418.0 L671.3,1418.0 L679.7,1418.0 L679.7,1418.0 L688.0,1418.0 L688.0,1418.0 L690.0,1418.0 L690.0,1418.0" class="s1" fill="none" stroke-width="1.5" stroke-dasharray="5 4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="1528.0" class="ink2" font-size="13" text-anchor="start" font-weight="normal">SLO attainment (requests sent in the bin meeting TTFT ≤ 2 s, TPOT ≤ 50 ms; errors are misses)</text>
+<line x1="70.0" y1="1660.0" x2="690.0" y2="1660.0" class="grid"/>
+<text x="62.0" y="1664.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">0%</text>
+<line x1="70.0" y1="1630.0" x2="690.0" y2="1630.0" class="grid"/>
+<text x="62.0" y="1634.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">25%</text>
+<line x1="70.0" y1="1600.0" x2="690.0" y2="1600.0" class="grid"/>
+<text x="62.0" y="1604.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">50%</text>
+<line x1="70.0" y1="1570.0" x2="690.0" y2="1570.0" class="grid"/>
+<text x="62.0" y="1574.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">75%</text>
+<line x1="70.0" y1="1540.0" x2="690.0" y2="1540.0" class="grid"/>
+<text x="62.0" y="1544.0" class="muted" font-size="12" text-anchor="end" font-weight="normal">100%</text>
+<line x1="70.0" y1="1660.0" x2="690.0" y2="1660.0" class="axis"/>
+<line x1="70.0" y1="1546.0" x2="690.0" y2="1546.0" class="ref"/>
+<text x="686.0" y="1560.0" class="muted" font-size="11" text-anchor="end" font-weight="normal">objective 95%</text>
+<path d="M77.4,1540.0 L92.1,1541.4 L106.8,1540.7 L121.6,1540.0 L136.3,1541.5 L151.0,1542.2 L165.8,1540.6 L180.5,1540.7 L195.2,1542.2 L210.0,1541.2 L224.7,1541.0 L239.4,1540.9 L254.2,1541.1 L268.9,1540.5 L283.6,1540.6 L298.3,1540.5 L313.1,1540.0 L327.8,1541.0 L342.5,1540.5 L357.3,1540.6 L372.0,1624.8 L386.7,1660.0 L401.5,1660.0 L416.2,1660.0 L430.9,1660.0 L445.7,1660.0 L460.4,1660.0 L475.1,1660.0 L489.9,1660.0 L504.6,1660.0 L519.3,1660.0 L534.1,1660.0 L548.8,1660.0 L563.5,1660.0 L578.3,1660.0 L593.0,1660.0 L607.7,1660.0 L622.5,1660.0 L637.2,1660.0 L651.9,1660.0 L666.7,1660.0" class="s4" fill="none" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="70.0" y="1678.0" class="muted" font-size="12" text-anchor="middle" font-weight="normal">0</text>
+<text x="217.3" y="1678.0" class="muted" font-size="12" text-anchor="middle" font-weight="normal">5</text>
+<text x="364.6" y="1678.0" class="muted" font-size="12" text-anchor="middle" font-weight="normal">10</text>
+<text x="512.0" y="1678.0" class="muted" font-size="12" text-anchor="middle" font-weight="normal">15</text>
+<text x="659.3" y="1678.0" class="muted" font-size="12" text-anchor="middle" font-weight="normal">20</text>
+<text x="380.0" y="1700.0" class="ink2" font-size="13" text-anchor="middle" font-weight="normal">Time since load start (minutes)</text>
+</svg>

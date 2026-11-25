@@ -100,6 +100,7 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 | decode | 2048:2048 | 6.525 | 5.647 | 4.931 | [run 1b](uncached-concurrency-step5/knees/decode-2048x2048/report.md): A 0.997 at 6.44 req/s, 0.192 at 7.94; KV binds (0.998) |
 | decode | 256:4096 | 3.826 | 4.002 | not measured | [run 1c](uncached-concurrency-step5/knees/decode-256x4096/report.md): A 1.000 at 3.60 req/s, 0.801 at 4.49; KV binds (0.967); an upper bound (300 s stages, 80 to 185 s requests) |
 | decode | blend | 6.632 | 6.461 | not measured | [run 1d](uncached-concurrency-step5/knees/decode-blend/report.md): A 0.981 at 6.59 req/s, 0.007 at 8.01; KV binds (0.901 → 0.992); estimate from the per-mix knees 6.397 |
+| prefill | 8192:256 | 7.978 (65,356 tok/s) | 6.095 (49,930 tok/s) | not measured | [run 1e](uncached-concurrency-step5/knees/prefill-8192x256/report.md): A 0.995 at 7.88 req/s, 0.029 at 10.00; prefill compute binds |
 
 ## Runs
 
@@ -109,8 +110,8 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 | 1b | knee decode 2048:2048 | done (second attempt) | as expected; μ_SLO 6.525 req/s; KV binds; the composite reads 0.97 at the knee | 0.434 (whole run) | 2,671 timeout | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-2048x2048/report.md) |
 | 1c | knee decode 256:4096 | done | as expected; μ_SLO 3.826 req/s (upper bound); KV binds | 0.606 (whole run) | 859 timeout | 3,600 (2,400 + 1,200) | [report](uncached-concurrency-step5/knees/decode-256x4096/report.md) |
 | 1d | knee decode blend | done | as expected; μ_SLO 6.632 req/s; KV binds; the `kv` guard crosses 1.1 at the knee, the drivers past it | 0.658 (whole run) | 0 | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-blend/report.md) |
-| 1e | knee prefill 8192:256 | running | | | | | |
-| 1f | knee prefill blend | pending | | | | | |
+| 1e | knee prefill 8192:256 | done (second attempt) | as expected; μ_SLO 7.978 req/s (65,356 tok/s); the prefill composite reads about 2.8 at this knee | 0.385 (whole run) | 2,479 timeout | 3,600 (1,200 + 2,400) | [report](uncached-concurrency-step5/knees/prefill-8192x256/report.md) |
+| 1f | knee prefill blend | running | | | | | |
 | 2 | SO-active staircase | pending | | | | | |
 | 3 | mix-shift | pending | | | | | |
 | 4a | overload under the cap | pending | | | | | |
@@ -138,6 +139,7 @@ rows are on the first (TCP) plant.
 | 1a, estimate 9.5 req/s (second plant) | `villardl-20261124-223310-750` | Done as a knee (μ_SLO 7.696 req/s, [report](uncached-concurrency-step5/discarded/knee-decode-8192x256-gpu495/report.md)), then found to have run on a decode GPU at 495 MHz (see "GPU clocks"): infrastructure fault | estimate 20.267 req/s, on a GPU at 1,980 MHz (run 1a) |
 | 1b, knee decode 2048:2048, estimate 5 req/s (second plant) | `villardl-20261124-230455-495` | Same throttled decode GPU: stage 1 (2.94 req/s) A 0.278, TPOT p50 55.6 ms | after run 1a |
 | 1b, estimate 5 req/s, GPU at full clock | `villardl-20261125-002838-160` | Stage 4 (6.18 req/s) A 0.998: the crossing is above the stages | estimate 8 req/s (run 1b) |
+| 1e, knee prefill 8192:256 at blis's estimate, 6.095 req/s | `villardl-20261125-025851-854` | Stage 4 (7.55 req/s) A 0.992: the crossing is above the stages | estimate 10 req/s (run 1e) |
 
 ## Conclusions
 
@@ -213,3 +215,5 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   The blend's estimate: 3 / (1/18.402 + 1/6.525 + 1/3.826) = 6.397 req/s.
 - 2026-11-25 07:17–07:44 UTC: run 1d done, μ_SLO(B, decode) = 6.632 req/s.
   07:56–07:58 UTC: a decode pod requested (pin 1 → 2) was Ready 121 s later.
+- 2026-11-25 07:59–08:20 UTC: run 1e's attempt at 6.095 req/s, discarded (stage
+  4 passed). 08:28–08:50 UTC: run 1e done, μ_SLO(8192:256, prefill) = 7.978 req/s.
