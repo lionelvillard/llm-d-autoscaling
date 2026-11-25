@@ -1,0 +1,73 @@
+{
+ "run": "scale-down",
+ "epoch0": 1767225600.0,
+ "first_arrival_s": 0.045171,
+ "horizon_s": 15026.0,
+ "lead_in_s": 0.0,
+ "ready_at_load_start": {
+  "prefill": 2,
+  "decode": 2
+ },
+ "arm": {
+  "pin": null,
+  "static": null,
+  "start": {
+   "prefill": 2,
+   "decode": 2
+  }
+ },
+ "lab": "/private/tmp/claude-501/t551/lab-ttft",
+ "lab_commit": "25f2dfb6259853e784ee9e85911c8e4fa63770c6",
+ "scenario": "deepseek-v2-lite-h100-pd.yaml",
+ "seed": null,
+ "memory": {
+  "available_at_start_gib": 51.64,
+  "reserve_gib": 6.4,
+  "max_rss_gib": 45.24,
+  "peak_rss_gib": 36.79,
+  "killed": null
+ },
+ "fates": {
+  "generated": 228705,
+  "completed": 228705,
+  "timed_out": 0,
+  "in_flight_at_horizon": 0,
+  "queued_at_horizon": 0,
+  "not_started": 0,
+  "length_capped": 0
+ },
+ "hpa_log_sha256": {
+  "signals-hpa-decode.csv": "3c1e97ddc549ae50b4d7e66bd43078c5bd7ba140836cfb70569fa13c98f04e6d",
+  "signals-hpa-prefill.csv": "62eadc34686e75bb12c0f93c6faf9ad05e83702036d806f67d2f3a562c5449ec"
+ },
+ "schedule": {
+  "what": "scale-down, blend: 1755 s at 0.9 x C = 34.889 req/s, then 4320 s steps at 0.6, 0.3, 0.1 x C; needs 6, 4, 2, 1 replicas",
+  "seed": 110,
+  "duration_s": 14715,
+  "expected_requests": 228700,
+  "timeout_s": 311,
+  "drain_s": 311,
+  "phases": [
+   {
+    "seconds": 1755,
+    "rate": 34.8894,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 4320,
+    "rate": 23.2596,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 4320,
+    "rate": 11.6298,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 4320,
+    "rate": 3.8766,
+    "mix": "8192:256,2048:2048,256:4096"
+   }
+  ]
+ }
+}

@@ -1,0 +1,43 @@
+# step 3 run scale-down, written by gen_load.py; do not edit by hand.
+# scale-down, blend: 1755 s at 0.9 x C = 34.889 req/s, then 4320 s steps at 0.6, 0.3, 0.1 x C; needs 6, 4, 2, 1 replicas
+# Absolute-rate mode (aggregate_rate: 0): each window's trace_rate is that client's req/s.
+version: "2"
+aggregate_rate: 0
+seed: 110
+clients:
+  - id: "8192x256"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 8192 } }
+    output_distribution: { type: constant, params: { value: 256 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 1755000000, trace_rate: 11.6298 }
+        - { start_us: 1755000000, end_us: 6075000000, trace_rate: 7.7532 }
+        - { start_us: 6075000000, end_us: 10395000000, trace_rate: 3.8766 }
+        - { start_us: 10395000000, end_us: 14715000000, trace_rate: 1.2922 }
+  - id: "2048x2048"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 2048 } }
+    output_distribution: { type: constant, params: { value: 2048 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 1755000000, trace_rate: 11.6298 }
+        - { start_us: 1755000000, end_us: 6075000000, trace_rate: 7.7532 }
+        - { start_us: 6075000000, end_us: 10395000000, trace_rate: 3.8766 }
+        - { start_us: 10395000000, end_us: 14715000000, trace_rate: 1.2922 }
+  - id: "256x4096"
+    rate_fraction: 1.0
+    arrival: { process: poisson }
+    input_distribution: { type: constant, params: { value: 256 } }
+    output_distribution: { type: constant, params: { value: 4096 } }
+    timeout: 311000000
+    lifecycle:
+      windows:
+        - { start_us: 0, end_us: 1755000000, trace_rate: 11.6298 }
+        - { start_us: 1755000000, end_us: 6075000000, trace_rate: 7.7532 }
+        - { start_us: 6075000000, end_us: 10395000000, trace_rate: 3.8766 }
+        - { start_us: 10395000000, end_us: 14715000000, trace_rate: 1.2922 }

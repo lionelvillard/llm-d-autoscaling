@@ -22,7 +22,7 @@ GPU measurement, and none is given to step 5.
 | Seed | blis's default (no `--seed`); each load's seed is in [`index.json`](uncached-concurrency-step3/index.json) |
 | Loads | written by `gen_load.py --target blis`: the knees from the estimates in the run reports, runs 2 to 10 from the knees ([`index.json`](uncached-concurrency-step3/index.json); [`index-prefill.json`](uncached-concurrency-step3/index-prefill.json) holds the same loads with the prefill pool's capacities, for the prefill tables' `need`). Client timeout 311 s for the blend and the 256:4096 mix (the run set's rule) |
 | Lengths | see "Lengths" below |
-| Memory | `blis_run.py`'s guard on every run, one at a time |
+| Memory | `blis_run.py`'s guard on every run, one at a time; peak RSS 2.1 to 43.0 GiB (`memory` in each `blis-run.json`) against budgets of 27 to 48 GiB; no run killed. Run 10 simulated for 10.5 h of CPU, because blis rescans every pending prefill entry after each instance event (`detectPrefillCompletions`), which a deep backlog makes slow |
 
 ## Translation of the triggers
 
@@ -147,7 +147,7 @@ because `minReplicaCount` is 2 (run-set.md §2).
 | 5 | agentic | done | as expected: both pools at their floor of 2; A 1.000; 0 errors; longest prompt 28,309 of 32,768 tokens | 1.000 | 0 | 14,400 (7,200 + 7,200) |
 | 8 | bursty | done (second attempt, lab patch) | problem shown: A 0.043 to 0.048 in all three spikes (26,518 timeouts); quiet phases A >= 0.996; prefill's third pod Ready 15 s after every spike and held about 3,900 s after; decode's sixth pod Ready 180 s after the third spike | 0.630 | 26,518 timeout | 111,420 (52,980 + 58,440) |
 | 9 | short spikes | done (lab patch from the start) | problem shown: A 0.848 to 0.927 in five of six gaps (0.088 to 0.095 in the spikes); decode scaled up in all six spikes (5th pod Ready after spike 4 ended), prefill in none (900 s window > 517 s spike) | 0.553 | 8,860 timeout | 87,828 (33,444 + 54,384) |
-| 10 | scale-down | pending | | | | | |
+| 10 | scale-down | done (lab patch from the start) | problem shown: A 0.026 in the 0.9 x C hold from 2 pods, then 0.000 at 0.6 and 0.3 x C (prefill backlog of 13,606 per pod, 205,000 timeouts), 0.814 at 0.1 x C; decode never at the 0.3 x C need of 2, prefill held 3 to the end | 0.067 | 205,000 timeout | 106,275 (43,245 + 63,030) |
 | 6 | static-replica baseline | done | cost reference: prefill 3 and decode 6 pinned (run 3's peak), A 1.000 in every phase | 1.000 | 0 | 32,400 (10,800 + 21,600) |
 | 7 | scale from zero | not run | `minReplicaCount` is 2 (run-set.md §2: only with `minReplicaCount: 0`) | | | | |
 
@@ -187,7 +187,69 @@ A 1.000 in both (n = 1 each).
 
 ## Conclusions
 
-Pending: no run after the knees is done.
+2026-11-25 13:12 UTC, covering runs 1 to 6 and 8 to 10; run 7 not run
+(`minReplicaCount` is 2).
+
+**Verdict.** In blis, on DeepSeek-V2-Lite with TP1 per role, `uncached-concurrency`
+with constants rewritten from the plant's own knees follows slow loads and the
+agentic run (A 1.000, both pools at their floor of 2) but not steps, bursts or
+overload. A is below 0.95 in the first minutes after every step of 2 pods or
+more, and the prefill ScaledObject, with its 900 s scale-up window and 1 pod
+per 300 s, reacts later than the loads of the run set ask for. The problems
+shown:
+
+1. **Prefill's 900 s scale-up window outlasts the run set's loads.** The prefill
+   trigger asked for a third pod within 45 s of every step or spike that
+   needed one (runs 2, 4a, 4b, 8, 9), and the pod was requested only 915 to
+   945 s after the step began (run 2: 930 s, run 4a: 915 s, run 8: 945 s) and
+   was Ready 105 to 120 s after that: 1,035 s after the step in run 4a, 1,320 s
+   in run 4b (the cap of 4, reached after the load ended), 15 s after the spike
+   in all three bursty cycles, and never in the short spikes (517 s < 900 s).
+   In run 8 the third pod was then held 3,900 s into the quiet phase.
+2. **Decode follows a step by minutes, not seconds.** After a step that needs
+   2 or more extra decode pods, A took 360 s (run 2, stage 3: 0.697) and 480 s
+   (run 3, phase 3: 0.840) to return to 1.00, with 4 Ready 270 s after the step
+   in run 2 and 6 Ready 570 s after it in run 3; in run 4b decode was at its cap
+   165 s after the step. Cold start is 120 s, and the pool then asks for 1 to 2
+   pods per sync as the queue grows, because the formula's terms sit below the
+   need until the queue is deep: the 1.3 x concurrency constant (510 against 392
+   requests per pod at the knee) and the 1.3 x completion-rate constant (8.4
+   against 6.461 req/s) put each driver above the knee, and the KV guard
+   (`pods * kv / 0.8`) won the max at most of the syncs inspected in the steps of
+   runs 2 and 3.
+3. **A backlog does not clear within the load once it forms.** In run 4a, with
+   decode at 6 and prefill at 3 (above their needs of 5 and 3), A stayed 0.00
+   to the end of the 0.8 x C phase; in run 4b 62,008 of 69,780 requests of the
+   phase timed out; in run 10 the opening hold at 0.9 x C from 2 pods left
+   13,606 waiting requests per prefill pod at its peak and held A at 0.000
+   through the next two 4,320 s steps (0.6 and 0.3 x C), with A back to 1.00
+   only at t = 11,700 s. blis keeps serving requests past the client timeout
+   (inference-sim#2291), so the recovery time is longer here than on a cluster.
+4. **One token-rate constant for prefill serves the mixes unequally.**
+   Prefill's capacity is 49,930 uncached tok/s for 8192:256, 53,628 for the
+   blend, and above 102,400 for 2048:2048 (A stayed 1.000 up to 50 req/s). The
+   threshold 37,540 is 0.7 x the blend's, so it sits 7 % above 0.7 x the 8192:256 knee (34,950)
+   and at no more than 52 % of 0.7 x the 2048:2048 capacity (71,680 or more). In run 3 the 2048:2048 and 256:4096 phases (24,590 and 3,074
+   tok/s, against 98,359 in phase 1) kept the third prefill pod only because of
+   the 3,600 s scale-down window.
+5. **Scale-down is slow and ends with a pod too many.** In run 10 prefill held 3
+   pods to the end of the load (its trigger read 0.35 to 0.38 from t = 11,700 s, and
+   the 3,600 s window had not ended), and decode first read 2 Ready 1,695 s into
+   the last step, never 2 during the 0.3 x C step that needs 2. In the quiet
+   phases of runs 8 and 9, decode returned to 2 about 820 to 1,155 s after a
+   spike and prefill's extra pod stayed 3,900 s.
+6. **Cost.** Run 3 used 38 % fewer GPU-seconds than the static fleet of its peak
+   (19,950 against 32,400) and lost A only in phase 3 (0.840 against 1.000).
+
+What worked: the uncached discount (`offered * comp / done`) cut the prefill
+trigger to 0.1 to 0.19 under the agentic sessions' cached prompts, where the
+prompt tokens alone would read 0.80, and the pools held their floor with A
+1.000 and no context overflow (run 5).
+
+**Calibrated constants for step 5** (measured in blis; step 5 must measure its
+own): prefill 37,540 uncached tok/s per pod (0.7 x 53,628, the blend's knee),
+decode 510 requests per pod, 8.4 completions/s per pod, 2,133 tokens (mix
+mean), ITL SLO 0.05 s.
 
 ## Amendments
 

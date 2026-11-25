@@ -1,0 +1,144 @@
+{
+ "run": "scale-down",
+ "aligned_by": "blis-run.json",
+ "rows": [
+  {
+   "stage": 1,
+   "seconds": 1755,
+   "rate": 34.8894,
+   "mix": "8192:256,2048:2048,256:4096",
+   "offered_req_s": 34.89059829059829,
+   "lambda_in": 122070.57321937323,
+   "lambda_out": 74433.27635327635,
+   "sent": 61233,
+   "errors": {
+    "timeout": 52269
+   },
+   "A": 0.02619502555811409,
+   "ttft": [
+    79.78603,
+    226.108091,
+    293.012802
+   ],
+   "tpot": [
+    0.0353132927960928,
+    0.03811159607843137,
+    0.042757956862745104
+   ],
+   "ready": [
+    2,
+    3
+   ],
+   "need": 3,
+   "requested_replica_s": 4365.0000000224145,
+   "ready_replica_s": 4245.0000000224145
+  },
+  {
+   "stage": 2,
+   "seconds": 4320,
+   "rate": 23.2596,
+   "mix": "8192:256,2048:2048,256:4096",
+   "offered_req_s": 23.259722222222223,
+   "lambda_in": 81378.01481481481,
+   "lambda_out": 49620.74074074074,
+   "sent": 100482,
+   "errors": {
+    "timeout": 100482
+   },
+   "A": 0.0,
+   "ttft": [
+    null,
+    null,
+    null
+   ],
+   "tpot": [
+    null,
+    null,
+    null
+   ],
+   "ready": [
+    3,
+    3
+   ],
+   "need": 2,
+   "requested_replica_s": 12960.000000000002,
+   "ready_replica_s": 12960.000000000002
+  },
+  {
+   "stage": 3,
+   "seconds": 4320,
+   "rate": 11.6298,
+   "mix": "8192:256,2048:2048,256:4096",
+   "offered_req_s": 11.629861111111111,
+   "lambda_in": 40689.00740740741,
+   "lambda_out": 24810.37037037037,
+   "sent": 50241,
+   "errors": {
+    "timeout": 50241
+   },
+   "A": 0.0,
+   "ttft": [
+    null,
+    null,
+    null
+   ],
+   "tpot": [
+    null,
+    null,
+    null
+   ],
+   "ready": [
+    3,
+    3
+   ],
+   "need": 1,
+   "requested_replica_s": 12960.0,
+   "ready_replica_s": 12960.0
+  },
+  {
+   "stage": 4,
+   "seconds": 4320,
+   "rate": 3.8766,
+   "mix": "8192:256,2048:2048,256:4096",
+   "offered_req_s": 3.877083333333333,
+   "lambda_in": 13564.622222222222,
+   "lambda_out": 8271.111111111111,
+   "sent": 16749,
+   "errors": {
+    "timeout": 2008
+   },
+   "A": 0.8137799271598304,
+   "ttft": [
+    0.133879,
+    0.275415,
+    213.303635
+   ],
+   "tpot": [
+    0.01647814411333659,
+    0.017992737484737484,
+    0.03116885686370298
+   ],
+   "ready": [
+    3,
+    3
+   ],
+   "need": 1,
+   "requested_replica_s": 12960.0,
+   "ready_replica_s": 12960.0
+  }
+ ],
+ "summary": {
+  "sent": 228705,
+  "A": 0.06660982488358366,
+  "errors": {
+   "timeout": 205000
+  },
+  "requested_replica_s": 43245.00000002242,
+  "gpu_s": 43245.00000002242,
+  "placement": {
+   "before_first_stage": 0,
+   "after_last_stage": 0,
+   "stages_off_rate": []
+  }
+ }
+}

@@ -1,0 +1,1 @@
+The blend at 0.9 x C (34.9 req/s) for 1,755 s from 2 pods per pool, then 4,320 s steps at 0.6, 0.3 and 0.1 x C. Decode reached 6 Ready, prefill 3. A was 0.026 in the hold and 0.000 in the next two steps, and returned to 1.00 only at t = 11,700 s, 1,305 s into the last step.
