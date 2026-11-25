@@ -1,0 +1,32 @@
+{
+ "knee-decode-2048x2048": {
+  "what": "knee, 2048x2048 (2048:2048), stages at (0.6, 0.8, 1.0, 1.25) x estimate 6.0 req/s",
+  "seed": 1,
+  "duration_s": 1200,
+  "requests": 6546,
+  "timeout_s": 157,
+  "drain_s": 240,
+  "phases": [
+   {
+    "seconds": 300,
+    "rate": 3.6,
+    "mix": "2048:2048"
+   },
+   {
+    "seconds": 300,
+    "rate": 4.8,
+    "mix": "2048:2048"
+   },
+   {
+    "seconds": 300,
+    "rate": 6.0,
+    "mix": "2048:2048"
+   },
+   {
+    "seconds": 300,
+    "rate": 7.5,
+    "mix": "2048:2048"
+   }
+  ]
+ }
+}
