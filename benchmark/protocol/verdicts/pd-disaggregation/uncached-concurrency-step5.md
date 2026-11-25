@@ -43,15 +43,31 @@ and this evaluation follows:
 - If the free GPUs do not cover the caps (prefill 4 + decode 6), wait and
   retry; if still blocked, run what fits and mark the rest not run.
 
+## The plant's KV transfer
+
+The pods have one network interface, the cluster pod network (OVN), although
+each requests `rdma/roce_gdr: 1`. UCX runs with
+`UCX_TLS=sm,cuda_ipc,cuda_copy,tcp` and `UCX_SOCKADDR_TLS_PRIORITY=tcp`, the
+values llm-d-benchmark sets. The prefill-to-decode KV transfer therefore goes
+over TCP: one 8192-token prompt of DeepSeek-V2-Lite is 243 MB of KV. This is
+the plant the overlay produces, and the evaluation keeps it (the coordinator's
+rule: take the conservative choice and record it). blis priced a 200 Gb/s RoCE
+fabric (step 3), so every capacity number below differs from step 3's where the
+transfer binds.
+
 ## μ_SLO
 
-Pending.
+Each knee pins its pool at 1 and the other pool high enough not to bind.
+
+| Pool | Mix | μ_SLO (req/s) | blis (step 3) | Source |
+|---|---|---|---|---|
+| decode | 8192:256 | 1.328 | 20.267 | [run 1a](uncached-concurrency-step5/knees/decode-8192x256/report.md): A 0.953 at 1.29 req/s offered, 0.912 at 1.74; the KV pull binds (TPOT p90 ≤ 6.7 ms) |
 
 ## Runs
 
 | # | Run | Status | Outcome | A | Errors | GPU-s (prefill + decode) | Report |
 |---|---|---|---|---|---|---|---|
-| 1a | knee decode 8192:256 | pending | | | | | |
+| 1a | knee decode 8192:256 | done (third attempt) | as expected; μ_SLO 1.328 req/s; the KV pull over TCP binds | 0.945 (whole run) | 0 | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-8192x256/report.md) |
 | 1b | knee decode 2048:2048 | pending | | | | | |
 | 1c | knee decode 256:4096 | pending | | | | | |
 | 1d | knee decode blend | pending | | | | | |
@@ -70,7 +86,14 @@ Pending.
 
 ## Discarded attempts
 
-None.
+Knee attempts whose crossing fell outside the stages (run-set.md §2: move the
+estimate and rerun). The raw runs are under `benchmark/results/` (not
+committed).
+
+| Attempt | Session | Reason | Rerun |
+|---|---|---|---|
+| 1a, knee decode 8192:256 at blis's estimate, 20.267 req/s | `villardl-20261124-182055-159` | Stage 1 (12.2 req/s) collapsed: the decode pod held 0 running and 700 to 900 waiting requests with KV usage at 0.996, the NIXL pulls took 22 to 37 s on average (vLLM's KV transfer log), and generation fell to 0 to 25 tok/s from 23:23 UTC. Stopped at 23:28 UTC, in stage 1 (harness pod deleted). A probe through the router (60 s at 3 and 5 req/s, from a pod in the namespace) gave TTFT p90 1.18 s and 5.2 s | estimate 3.6 req/s |
+| 1a, estimate 3.6 req/s | `villardl-20261124-183456-754` | Stage 1 (2.16 req/s) A 0.853, TTFT p90 2.22 s: the crossing is below the stages. The decode pod's queue time p90 was 2.0 s with a mean NIXL transfer of 1.1 s | estimate 1.4 req/s (run 1a) |
 
 ## Conclusions
 
@@ -93,3 +116,12 @@ Pending: no run is done.
   non-zero reading is checked in run 1a. The harness writes `metrics/processed/`
   only inside `workspace.tar.zst`; it is extracted into each results
   directory after the run.
+- 2026-11-24 23:13–23:16 UTC: prefill pinned 2 → 6 for the first knee
+  attempt; the 4 new pods were Ready 121, 121, 122 and 184 s after creation
+  (pod `Ready` condition).
+- 2026-11-24 23:21–23:28 UTC: run 1a's first attempt, discarded (collapse at
+  12.2 req/s). 23:36–23:57 UTC: second attempt, discarded (stage 1 failed).
+  Prefill re-pinned at 3 for the decode knees. `conc` and `kv` left 0 in both
+  attempts (the gate's remaining check).
+- 2026-11-25 00:04–00:24 UTC: run 1a done, μ_SLO(8192:256, decode) =
+  1.328 req/s.

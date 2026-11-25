@@ -65,6 +65,7 @@ From 3-blis-evaluation.md §3.2:
 - **Scrapes and syncs on the same instants**: the dead time after a load change
   is the shortest the phases allow.
 - **The prefill and decode counters** of the table above are approximated.
+- **Agentic sessions** (§3.3): a shared 4,096-token system prompt (one prefix group), 10 rounds whose context accumulates, 2 s pauses; no per-conversation system prompt, no subagent fan-out, per-turn lengths truncated (input <= 2,400, output <= 640 tokens). The rate is sessions per second, the run set's request rate divided by 10.
 - **Scale from zero** is not run (`minReplicaCount` is 2 for both roles).
 
 ## Calibration of the GLM-5.3 constants
@@ -143,7 +144,7 @@ because `minReplicaCount` is 2 (run-set.md §2).
 | 3 | mix-shift | done | problem shown: phase 3 (256:4096) A 0.840, decode 2 to 6 Ready in 570 s, A 0.36 at the worst bin; a third prefill pod held 2,580 s above the floor; phase 2 decode 2 against a need of 3 with A 1.000 | 0.947 | 0 | 19,950 (9,900 + 10,050) |
 | 4a | overload under the cap | done (second attempt, lab patch) | problem shown: A 0.039 in the 31.0 req/s phase after decode reached its cap of 6 and prefill 3; prefill's 900 s window left it at 2 pods for 1,035 s after the step; 24,459 timeouts and 10,792 unfinished | 0.231 | 24,459 timeout | 13,110 (5,085 + 8,025) |
 | 4b | overload over the cap | done (lab patch from the start) | as expected for the cap, no trigger fault: decode at 6 from t = 1,365 s with its trigger at or above 6; prefill reached its cap of 4 only at t = 2,520 s, after the load; A 0.003 in the 58.1 req/s phase (62,008 timeouts, 37,165 unfinished) | 0.120 | 62,008 timeout | 14,580 (5,100 + 9,480) |
-| 5 | agentic | pending | | | | | |
+| 5 | agentic | done | as expected: both pools at their floor of 2; A 1.000; 0 errors; longest prompt 28,309 of 32,768 tokens | 1.000 | 0 | 14,400 (7,200 + 7,200) |
 | 8 | bursty | pending | | | | | |
 | 9 | short spikes | pending | | | | | |
 | 10 | scale-down | pending | | | | | |

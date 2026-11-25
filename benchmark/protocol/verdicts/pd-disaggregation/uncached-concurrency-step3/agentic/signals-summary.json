@@ -1,0 +1,15 @@
+{
+  "start_s": 0,
+  "end_s": 3911.042108,
+  "pod_seconds": 15644.168432,
+  "mean_pods": 4,
+  "peak_gpu_pods": 4,
+  "arrivals": 7940,
+  "completions": 7940,
+  "rejections": 0,
+  "good_completions": 7940,
+  "goodput_per_pod_hour": 1827.134508570727,
+  "slo_ttft_s": 0,
+  "slo_itl_s": 0,
+  "scrape_interval_s": 15
+}

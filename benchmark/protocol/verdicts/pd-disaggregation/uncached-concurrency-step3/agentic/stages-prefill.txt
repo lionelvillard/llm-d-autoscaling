@@ -1,0 +1,8 @@
+agentic: 7940 requests in the records; schedule aligned by blis-run.json (first request at offset 3.543 s)
+| stage | s | set req/s | offered req/s | λ_in tok/s | λ_out tok/s | sent | errors | A | TTFT p50/p90/p99 s | TPOT p50/p90/p99 ms | Ready | need | requested replica-s | Ready replica-s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | 1200 | 0.944 | 0.939 | 11,273 | 317 | 1,127 | 0 | 100.0 % | 0.13/0.19/0.26 | 6.2/8.5/10.1 | 2–2 | – | 2,400 | 2,400 |
+| 2 | 2400 | 2.833 | 2.813 | 34,543 | 968 | 6,752 | 0 | 100.0 % | 0.15/0.24/0.33 | 13.2/15.5/17.3 | 2–2 | – | 4,800 | 4,800 |
+
+run: 7,879 sent, A 100.0 %, errors 0, requested 7,200 replica-s = 7,200 GPU-s at 1 GPU per replica
+placement: 0 request(s) before the first stage, 61 after the last (session rounds); stages more than 3 sd off their set rate: none: ok
