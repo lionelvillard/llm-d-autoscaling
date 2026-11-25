@@ -101,6 +101,56 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 | decode | 256:4096 | 3.826 | 4.002 | not measured | [run 1c](uncached-concurrency-step5/knees/decode-256x4096/report.md): A 1.000 at 3.60 req/s, 0.801 at 4.49; KV binds (0.967); an upper bound (300 s stages, 80 to 185 s requests) |
 | decode | blend | 6.632 | 6.461 | not measured | [run 1d](uncached-concurrency-step5/knees/decode-blend/report.md): A 0.981 at 6.59 req/s, 0.007 at 8.01; KV binds (0.901 → 0.992); estimate from the per-mix knees 6.397 |
 | prefill | 8192:256 | 7.978 (65,356 tok/s) | 6.095 (49,930 tok/s) | not measured | [run 1e](uncached-concurrency-step5/knees/prefill-8192x256/report.md): A 0.995 at 7.88 req/s, 0.029 at 10.00; prefill compute binds |
+| prefill | blend | 15.205 (53,202 tok/s) | 15.328 (53,628 tok/s) | not measured | [run 1f](uncached-concurrency-step5/knees/prefill-blend/report.md): A 0.998 at 14.68 req/s, 0.712 at 17.81; prefill compute binds |
+| prefill | 2048:2048, 256:4096 | not measured | not reached | not measured | not run: on these mixes decode caps the offered rate below what the prefill floor serves. At 6 decode pods 2048:2048 is served up to 6 × 6.525 = 39.2 req/s, 80,180 prompt tok/s, under 2 prefill pods × 53,202 = 106,404 tok/s; 256:4096 up to 23 req/s, 5,877 tok/s. The prefill need on these mixes is `minReplicaCount` (2); [`index-prefill.json`](uncached-concurrency-step5/index-prefill.json) gives them an unbounded capacity |
+
+**C = min(4 × 15.205, 6 × 6.632) = min(60.82, 39.79) = 39.79 req/s of the
+blend, set by the decode pool.**
+
+### What the scenario's calibration rules give on this plant
+
+Task 0545's rules (step 3, "Calibration"), applied to the GPU knees. Reported
+only: by the coordinator's decision the live ScaledObjects keep the scenario's
+constants.
+
+| Constant | Scenario (blis) | GPU knees | Rule and source |
+|---|---|---|---|
+| prefill divisor | 37,540 | **37,241** | 0.7 × the blend's prefill knee, 53,202 computed tok/s per pod (run 1f). The numerator counts EPP tokens, 1.6 × the engine's (runs 1a to 1f), so the same 0.7 target would need 59,600 in the numerator's units |
+| decode concurrency per pod | 510 | **570** | 1.3 × 439, the running + waiting one decode pod holds at μ_SLO(B) = 6.632 req/s (run 1d, interpolated between stages 3 and 4) |
+| decode completions per pod | 8.4 | **8.62** | 1.3 × 6.632 req/s (run 1d) |
+| output length before the first completion | 2,133 | 2,133 | the blend's mean OSL |
+| ITL SLO | 0.05 | 0.05 | the run set's TPOT limit |
+
+### Lengths and loads (runs 2 to 10)
+
+From the cold start and the slower role's behavior (prefill: scale-up after a
+900 s window, 1 pod per 300 s; scale-down after 3,600 s, 1 pod per 600 s), as
+step 3 did. Cold start 186 s (the slowest pod at standup); decode pods
+requested later were Ready in 121 to 125 s.
+
+| Quantity | Value | From |
+|---|---|---|
+| T | 630 s | 1 × 300 + 186 + 15 + 120 = 621, rounded up to 30 s |
+| phases | 1,260 s | max(600, 2 T) |
+| R | 1,110 s | 15 + 900 + 186 = 1,101, rounded up |
+| Q | 4,320 s | 3,600 + 600 + 120 |
+| spike (run 9) | 555 s | R / 2 |
+| G | 1,800 s | min(2 R, 3,600 / 2) |
+| H | 1,830 s | (4 − 2) × 300 + R + 120 |
+| D | 4,320 s | 1 × 600 + 3,600 + 120 |
+
+`gen_load.py runs --mu 8192:256=18.402,2048:2048=6.525,256:4096=3.826
+--mu-blend 6.632 --max-replicas 6 --min-replicas 2 --stage 630 --spike 1110
+--quiet 4320 --gap 1800 --hold 1830 --down-stage 4320`:
+[`index.json`](uncached-concurrency-step5/index.json) (decode capacities, the
+pool that sets C) and
+[`index-prefill.json`](uncached-concurrency-step5/index-prefill.json) (the same
+schedules with the prefill capacities, for the prefill tables' need; `need` there
+is `ceil(q / μ)` before the `minReplicaCount` floor of 2). Requests: stair 64,108,
+mixshift 43,725, overload-under 50,251, overload-over 85,164, bursty 229,971,
+short-spikes 201,518, scale-down 237,393; agentic 0.969 then 2.908 req/s.
+Runs 2 to 10 use a harness of 16 CPU and 128 Gi (the knees used 8 and 32 Gi):
+inference-perf holds every request's token times in memory.
 
 ## Runs
 
@@ -111,8 +161,8 @@ Each knee pins its pool at 1 and the other pool high enough not to bind.
 | 1c | knee decode 256:4096 | done | as expected; μ_SLO 3.826 req/s (upper bound); KV binds | 0.606 (whole run) | 859 timeout | 3,600 (2,400 + 1,200) | [report](uncached-concurrency-step5/knees/decode-256x4096/report.md) |
 | 1d | knee decode blend | done | as expected; μ_SLO 6.632 req/s; KV binds; the `kv` guard crosses 1.1 at the knee, the drivers past it | 0.658 (whole run) | 0 | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-blend/report.md) |
 | 1e | knee prefill 8192:256 | done (second attempt) | as expected; μ_SLO 7.978 req/s (65,356 tok/s); the prefill composite reads about 2.8 at this knee | 0.385 (whole run) | 2,479 timeout | 3,600 (1,200 + 2,400) | [report](uncached-concurrency-step5/knees/prefill-8192x256/report.md) |
-| 1f | knee prefill blend | running | | | | | |
-| 2 | SO-active staircase | pending | | | | | |
+| 1f | knee prefill blend | done | as expected; μ_SLO 15.205 req/s (53,202 tok/s); the prefill composite reads 2.19 at the knee (EPP tokens 1.6 × engine tokens) | 0.627 (whole run) | 82 `ClientConnectorError`, 4 HTTP 503 | 7,200 (1,200 + 6,000) | [report](uncached-concurrency-step5/knees/prefill-blend/report.md) |
+| 2 | SO-active staircase | running | | | | | |
 | 3 | mix-shift | pending | | | | | |
 | 4a | overload under the cap | pending | | | | | |
 | 4b | overload over the cap | pending | | | | | |
@@ -217,3 +267,10 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   07:56–07:58 UTC: a decode pod requested (pin 1 → 2) was Ready 121 s later.
 - 2026-11-25 07:59–08:20 UTC: run 1e's attempt at 6.095 req/s, discarded (stage
   4 passed). 08:28–08:50 UTC: run 1e done, μ_SLO(8192:256, prefill) = 7.978 req/s.
+- 2026-11-25 08:57–09:38 UTC: run 1f done, μ_SLO(B, prefill) = 15.205 req/s.
+  Its per-request file was 2.3 GB on the PVC; `slim.py` (run on the
+  data-access pod) cuts each record's token-time lists to their first and last
+  entries for the local copy, and the PVC copy is `xz`-compressed. The workload
+  PVC was grown from 30 Gi to 150 Gi (09:51 UTC).
+- 2026-11-25 09:53 UTC: run 2 armed (both pools pinned at 2 for 300 s, then
+  resumed).
