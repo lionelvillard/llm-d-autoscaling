@@ -1,0 +1,19 @@
+t_epoch,event
+1795559783,e1 start: 1 req/s 384:50 for 300 s (the scenario sanity load)
+1795560050,e2 start: three steady mixes in turn, 240 s each with 90 s idle between: 8192:256 at 0.5/s, 2048:2048 at 0.2/s, 256:4096 at 0.1/s
+1795561660,cal start: decode paused at 1, prefill 2; blend 8192:256,2048:2048,256:4096 at 1,2,3,4,5,6.5 req/s x 180 s each
+1795562091,cal aborted: prefill pods KV 0.99 and waiting, running 0 (stuck since before the run); loadgen killed
+1795562221,prefill pods restarted with KV 100 GiB (memory 110Gi): the sim's kv_producer never frees blocks (prefill kv_cache_usage = cumulative prompt tokens / 582k), 15 GiB stalled
+1795562392,pf6 start: prefill SO live (paused annotation removed), 2.2 req/s of 33000-word prompts (rejected 400 by prefill: > max-model-len, offered counted by EPP) for 1320 s
+1795563723,pf6 load ended (loadgen done)
+1795563743,d1 start: decode paused at 2 pods; blend 8192:256,2048:2048,256:4096 at 0.1,0.2,0.3,0.4 req/s x 420 s
+1795565638,d2 start: decode SO live (unpaused); decode-blend 256:256,256:2048,256:4096 at 0.5,1,1.5,2.2,1,0.4 req/s x 420 s (last 900 s)
+1795568896,d4 start: PF10, decode paused at 2, 8192:256 at 1 req/s for 360 s
+1795569319,decode pods restarted with KV 1 GiB (about 38.8k tokens) for the PF7 run
+1795569505,d3 start: PF7, decode KV 1 GiB (38,784 tokens/pod), decode paused at 2, decode-blend at 0.3,0.4,0.5,0.6,0.7 req/s x 300 s
+1795570285,d3 stopped after the 0.5 req/s stage began: decode KV stays below 0.4 (conc about 5 per pod)
+1795570330,d3b start: same plant as d3; decode-blend at 0.7,1.0,1.4,1.8,2.2 req/s x 240 s
+1795572015,pf2 start: EPP pod deleted (new EPP, no request since)
+1795572067,pf2 EPP deletion returned (the pod was terminated between the previous line and this one; the new pod was created at about 1795572026)
+1795572334,pf2 first request: after the EPP restart, 1 req/s of 384:50 for 40 s
+1795572677,d5 start: PF7 with the decode SO live and the 1 GiB KV pods: decode-blend at 2.0 req/s for 600 s

@@ -1,0 +1,36 @@
+# PF2 idle status, no request sent since the EPP started
+2026-11-24T22:32:07Z
+## prefill
+Ready=True reason=ScaledObjectReady
+Active=True reason=ScalerActive
+Fallback=True reason=FallbackExists
+Paused=False reason=
+health: {"s0-prometheus":{"numberOfFailures":21,"status":"Failing"},"s1-prometheus":{"numberOfFailures":0,"status":"Happy"},"s2-prometheus":{"numberOfFailures":0,"status":"Happy"}}
+## decode
+Ready=True reason=ScaledObjectReady
+Active=True reason=ScalerActive
+Fallback=True reason=FallbackExists
+Paused=False reason=
+health: {"s0-prometheus":{"numberOfFailures":0,"status":"Happy"},"s1-prometheus":{"numberOfFailures":21,"status":"Failing"},"s2-prometheus":{"numberOfFailures":0,"status":"Happy"},"s3-prometheus":{"numberOfFailures":0,"status":"Happy"},"s4-prometheus":{"numberOfFailures":0,"status":"Happy"},"s5-prometheus":{"numberOfFailures":0,"status":"Happy"},"s6-prometheus":{"numberOfFailures":0,"status":"Happy"}}
+NAME                                 SCALETARGETKIND      SCALETARGETNAME                      MIN   MAX   READY   ACTIVE   FALLBACK   PAUSED   TRIGGERS     AUTHENTICATIONS        AGE
+deepseek-8f161440--v2-lite-decode    apps/v1.Deployment   deepseek-8f161440--v2-lite-decode    2     6     True    True     True       False    prometheus   keda-prometheus-auth   3m34s
+deepseek-8f161440--v2-lite-prefill   apps/v1.Deployment   deepseek-8f161440--v2-lite-prefill   2     4     True    True     True       False    prometheus   keda-prometheus-auth   3m35s
+NAME                                          REFERENCE                                       TARGETS     MINPODS   MAXPODS   REPLICAS   AGE
+keda-hpa-deepseek-8f161440--v2-lite-decode    Deployment/deepseek-8f161440--v2-lite-decode    1/1 (avg)   2         6         2          2m51s
+keda-hpa-deepseek-8f161440--v2-lite-prefill   Deployment/deepseek-8f161440--v2-lite-prefill   1/1 (avg)   2         4         2          2m53s
+NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE
+deepseek-8f161440--v2-lite-decode       2/2     2            2           2m59s
+deepseek-8f161440--v2-lite-prefill      2/2     2            2           2m59s
+deepseek-8f161440--v2-lite-router-epp   1/1     1            1           3m21s
+## KEDA operator log (fallback)
+2026-11-24T22:32:04Z	INFO	fallback	Suppressing error, using fallback metrics	{"scaledObject.Namespace": "step2-uncached-concurrency-20261124", "scaledObject.Name": "deepseek-8f161440--v2-lite-decode", "suppressedError": "prometheus metrics 'prometheus' target may be lost, the result is empty", "fallback.behavior": "currentReplicasIfHigher", "fallback.replicas": 2, "workload.currentReplicas": 2}
+2026-11-24T22:32:04Z	ERROR	prometheus_scaler	error executing prometheus query	{"type": "ScaledObject", "namespace": "step2-uncached-concurrency-20261124", "name": "deepseek-8f161440--v2-lite-decode", "error": "prometheus metrics 'prometheus' target may be lost, the result is empty"}
+2026-11-24T22:32:04Z	ERROR	prometheus_scaler	error executing prometheus query	{"type": "ScaledObject", "namespace": "step2-uncached-concurrency-20261124", "name": "deepseek-8f161440--v2-lite-decode", "error": "prometheus metrics 'prometheus' target may be lost, the result is empty"}
+2026-11-24T22:32:04Z	INFO	fallback	Suppressing error, using fallback metrics	{"scaledObject.Namespace": "step2-uncached-concurrency-20261124", "scaledObject.Name": "deepseek-8f161440--v2-lite-decode", "suppressedError": "prometheus metrics 'prometheus' target may be lost, the result is empty", "fallback.behavior": "currentReplicasIfHigher", "fallback.replicas": 2, "workload.currentReplicas": 2}
+## series presence
+count(llm_d_epp_prefix_prompt_tokens_sum{namespace="step2-uncached-concurrency-20261124"})
+{"status":"success","data":{"resultType":"vector","result":[],"analysis":{}}}
+count(llm_d_epp_request_total{namespace="step2-uncached-concurrency-20261124"})
+{"status":"success","data":{"resultType":"vector","result":[],"analysis":{}}}
+count(vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124"})
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{},"value":[1795559537.655,"5"]}],"analysis":{}}}

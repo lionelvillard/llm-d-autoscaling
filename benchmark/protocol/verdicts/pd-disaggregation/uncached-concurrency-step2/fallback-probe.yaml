@@ -1,0 +1,71 @@
+# KEDA version probe: two Deployments held at 3 replicas by hand, each with a ScaledObject whose
+# trigger always errors (the metric does not exist and ignoreNullValues is false). After 3
+# failures the fallback engages with replicas: 1. `currentReplicasIfHigher` must keep 3;
+# `static` (the control) must go to 1.
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: fb-ifhigher}
+spec:
+  replicas: 3
+  selector: {matchLabels: {app: fb-ifhigher}}
+  template:
+    metadata: {labels: {app: fb-ifhigher}}
+    spec:
+      containers:
+      - name: pause
+        image: registry.k8s.io/pause:3.9
+        resources: {requests: {cpu: 10m, memory: 8Mi}, limits: {cpu: 50m, memory: 16Mi}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: fb-static}
+spec:
+  replicas: 3
+  selector: {matchLabels: {app: fb-static}}
+  template:
+    metadata: {labels: {app: fb-static}}
+    spec:
+      containers:
+      - name: pause
+        image: registry.k8s.io/pause:3.9
+        resources: {requests: {cpu: 10m, memory: 8Mi}, limits: {cpu: 50m, memory: 16Mi}}
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata: {name: fb-ifhigher}
+spec:
+  scaleTargetRef: {name: fb-ifhigher}
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  pollingInterval: 15
+  fallback: {failureThreshold: 3, replicas: 1, behavior: currentReplicasIfHigher}
+  triggers:
+  - type: prometheus
+    metricType: AverageValue
+    authenticationRef: {name: keda-prometheus-auth}
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: 'sum(this_metric_does_not_exist_step2_probe)'
+      threshold: "1"
+      ignoreNullValues: "false"
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata: {name: fb-static}
+spec:
+  scaleTargetRef: {name: fb-static}
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  pollingInterval: 15
+  fallback: {failureThreshold: 3, replicas: 1, behavior: static}
+  triggers:
+  - type: prometheus
+    metricType: AverageValue
+    authenticationRef: {name: keda-prometheus-auth}
+    metadata:
+      serverAddress: "https://thanos-querier.openshift-monitoring.svc.cluster.local:9091"
+      authModes: bearer
+      query: 'sum(this_metric_does_not_exist_step2_probe)'
+      threshold: "1"
+      ignoreNullValues: "false"

@@ -1,0 +1,10 @@
+# fallback behavior probe (CMA, openshift-keda) 2026-11-24T23:06:27Z
+NAME          READY   UP-TO-DATE   AVAILABLE   AGE
+fb-ifhigher   3/3     3            3           25m
+fb-static     1/1     1            1           25m
+NAME          BEHAVIOR                  FALLBACK   HEALTH
+fb-ifhigher   currentReplicasIfHigher   True       map[s0-prometheus:map[numberOfFailures:103 status:Failing]]
+fb-static     static                    True       map[s0-prometheus:map[numberOfFailures:103 status:Failing]]
+NAME                   REFERENCE                TARGETS     MINPODS   MAXPODS   REPLICAS   AGE
+keda-hpa-fb-ifhigher   Deployment/fb-ifhigher   1/1 (avg)   1         5         3          25m
+keda-hpa-fb-static     Deployment/fb-static     1/1 (avg)   1         5         1          25m

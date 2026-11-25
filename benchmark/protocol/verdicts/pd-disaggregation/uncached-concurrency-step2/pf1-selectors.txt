@@ -1,0 +1,65 @@
+### count by (namespace, job, pod, role, engine) (vllm:prompt_tokens_by_source_total{namespace="step2-uncached-concurrency-20261124",role="prefill",pod=~"deepseek-8f161440--v2-lite-prefill-.*",source="local_compute"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-prefill-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-prefill-bb9485f44-946t2", "role": "prefill"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-prefill-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-prefill-bb9485f44-qqq2j", "role": "prefill"} 1
+series: 2
+### count by (namespace, job, pod, role, engine) (vllm:prompt_tokens_total{namespace="step2-uncached-concurrency-20261124",role="prefill",pod=~"deepseek-8f161440--v2-lite-prefill-.*"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-prefill-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-prefill-bb9485f44-946t2", "role": "prefill"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-prefill-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-prefill-bb9485f44-qqq2j", "role": "prefill"} 1
+series: 2
+### count by (namespace, job, pod, role, engine) (vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt", "role": "decode"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5", "role": "decode"} 1
+series: 2
+### count by (namespace, job, pod, role, engine) (vllm:num_requests_waiting{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt", "role": "decode"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5", "role": "decode"} 1
+series: 2
+### count by (namespace, job, pod, role, engine) (vllm:generation_tokens_total{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt", "role": "decode"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5", "role": "decode"} 1
+series: 2
+### count by (namespace, job, pod, role, engine) (vllm:request_success_total{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*",finished_reason="length"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt", "role": "decode"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5", "role": "decode"} 1
+series: 2
+### count by (namespace, job, pod, role, engine) (vllm:kv_cache_usage_perc{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt", "role": "decode"} 1
+{"engine": "0", "job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5", "role": "decode"} 1
+series: 2
+### count by (namespace, job, pod, role) (vllm:inter_token_latency_seconds_count{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{"job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt", "role": "decode"} 1
+{"job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "namespace": "step2-uncached-concurrency-20261124", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5", "role": "decode"} 1
+series: 2
+### count by (job, plugin_name, endpoint_role, modality) (llm_d_epp_prefix_prompt_tokens_count{namespace="step2-uncached-concurrency-20261124"})
+{"endpoint_role": "prefill", "job": "deepseek-8f161440--v2-lite-router-epp", "modality": "none", "plugin_name": "approx-prefix-cache-producer"} 1
+series: 1
+### count by (job, plugin_name, endpoint_role, modality) (llm_d_epp_prefix_prompt_tokens_sum{namespace="step2-uncached-concurrency-20261124",job="deepseek-8f161440--v2-lite-router-epp",plugin_name="approx-prefix-cache-producer",endpoint_role="prefill"})
+{"endpoint_role": "prefill", "job": "deepseek-8f161440--v2-lite-router-epp", "modality": "none", "plugin_name": "approx-prefix-cache-producer"} 1
+series: 1
+### count by (job) (llm_d_epp_request_total{namespace="step2-uncached-concurrency-20261124"})
+{"job": "deepseek-8f161440--v2-lite-router-epp"} 1
+series: 1
+### count by (job) (llm_d_epp_request_total{namespace="step2-uncached-concurrency-20261124",job="deepseek-8f161440--v2-lite-router-epp"})
+{"job": "deepseek-8f161440--v2-lite-router-epp"} 1
+series: 1
+### without the role pin (trap T14): decode num_requests_running
+### count by (job, pod) (vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{"job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt"} 1
+{"job": "step2-uncached-concurrency-20261124/vllm-deepseek-8f161440--v2-lite", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-z8bjt"} 1
+{"job": "step2-uncached-concurrency-20261124/deepseek-8f161440--v2-lite-decode-podmonitor", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5"} 1
+{"job": "step2-uncached-concurrency-20261124/vllm-deepseek-8f161440--v2-lite", "pod": "deepseek-8f161440--v2-lite-decode-5d77dbf58-6jsr5"} 1
+series: 4
+### without the role pin: sum vs the pinned sum of num_requests_running (decode, instantaneous)
+### sum(vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{} 91
+series: 1
+### sum(vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"})
+{} 51
+series: 1
+### pods
+### count(count by (pod) (vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124",role="decode",pod=~"deepseek-8f161440--v2-lite-decode-.*"}))
+{} 2
+series: 1
+### count(count by (pod) (vllm:num_requests_running{namespace="step2-uncached-concurrency-20261124",role="prefill",pod=~"deepseek-8f161440--v2-lite-prefill-.*"}))
+{} 2
+series: 1

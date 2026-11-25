@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="490" viewBox="0 0 1180 490" font-family="Helvetica, Arial, sans-serif" font-size="11">
+<title>PF3: the router&#x27;s prompt-token estimate is 1.5 times the engine&#x27;s count</title>
+<desc>The offered prompt tokens per second read from the router and the prompt tokens per second the prefill pods counted, on a log axis, and their ratio, for four steady request shapes.</desc>
+<rect width="1180" height="490" fill="white"/>
+<text x="96" y="18" font-size="14" font-weight="bold">PF3: the router&#x27;s prompt-token estimate is 1.5 times the engine&#x27;s count</text>
+<rect x="96" y="46" width="754" height="170" fill="none" stroke="#999999"/>
+<line x1="96" y1="216.0" x2="850" y2="216.0" stroke="#e6e6e6"/>
+<text x="90" y="220.0" text-anchor="end">10</text>
+<line x1="96" y1="159.3" x2="850" y2="159.3" stroke="#e6e6e6"/>
+<text x="90" y="163.3" text-anchor="end">100</text>
+<line x1="96" y1="102.7" x2="850" y2="102.7" stroke="#e6e6e6"/>
+<text x="90" y="106.7" text-anchor="end">1,000</text>
+<line x1="96" y1="46.0" x2="850" y2="46.0" stroke="#e6e6e6"/>
+<text x="90" y="50.0" text-anchor="end">10,000</text>
+<line x1="96.0" y1="46" x2="96.0" y2="216" stroke="#f0f0f0"/>
+<line x1="155.5" y1="46" x2="155.5" y2="216" stroke="#f0f0f0"/>
+<line x1="215.0" y1="46" x2="215.0" y2="216" stroke="#f0f0f0"/>
+<line x1="274.5" y1="46" x2="274.5" y2="216" stroke="#f0f0f0"/>
+<line x1="334.0" y1="46" x2="334.0" y2="216" stroke="#f0f0f0"/>
+<line x1="393.6" y1="46" x2="393.6" y2="216" stroke="#f0f0f0"/>
+<line x1="453.1" y1="46" x2="453.1" y2="216" stroke="#f0f0f0"/>
+<line x1="512.6" y1="46" x2="512.6" y2="216" stroke="#f0f0f0"/>
+<line x1="572.1" y1="46" x2="572.1" y2="216" stroke="#f0f0f0"/>
+<line x1="631.6" y1="46" x2="631.6" y2="216" stroke="#f0f0f0"/>
+<line x1="691.1" y1="46" x2="691.1" y2="216" stroke="#f0f0f0"/>
+<line x1="750.6" y1="46" x2="750.6" y2="216" stroke="#f0f0f0"/>
+<line x1="810.1" y1="46" x2="810.1" y2="216" stroke="#f0f0f0"/>
+<text transform="translate(14,131.0) rotate(-90)" text-anchor="middle">prompt tokens/s (1 min rate)</text>
+<clipPath id="clip0"><rect x="96" y="46" width="754" height="170"/></clipPath>
+<g clip-path="url(#clip0)">
+<path d="M100.2,143.9 L109.1,127.4 L118.0,123.7 L126.9,116.2 L135.9,120.5 L144.8,117.7 L153.7,115.5 L162.7,118.4 L171.6,115.6 L180.5,118.9 L189.4,117.4 L198.4,119.0 L207.3,114.7 L216.2,113.3 L225.1,112.2 L234.1,113.3 L243.0,111.5 L251.9,104.2 L260.8,89.5 L269.8,79.4 L278.7,71.3 L287.6,65.2 L296.6,60.2 L305.5,59.0 L314.4,60.6 L323.3,60.1 L332.3,65.1 L341.2,63.7 L350.1,63.9 L359.0,59.0 L368.0,56.9 L376.9,59.0 L385.8,55.2 L394.7,57.9 L403.7,66.4 L412.6,88.2 L421.5,104.8 M457.2,173.2 L466.2,143.3 L475.1,128.9 L484.0,116.2 L492.9,109.8 L501.9,111.2 L510.8,118.9 L519.7,126.1 L528.6,138.8 L537.6,136.2 L546.5,121.8 L555.4,119.1 L564.3,108.0 L573.3,109.1 L582.2,103.2 L591.1,97.8 L600.1,109.9 L609.0,119.1 L617.9,145.9 M680.4,216.0 L689.3,216.0 L698.2,216.0 L707.2,196.8 L716.1,186.9 L725.0,173.0 L734.0,164.9 L742.9,176.6 L751.8,187.7 L760.7,207.3 L778.6,207.1 L787.5,187.2 L796.4,180.0 L805.4,187.2 L814.3,197.1" fill="none" stroke="#1b6ca8" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M100.2,167.8 L109.1,139.4 L118.0,135.4 L126.9,127.1 L135.9,131.6 L144.8,127.7 L153.7,125.4 L162.7,127.7 L171.6,126.8 L180.5,130.4 L189.4,128.3 L198.4,129.3 L207.3,124.9 L216.2,124.0 L225.1,123.2 L234.1,124.9 L243.0,122.0 L251.9,110.1 L260.8,98.8 L269.8,86.8 L278.7,84.3 L287.6,76.0 L296.6,72.9 L305.5,67.1 L314.4,71.1 L323.3,72.2 L332.3,75.8 L341.2,72.1 L350.1,73.3 L359.0,69.0 L368.0,69.0 L376.9,67.1 L385.8,65.4 L394.7,70.0 L403.7,77.1 L412.6,100.4 L421.5,131.6 M457.2,182.8 L466.2,155.5 L475.1,138.2 L484.0,125.7 L492.9,121.2 L501.9,125.7 L510.8,131.2 L519.7,138.2 L528.6,148.2 L537.6,138.2 L546.5,131.2 L555.4,125.7 L564.3,121.2 L573.3,119.2 L582.2,114.1 L591.1,111.3 L600.1,121.3 L609.0,134.5 L617.9,165.8 M680.4,216.0 L689.3,216.0 L698.2,216.0 L707.2,206.0 L716.1,198.9 L725.0,182.1 L734.0,179.3 L742.9,189.4 L751.8,199.2 L760.7,216.0 L778.6,216.0 L787.5,194.0 L796.4,189.4 L805.4,199.4 L814.3,216.0" fill="none" stroke="#d95f02" stroke-width="2.0" stroke-dasharray="7 3" stroke-linejoin="round"/>
+</g>
+<line x1="862" y1="54" x2="884" y2="54" stroke="#1b6ca8" stroke-width="2.4"/>
+<text x="889" y="58">EPP estimate (offered)</text>
+<line x1="862" y1="69" x2="884" y2="69" stroke="#d95f02" stroke-width="2.4" stroke-dasharray="7 3"/>
+<text x="889" y="73">engine prompt_tokens</text>
+<rect x="96" y="250" width="754" height="130" fill="none" stroke="#999999"/>
+<line x1="96" y1="380.0" x2="850" y2="380.0" stroke="#e6e6e6"/>
+<text x="90" y="384.0" text-anchor="end">0</text>
+<line x1="96" y1="354.0" x2="850" y2="354.0" stroke="#e6e6e6"/>
+<text x="90" y="358.0" text-anchor="end">0.5</text>
+<line x1="96" y1="328.0" x2="850" y2="328.0" stroke="#e6e6e6"/>
+<text x="90" y="332.0" text-anchor="end">1</text>
+<line x1="96" y1="302.0" x2="850" y2="302.0" stroke="#e6e6e6"/>
+<text x="90" y="306.0" text-anchor="end">1.5</text>
+<line x1="96" y1="276.0" x2="850" y2="276.0" stroke="#e6e6e6"/>
+<text x="90" y="280.0" text-anchor="end">2</text>
+<line x1="96" y1="250.0" x2="850" y2="250.0" stroke="#e6e6e6"/>
+<text x="90" y="254.0" text-anchor="end">2.5</text>
+<line x1="96.0" y1="250" x2="96.0" y2="380" stroke="#f0f0f0"/>
+<line x1="155.5" y1="250" x2="155.5" y2="380" stroke="#f0f0f0"/>
+<line x1="215.0" y1="250" x2="215.0" y2="380" stroke="#f0f0f0"/>
+<line x1="274.5" y1="250" x2="274.5" y2="380" stroke="#f0f0f0"/>
+<line x1="334.0" y1="250" x2="334.0" y2="380" stroke="#f0f0f0"/>
+<line x1="393.6" y1="250" x2="393.6" y2="380" stroke="#f0f0f0"/>
+<line x1="453.1" y1="250" x2="453.1" y2="380" stroke="#f0f0f0"/>
+<line x1="512.6" y1="250" x2="512.6" y2="380" stroke="#f0f0f0"/>
+<line x1="572.1" y1="250" x2="572.1" y2="380" stroke="#f0f0f0"/>
+<line x1="631.6" y1="250" x2="631.6" y2="380" stroke="#f0f0f0"/>
+<line x1="691.1" y1="250" x2="691.1" y2="380" stroke="#f0f0f0"/>
+<line x1="750.6" y1="250" x2="750.6" y2="380" stroke="#f0f0f0"/>
+<line x1="810.1" y1="250" x2="810.1" y2="380" stroke="#f0f0f0"/>
+<text transform="translate(14,315.0) rotate(-90)" text-anchor="middle">offered / engine tokens</text>
+<line x1="96" y1="328.0" x2="850" y2="328.0" stroke="#555555" stroke-dasharray="5 4" stroke-width="1.3"/>
+<clipPath id="clip1"><rect x="96" y="250" width="754" height="130"/></clipPath>
+<g clip-path="url(#clip1)">
+<path d="M100.2,242.8 L109.1,295.5 L118.0,296.6 L126.9,299.2 L135.9,298.3 L144.8,301.9 L153.7,302.4 L162.7,303.9 L171.6,297.9 L180.5,297.1 L189.4,299.3 L198.4,300.9 L207.3,301.3 L216.2,299.6 L225.1,298.8 L234.1,296.8 L243.0,300.2 L251.9,314.0 L260.8,304.3 L269.8,309.8 L278.7,291.8 L287.6,299.4 L296.6,292.8 L305.5,307.7 L314.4,300.5 L323.3,295.0 L332.3,299.9 L341.2,306.8 L350.1,303.9 L359.0,301.8 L368.0,294.7 L376.9,307.7 L385.8,301.2 L394.7,295.0 L403.7,299.6 L412.6,294.8 L421.5,225.0 M457.2,303.2 L466.2,294.7 L475.1,303.9 L484.0,303.7 L492.9,297.5 L501.9,286.5 L510.8,294.3 L519.7,294.9 L528.6,303.9 L537.6,323.4 L546.5,303.9 L555.4,312.1 L564.3,291.1 L573.3,301.7 L582.2,299.1 L591.1,290.1 L600.1,297.4 L609.0,282.8 L617.9,263.7 M725.0,304.8 L734.0,286.6 L742.9,292.3 M787.5,311.5 L796.4,303.7" fill="none" stroke="#1b6ca8" stroke-width="2.0" stroke-linejoin="round"/>
+<circle cx="100.2" cy="242.8" r="3" fill="#1b6ca8"/>
+<circle cx="109.1" cy="295.5" r="3" fill="#1b6ca8"/>
+<circle cx="118.0" cy="296.6" r="3" fill="#1b6ca8"/>
+<circle cx="126.9" cy="299.2" r="3" fill="#1b6ca8"/>
+<circle cx="135.9" cy="298.3" r="3" fill="#1b6ca8"/>
+<circle cx="144.8" cy="301.9" r="3" fill="#1b6ca8"/>
+<circle cx="153.7" cy="302.4" r="3" fill="#1b6ca8"/>
+<circle cx="162.7" cy="303.9" r="3" fill="#1b6ca8"/>
+<circle cx="171.6" cy="297.9" r="3" fill="#1b6ca8"/>
+<circle cx="180.5" cy="297.1" r="3" fill="#1b6ca8"/>
+<circle cx="189.4" cy="299.3" r="3" fill="#1b6ca8"/>
+<circle cx="198.4" cy="300.9" r="3" fill="#1b6ca8"/>
+<circle cx="207.3" cy="301.3" r="3" fill="#1b6ca8"/>
+<circle cx="216.2" cy="299.6" r="3" fill="#1b6ca8"/>
+<circle cx="225.1" cy="298.8" r="3" fill="#1b6ca8"/>
+<circle cx="234.1" cy="296.8" r="3" fill="#1b6ca8"/>
+<circle cx="243.0" cy="300.2" r="3" fill="#1b6ca8"/>
+<circle cx="251.9" cy="314.0" r="3" fill="#1b6ca8"/>
+<circle cx="260.8" cy="304.3" r="3" fill="#1b6ca8"/>
+<circle cx="269.8" cy="309.8" r="3" fill="#1b6ca8"/>
+<circle cx="278.7" cy="291.8" r="3" fill="#1b6ca8"/>
+<circle cx="287.6" cy="299.4" r="3" fill="#1b6ca8"/>
+<circle cx="296.6" cy="292.8" r="3" fill="#1b6ca8"/>
+<circle cx="305.5" cy="307.7" r="3" fill="#1b6ca8"/>
+<circle cx="314.4" cy="300.5" r="3" fill="#1b6ca8"/>
+<circle cx="323.3" cy="295.0" r="3" fill="#1b6ca8"/>
+<circle cx="332.3" cy="299.9" r="3" fill="#1b6ca8"/>
+<circle cx="341.2" cy="306.8" r="3" fill="#1b6ca8"/>
+<circle cx="350.1" cy="303.9" r="3" fill="#1b6ca8"/>
+<circle cx="359.0" cy="301.8" r="3" fill="#1b6ca8"/>
+<circle cx="368.0" cy="294.7" r="3" fill="#1b6ca8"/>
+<circle cx="376.9" cy="307.7" r="3" fill="#1b6ca8"/>
+<circle cx="385.8" cy="301.2" r="3" fill="#1b6ca8"/>
+<circle cx="394.7" cy="295.0" r="3" fill="#1b6ca8"/>
+<circle cx="403.7" cy="299.6" r="3" fill="#1b6ca8"/>
+<circle cx="412.6" cy="294.8" r="3" fill="#1b6ca8"/>
+<circle cx="421.5" cy="225.0" r="3" fill="#1b6ca8"/>
+<circle cx="457.2" cy="303.2" r="3" fill="#1b6ca8"/>
+<circle cx="466.2" cy="294.7" r="3" fill="#1b6ca8"/>
+<circle cx="475.1" cy="303.9" r="3" fill="#1b6ca8"/>
+<circle cx="484.0" cy="303.7" r="3" fill="#1b6ca8"/>
+<circle cx="492.9" cy="297.5" r="3" fill="#1b6ca8"/>
+<circle cx="501.9" cy="286.5" r="3" fill="#1b6ca8"/>
+<circle cx="510.8" cy="294.3" r="3" fill="#1b6ca8"/>
+<circle cx="519.7" cy="294.9" r="3" fill="#1b6ca8"/>
+<circle cx="528.6" cy="303.9" r="3" fill="#1b6ca8"/>
+<circle cx="537.6" cy="323.4" r="3" fill="#1b6ca8"/>
+<circle cx="546.5" cy="303.9" r="3" fill="#1b6ca8"/>
+<circle cx="555.4" cy="312.1" r="3" fill="#1b6ca8"/>
+<circle cx="564.3" cy="291.1" r="3" fill="#1b6ca8"/>
+<circle cx="573.3" cy="301.7" r="3" fill="#1b6ca8"/>
+<circle cx="582.2" cy="299.1" r="3" fill="#1b6ca8"/>
+<circle cx="591.1" cy="290.1" r="3" fill="#1b6ca8"/>
+<circle cx="600.1" cy="297.4" r="3" fill="#1b6ca8"/>
+<circle cx="609.0" cy="282.8" r="3" fill="#1b6ca8"/>
+<circle cx="617.9" cy="263.7" r="3" fill="#1b6ca8"/>
+<circle cx="725.0" cy="304.8" r="3" fill="#1b6ca8"/>
+<circle cx="734.0" cy="286.6" r="3" fill="#1b6ca8"/>
+<circle cx="742.9" cy="292.3" r="3" fill="#1b6ca8"/>
+<circle cx="787.5" cy="311.5" r="3" fill="#1b6ca8"/>
+<circle cx="796.4" cy="303.7" r="3" fill="#1b6ca8"/>
+</g>
+<line x1="862" y1="258" x2="884" y2="258" stroke="#1b6ca8" stroke-width="2.4"/>
+<text x="889" y="262">e = offered / engine</text>
+<line x1="862" y1="273" x2="884" y2="273" stroke="#555555" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="889" y="277">e = 1 (the formula&#x27;s assumption)</text>
+<text x="96.0" y="395" text-anchor="middle">0</text>
+<text x="155.5" y="395" text-anchor="middle">100</text>
+<text x="215.0" y="395" text-anchor="middle">200</text>
+<text x="274.5" y="395" text-anchor="middle">300</text>
+<text x="334.0" y="395" text-anchor="middle">400</text>
+<text x="393.6" y="395" text-anchor="middle">500</text>
+<text x="453.1" y="395" text-anchor="middle">600</text>
+<text x="512.6" y="395" text-anchor="middle">700</text>
+<text x="572.1" y="395" text-anchor="middle">800</text>
+<text x="631.6" y="395" text-anchor="middle">900</text>
+<text x="691.1" y="395" text-anchor="middle">1,000</text>
+<text x="750.6" y="395" text-anchor="middle">1,100</text>
+<text x="810.1" y="395" text-anchor="middle">1,200</text>
+<text x="473.0" y="413" text-anchor="middle">time since the load started (s)</text>
+<line x1="96.0" y1="42" x2="96.0" y2="380" stroke="#444444" stroke-dasharray="1 3"/>
+<circle cx="96.0" cy="34" r="8" fill="white" stroke="#444444"/>
+<text x="96.0" y="38" text-anchor="middle" font-size="10">1</text>
+<line x1="254.9" y1="42" x2="254.9" y2="380" stroke="#444444" stroke-dasharray="1 3"/>
+<circle cx="254.9" cy="34" r="8" fill="white" stroke="#444444"/>
+<text x="254.9" y="38" text-anchor="middle" font-size="10">2</text>
+<line x1="451.3" y1="42" x2="451.3" y2="380" stroke="#444444" stroke-dasharray="1 3"/>
+<circle cx="451.3" cy="34" r="8" fill="white" stroke="#444444"/>
+<text x="451.3" y="38" text-anchor="middle" font-size="10">3</text>
+<line x1="647.7" y1="42" x2="647.7" y2="380" stroke="#444444" stroke-dasharray="1 3"/>
+<circle cx="647.7" cy="34" r="8" fill="white" stroke="#444444"/>
+<text x="647.7" y="38" text-anchor="middle" font-size="10">4</text>
+<text x="96" y="436" font-size="11">1: 384:50 at 1 req/s</text>
+<text x="96" y="450" font-size="11">2: 8192:256 at 0.5 req/s</text>
+<text x="96" y="464" font-size="11">3: 2048:2048 at 0.2 req/s</text>
+<text x="96" y="478" font-size="11">4: 256:4096 at 0.1 req/s</text>
+</svg>

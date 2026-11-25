@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="452" viewBox="0 0 1180 452" font-family="Helvetica, Arial, sans-serif" font-size="11">
+<title>PF10: on 8192:256 the KV term is 6 to 9 times conc and lam, but the ITL term is larger still</title>
+<desc>The four decode terms in replicas and the offered request rate through a 360 s stage of 8192:256 requests at 1 req/s on two decode pods.</desc>
+<rect width="1180" height="452" fill="white"/>
+<text x="96" y="18" font-size="14" font-weight="bold">PF10: on 8192:256 the KV term is 6 to 9 times conc and lam, but the ITL term is larger still</text>
+<rect x="96" y="46" width="754" height="190" fill="none" stroke="#999999"/>
+<line x1="96" y1="205.2" x2="850" y2="205.2" stroke="#e6e6e6"/>
+<text x="90" y="209.2" text-anchor="end">0.01</text>
+<line x1="96" y1="146.2" x2="850" y2="146.2" stroke="#e6e6e6"/>
+<text x="90" y="150.2" text-anchor="end">0.1</text>
+<line x1="96" y1="87.2" x2="850" y2="87.2" stroke="#e6e6e6"/>
+<text x="90" y="91.2" text-anchor="end">1</text>
+<line x1="135.7" y1="46" x2="135.7" y2="236" stroke="#f0f0f0"/>
+<line x1="215.1" y1="46" x2="215.1" y2="236" stroke="#f0f0f0"/>
+<line x1="294.4" y1="46" x2="294.4" y2="236" stroke="#f0f0f0"/>
+<line x1="373.8" y1="46" x2="373.8" y2="236" stroke="#f0f0f0"/>
+<line x1="453.2" y1="46" x2="453.2" y2="236" stroke="#f0f0f0"/>
+<line x1="532.5" y1="46" x2="532.5" y2="236" stroke="#f0f0f0"/>
+<line x1="611.9" y1="46" x2="611.9" y2="236" stroke="#f0f0f0"/>
+<line x1="691.3" y1="46" x2="691.3" y2="236" stroke="#f0f0f0"/>
+<line x1="770.6" y1="46" x2="770.6" y2="236" stroke="#f0f0f0"/>
+<text transform="translate(14,141.0) rotate(-90)" text-anchor="middle">replicas each term asks (log)</text>
+<path d="M134.4,211.4 L154.2,190.6 L174.0,197.1 L193.9,193.6 L213.7,205.7 L233.6,229.1 L253.4,211.4 L273.3,218.8 L293.1,229.1 L312.9,211.4 L332.8,201.0 L352.6,201.0 L372.5,205.7 L392.3,211.4 L412.2,205.7 L432.0,236.0 L451.8,205.7 L471.7,201.0 L491.5,185.5 L511.4,205.7 L531.2,201.0 L551.0,187.9 L570.9,218.8 L590.7,201.0" fill="none" stroke="#1b6ca8" stroke-width="2.0" stroke-linejoin="round"/>
+<path d="M134.4,203.0 L154.2,175.4 L174.0,173.0 L193.9,173.0 L213.7,180.0 L233.6,190.8 L253.4,194.6 L273.3,196.5 L293.1,194.1 L312.9,193.1 L332.8,194.6 L352.6,193.0 L372.5,194.8 L392.3,195.3 L412.2,195.7 L432.0,199.8 L451.8,200.3 L471.7,199.0 L491.5,201.3 L511.4,193.7 L531.2,190.8 L551.0,188.8 L570.9,190.9 L590.7,193.9 L610.6,197.2 L630.4,213.0 L650.3,228.7 L670.1,236.0" fill="none" stroke="#d95f02" stroke-width="2.0" stroke-dasharray="7 3" stroke-linejoin="round"/>
+<path d="M134.4,154.6 L154.2,133.8 L174.0,140.3 L193.9,136.9 L213.7,148.8 L233.6,172.2 L253.4,154.5 L273.3,162.0 L293.1,172.4 L312.9,154.7 L332.8,144.3 L352.6,144.2 L372.5,149.0 L392.3,154.8 L412.2,148.9 L432.0,189.9 L451.8,148.9 L471.7,144.2 L491.5,128.8 L511.4,148.9 L531.2,144.1 L551.0,131.2 L570.9,162.2 L590.7,144.2" fill="none" stroke="#1b7f5c" stroke-width="2.0" stroke-dasharray="2 3" stroke-linejoin="round"/>
+<path d="M134.4,76.5 L154.2,76.2 L174.0,75.4 L193.9,75.4 L213.7,75.9 L233.6,76.2 L253.4,76.5 L273.3,76.1 L293.1,76.0 L312.9,76.6 L332.8,77.0 L352.6,77.1 L372.5,76.8 L392.3,76.6 L412.2,77.0 L432.0,77.1 L451.8,77.2 L471.7,76.9 L491.5,76.8 L511.4,77.2 L531.2,77.1 L551.0,76.9 L570.9,76.6 L590.7,76.8 L610.6,76.7 L630.4,76.9 L650.3,76.8 L670.1,76.4 L689.9,76.2 L709.8,77.2 L729.6,66.2 L749.5,63.3" fill="none" stroke="#7a3e9d" stroke-width="2.0" stroke-dasharray="9 3 2 3" stroke-linejoin="round"/>
+<line x1="862" y1="54" x2="884" y2="54" stroke="#1b6ca8" stroke-width="2.4"/>
+<text x="889" y="58">conc / 510</text>
+<line x1="862" y1="69" x2="884" y2="69" stroke="#d95f02" stroke-width="2.4" stroke-dasharray="7 3"/>
+<text x="889" y="73">lam term</text>
+<line x1="862" y1="84" x2="884" y2="84" stroke="#1b7f5c" stroke-width="2.4" stroke-dasharray="2 3"/>
+<text x="889" y="88">pods x kv / 0.8</text>
+<line x1="862" y1="99" x2="884" y2="99" stroke="#7a3e9d" stroke-width="2.4" stroke-dasharray="9 3 2 3"/>
+<text x="889" y="103">pods x itl p90 / 0.05</text>
+<rect x="96" y="270" width="754" height="100" fill="none" stroke="#999999"/>
+<line x1="96" y1="370.0" x2="850" y2="370.0" stroke="#e6e6e6"/>
+<text x="90" y="374.0" text-anchor="end">0</text>
+<line x1="96" y1="338.8" x2="850" y2="338.8" stroke="#e6e6e6"/>
+<text x="90" y="342.8" text-anchor="end">0.5</text>
+<line x1="96" y1="307.5" x2="850" y2="307.5" stroke="#e6e6e6"/>
+<text x="90" y="311.5" text-anchor="end">1</text>
+<line x1="96" y1="276.2" x2="850" y2="276.2" stroke="#e6e6e6"/>
+<text x="90" y="280.2" text-anchor="end">1.5</text>
+<line x1="135.7" y1="270" x2="135.7" y2="370" stroke="#f0f0f0"/>
+<line x1="215.1" y1="270" x2="215.1" y2="370" stroke="#f0f0f0"/>
+<line x1="294.4" y1="270" x2="294.4" y2="370" stroke="#f0f0f0"/>
+<line x1="373.8" y1="270" x2="373.8" y2="370" stroke="#f0f0f0"/>
+<line x1="453.2" y1="270" x2="453.2" y2="370" stroke="#f0f0f0"/>
+<line x1="532.5" y1="270" x2="532.5" y2="370" stroke="#f0f0f0"/>
+<line x1="611.9" y1="270" x2="611.9" y2="370" stroke="#f0f0f0"/>
+<line x1="691.3" y1="270" x2="691.3" y2="370" stroke="#f0f0f0"/>
+<line x1="770.6" y1="270" x2="770.6" y2="370" stroke="#f0f0f0"/>
+<text transform="translate(14,320.0) rotate(-90)" text-anchor="middle">offered req/s (lam)</text>
+<path d="M114.5,370.0 L134.4,362.5 L154.2,339.8 L174.0,320.0 L193.9,301.7 L213.7,300.0 L233.6,312.9 L253.4,312.5 L273.3,310.6 L293.1,303.8 L312.9,300.6 L332.8,305.0 L352.6,300.6 L372.5,305.0 L392.3,306.2 L412.2,307.5 L432.0,316.2 L451.8,317.5 L471.7,315.1 L491.5,320.0 L511.4,301.7 L531.2,293.8 L551.0,287.1 L570.9,292.5 L590.7,301.7 L610.6,310.0 L630.4,337.5 L650.3,352.5 L670.1,368.9 L689.9,370.0 L709.8,370.0 L729.6,370.0 L749.5,370.0 L769.3,370.0 L789.2,370.0 L809.0,370.0" fill="none" stroke="#1b6ca8" stroke-width="2.0" stroke-linejoin="round"/>
+<line x1="862" y1="278" x2="884" y2="278" stroke="#1b6ca8" stroke-width="2.4"/>
+<text x="889" y="282">lam</text>
+<text x="135.7" y="385" text-anchor="middle">0</text>
+<text x="215.1" y="385" text-anchor="middle">60</text>
+<text x="294.4" y="385" text-anchor="middle">120</text>
+<text x="373.8" y="385" text-anchor="middle">180</text>
+<text x="453.2" y="385" text-anchor="middle">240</text>
+<text x="532.5" y="385" text-anchor="middle">300</text>
+<text x="611.9" y="385" text-anchor="middle">360</text>
+<text x="691.3" y="385" text-anchor="middle">420</text>
+<text x="770.6" y="385" text-anchor="middle">480</text>
+<text x="473.0" y="403" text-anchor="middle">time since the load started (s)</text>
+<line x1="135.7" y1="42" x2="135.7" y2="370" stroke="#444444" stroke-dasharray="1 3"/>
+<circle cx="135.7" cy="34" r="8" fill="white" stroke="#444444"/>
+<text x="135.7" y="38" text-anchor="middle" font-size="10">1</text>
+<line x1="611.9" y1="42" x2="611.9" y2="370" stroke="#444444" stroke-dasharray="1 3"/>
+<circle cx="611.9" cy="34" r="8" fill="white" stroke="#444444"/>
+<text x="611.9" y="38" text-anchor="middle" font-size="10">2</text>
+<text x="96" y="426" font-size="11">1: 8192:256 at 1 req/s starts</text>
+<text x="96" y="440" font-size="11">2: load stops</text>
+</svg>
