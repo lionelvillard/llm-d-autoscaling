@@ -1,0 +1,63 @@
+{
+ "run": "overload-over",
+ "epoch0": 1767225600.0,
+ "first_arrival_s": 0.022157,
+ "horizon_s": 2711.0,
+ "lead_in_s": 0.0,
+ "ready_at_load_start": {
+  "prefill": 2,
+  "decode": 2
+ },
+ "arm": {
+  "pin": null,
+  "static": null,
+  "start": {
+   "prefill": 2,
+   "decode": 2
+  }
+ },
+ "lab": "/private/tmp/claude-501/t551/lab-ttft",
+ "lab_commit": "25f2dfb6259853e784ee9e85911c8e4fa63770c6",
+ "scenario": "deepseek-v2-lite-h100-pd.yaml",
+ "seed": null,
+ "memory": {
+  "available_at_start_gib": 44.84,
+  "reserve_gib": 6.4,
+  "max_rss_gib": 38.44,
+  "peak_rss_gib": 25.95,
+  "killed": null
+ },
+ "fates": {
+  "generated": 79086,
+  "completed": 41921,
+  "timed_out": 0,
+  "in_flight_at_horizon": 2414,
+  "queued_at_horizon": 34751,
+  "not_started": 0,
+  "length_capped": 0
+ },
+ "hpa_log_sha256": {
+  "signals-hpa-decode.csv": "76aea56ed699c6ab8b16095fa7b5f35ba1664b4b83ee33967e5fbb4d02d79e44",
+  "signals-hpa-prefill.csv": "6d5cff356bfa8a8341d4a112b5773fa3f96e55750f7b02adb47e1830d652cd3c"
+ },
+ "schedule": {
+  "what": "overload over the cap, blend: 7.753 then 1.5 x C = 58.149 req/s",
+  "seed": 105,
+  "duration_s": 2400,
+  "expected_requests": 79083,
+  "timeout_s": 311,
+  "drain_s": 311,
+  "phases": [
+   {
+    "seconds": 1200,
+    "rate": 7.7532,
+    "mix": "8192:256,2048:2048,256:4096"
+   },
+   {
+    "seconds": 1200,
+    "rate": 58.149,
+    "mix": "8192:256,2048:2048,256:4096"
+   }
+  ]
+ }
+}

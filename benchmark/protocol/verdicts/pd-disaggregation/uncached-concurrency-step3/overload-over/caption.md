@@ -1,0 +1,1 @@
+The blend at 7.8 req/s for 1,200 s, then at 58.1 req/s (1.5 x C). Decode reached its cap of 6 Ready 165 s after the step; prefill went 2 to 3 Ready at t = 2,220 s and to its cap of 4 at t = 2,520 s, after the load ended at t = 2,400 s. A fell to 0.003 for the phase.
