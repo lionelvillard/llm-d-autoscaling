@@ -27,6 +27,7 @@ predictions PF1 to PF10); the step 3 blis evaluation is
 | Mix set M | 8192:256, 2048:2048, 256:4096; blend B draws each request's mix from M with equal weight |
 | Profiles | as `gen_load.py` writes them, except `report.request_lifecycle.summary: false` and `per_request_fields.computed_metrics: false` (the `npd-fcoff` step 5 lesson: inference-perf re-tokenizes every streamed chunk once per report). TTFT and TPOT are derived from each record's token times |
 | Cold start | 121 to 186 s from pod creation to `Ready` at standup (model on the PVC): prefill 121 and 183 s, decode 185 and 186 s |
+| Router | from 2026-11-25 12:14 UTC (after the knees, before run 2's second attempt) the router pod's `envoy-proxy` container runs with 8 CPU / 2Gi requested and 16 CPU / 8Gi limits, patched with `kubectl` (it was 1 CPU / 128Mi and 4 CPU / 2Gi): a coordinator decision, see "Decisions". The EPP container is unchanged (1 CPU / 256Mi, 4 CPU / 8Gi) |
 | Scheduling | from 2026-11-25 04:42 UTC both Deployments carry a node anti-affinity (`kubernetes.io/hostname NotIn` three nodes), patched with `kubectl`: each of those nodes held a GPU whose SM clock read 495 MHz under load (see "GPU clocks"). Every run checks the SM clock of every GPU the namespace holds (DCGM `DCGM_FI_DEV_SM_CLOCK`, minimum over the run) |
 
 ## Decisions
@@ -51,6 +52,14 @@ The owner then decided (2026-11-25 ~02:00 UTC, relayed by the coordinator):
   as a discarded plant: they show what the transport costs.
 - Run every run, including 9 and 10; the owner refreshes the workstation's
   cluster credentials before they expire.
+
+The coordinator then decided (2026-11-25 12:10 UTC; the owner was asked and did
+not answer): raise the router's Envoy CPU limit to 16, with its request and
+memory to match, and rerun run 2; keep the first run 2 as a failed attempt.
+The knees stay valid: each loaded one pod at rates the 4-CPU Envoy carried
+(Envoy errors appeared only in stages 3 and 4 of run 1f, 86 of 19,748
+requests). If Envoy saturates again at 16, or the EPP becomes the bottleneck,
+the plant stays as it is and the report says so. No other plant change.
 
 ## The plant's KV transfer
 
@@ -137,6 +146,11 @@ requested later were Ready in 121 to 125 s.
 | spike (run 9) | 555 s | R / 2 |
 | G | 1,800 s | min(2 R, 3,600 / 2) |
 | H | 1,830 s | (4 − 2) × 300 + R + 120 |
+
+Amended before run 8 (run-set.md §5): run 2's first attempt measured a prefill
+cold start of 120 s (2 scale-ups; decode 180 s), so R = 15 + 900 + 120 =
+1,035 s, the short spike R / 2 = 517 s and H = 600 + 1,035 + 120 = 1,755 s;
+runs 8 to 10 were rewritten with them (runs 2 to 7 are byte-identical).
 | D | 4,320 s | 1 × 600 + 3,600 + 120 |
 
 `gen_load.py runs --mu 8192:256=18.402,2048:2048=6.525,256:4096=3.826
@@ -162,8 +176,8 @@ inference-perf holds every request's token times in memory.
 | 1d | knee decode blend | done | as expected; μ_SLO 6.632 req/s; KV binds; the `kv` guard crosses 1.1 at the knee, the drivers past it | 0.658 (whole run) | 0 | 4,800 (3,600 + 1,200) | [report](uncached-concurrency-step5/knees/decode-blend/report.md) |
 | 1e | knee prefill 8192:256 | done (second attempt) | as expected; μ_SLO 7.978 req/s (65,356 tok/s); the prefill composite reads about 2.8 at this knee | 0.385 (whole run) | 2,479 timeout | 3,600 (1,200 + 2,400) | [report](uncached-concurrency-step5/knees/prefill-8192x256/report.md) |
 | 1f | knee prefill blend | done | as expected; μ_SLO 15.205 req/s (53,202 tok/s); the prefill composite reads 2.19 at the knee (EPP tokens 1.6 × engine tokens) | 0.627 (whole run) | 82 `ClientConnectorError`, 4 HTTP 503 | 7,200 (1,200 + 6,000) | [report](uncached-concurrency-step5/knees/prefill-blend/report.md) |
-| 2 | SO-active staircase | done | problem shown: A 0.078 to 0.137 from 0.5 × C on; decode one stage late (180 s cold start), prefill 915 s after its ask (PF6); the router's Envoy at its 4-CPU limit, 3,546 connection errors | 0.259 | 1,328 timeout, 3,546 `ClientConnectorError`, 263 `ClientPayloadError`, 30 HTTP 503 | 19,809 (7,612 + 12,197) | [report](uncached-concurrency-step5/stair/report.md) |
-| 3 | mix-shift | running | | | | | |
+| 2 | SO-active staircase | running (second attempt) | | | | | |
+| 3 | mix-shift | pending | | | | | |
 | 4a | overload under the cap | pending | | | | | |
 | 4b | overload over the cap | pending | | | | | |
 | 5 | agentic | pending | | | | | |
@@ -190,11 +204,13 @@ rows are on the first (TCP) plant.
 | 1b, knee decode 2048:2048, estimate 5 req/s (second plant) | `villardl-20261124-230455-495` | Same throttled decode GPU: stage 1 (2.94 req/s) A 0.278, TPOT p50 55.6 ms | after run 1a |
 | 1b, estimate 5 req/s, GPU at full clock | `villardl-20261125-002838-160` | Stage 4 (6.18 req/s) A 0.998: the crossing is above the stages | estimate 8 req/s (run 1b) |
 | 1e, knee prefill 8192:256 at blis's estimate, 6.095 req/s | `villardl-20261125-025851-854` | Stage 4 (7.55 req/s) A 0.992: the crossing is above the stages | estimate 10 req/s (run 1e) |
+| 2, SO-active staircase (first attempt) | `villardl-20261125-050105-679` | The router's Envoy at its 4-CPU limit from stage 3 (19.9 req/s) on: 3,546 `ClientConnectorError`, A 0.078 to 0.137 with the GPU pools at or near their need. A failed attempt, kept as the evidence for the router change ([report](uncached-concurrency-step5/discarded/stair-envoy4/report.md)) | second attempt, Envoy at 16 CPU |
+| 3, mix-shift (first attempt) | `villardl-20261125-065917-331` | Stopped 11 min into phase 1 for the router change | after run 2 |
 
 ## Conclusions
 
-2026-11-25 12:05 UTC, partial: the knees and run 2. Runs 3, 4a, 4b, 5, 8, 9,
-10 and 6 are pending.
+2026-11-25 12:20 UTC, partial: the knees, and run 2's first attempt (failed,
+router-bound). Runs 2 to 10 and 6 are pending on the 16-CPU router.
 
 - On the RDMA plant the GPU knees are close to blis's: decode 0.91 to 1.16 ×
   (8192:256 18.40, 2048:2048 6.53, 256:4096 3.83, blend 6.63 req/s), prefill
@@ -207,9 +223,9 @@ rows are on the first (TCP) plant.
 - KV binds decode on every mix, and the `kv` guard, not `conc` or the
   offered-output term, is what crosses the HPA's tolerance first at the
   8192:256 and blend knees (PF10, PF5).
-- Run 2: decode follows load but one stage late, and the router's Envoy
-  saturates its 4-CPU limit above about 20 req/s of the blend; A falls to 0.08
-  to 0.14 from 0.5 × C with the GPU pools at or near their need.
+- Run 2's first attempt: decode followed load but one stage late, and the
+  router's Envoy saturated its 4-CPU limit above about 20 req/s of the blend;
+  A fell to 0.08 to 0.14 from 0.5 × C with the GPU pools at or near their need.
 
 ## Log
 
@@ -295,3 +311,7 @@ Entries before 2026-11-25 02:00 UTC are about the first plant.
   11:52 UTC.
 - 2026-11-25 12:00 UTC: question to the owner (through the coordinator): raise
   the router's Envoy CPU limit? Until an answer, the plant stays unchanged.
+- 2026-11-25 12:10 UTC: coordinator decision on the router. Run 3's first
+  attempt stopped (harness pod deleted). 12:14 UTC: Envoy patched to 8 / 16 CPU
+  and 2Gi / 8Gi; the router pod restarted. 12:16 UTC: run 2 rearmed. Runs 8 to
+  10 rewritten with R = 1,035 s and H = 1,755 s.

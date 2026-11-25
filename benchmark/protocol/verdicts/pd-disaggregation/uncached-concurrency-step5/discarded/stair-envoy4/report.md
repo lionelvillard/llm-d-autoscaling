@@ -1,6 +1,11 @@
 # Step 5, run 2: SO-active staircase (pd-disaggregation/uncached-concurrency)
 
-Part of the [step 5 summary](../../uncached-concurrency-step5.md).
+Part of the [step 5 summary](../../../uncached-concurrency-step5.md).
+
+**Discarded (2026-11-25 12:15 UTC), a failed attempt.** The router's Envoy ran
+at its 4-CPU limit from stage 3 on. By the coordinator's decision its limit was
+raised to 16 CPU (a plant change after the knees) and run 2 rerun; this report
+stays as the evidence for that change.
 
 | | |
 |---|---|
@@ -114,4 +119,5 @@ one pod under its need from stage 4; the router's Envoy at its CPU limit).
 
 ## Amendments
 
-None.
+- 2026-11-25 12:15 UTC: discarded as a failed attempt (router at its CPU
+  limit); moved from `stair/`. No number in this report changed.
